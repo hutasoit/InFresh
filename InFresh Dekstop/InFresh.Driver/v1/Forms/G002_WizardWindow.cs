@@ -26,6 +26,7 @@ namespace InFresh.Driver.v1.Forms
 
             Text = Resources.GetString("Import_Data").Replace("&", string.Empty);
             txtSearch.WaterMark = string.Format(Resources.GetString("Search_Item"), string.Empty);
+            cmbSort.SelectedIndex = 0;
         }
 
 

@@ -92,19 +92,21 @@
             // 
             this.tsmiStart.Image = global::InFresh.Driver.Properties.Resources.ic_infresh_r1_32x32;
             this.tsmiStart.Name = "tsmiStart";
-            this.tsmiStart.Size = new System.Drawing.Size(137, 22);
+            this.tsmiStart.Size = new System.Drawing.Size(206, 22);
             this.tsmiStart.Text = "&Start Page";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(134, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(203, 6);
             // 
             // tsmiImport
             // 
             this.tsmiImport.Image = global::InFresh.Driver.Properties.Resources.ic_download;
             this.tsmiImport.Name = "tsmiImport";
-            this.tsmiImport.Size = new System.Drawing.Size(137, 22);
+            this.tsmiImport.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.I)));
+            this.tsmiImport.Size = new System.Drawing.Size(206, 22);
             this.tsmiImport.Text = "&Import Data";
             this.tsmiImport.Click += new System.EventHandler(this.MenuItem_Click);
             // 
@@ -112,26 +114,28 @@
             // 
             this.exportDataToolStripMenuItem.Image = global::InFresh.Driver.Properties.Resources.ic_upload;
             this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.exportDataToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.E)));
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.exportDataToolStripMenuItem.Text = "&Export Data";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(134, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(203, 6);
             // 
             // tsmiLogout
             // 
             this.tsmiLogout.Image = global::InFresh.Driver.Properties.Resources.ic_lock;
             this.tsmiLogout.Name = "tsmiLogout";
-            this.tsmiLogout.Size = new System.Drawing.Size(137, 22);
+            this.tsmiLogout.Size = new System.Drawing.Size(206, 22);
             this.tsmiLogout.Text = "&Log Out";
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
             this.tsmiExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.tsmiExit.Size = new System.Drawing.Size(137, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(206, 22);
             this.tsmiExit.Text = "E&xit";
             // 
             // tsmiTools

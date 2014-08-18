@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Framework", "InFresh.Framework\InFresh.Framework.csproj", "{E5D5FB60-E450-438C-93B8-F5D929C00708}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Globalization", "InFresh.Globalization\InFresh.Globalization.csproj", "{DA3B452D-AC0E-4A86-A3CA-5D1989A3FD6D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3C53711B-A39C-4448-A18C-2E24DCA56C63}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Controls", "InFresh.Controls\InFresh.Controls.csproj", "{9812C5C0-313F-4FD2-9173-7CBC8793B4B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Driver", "InFresh.Driver\InFresh.Driver.csproj", "{DD6B182F-7840-4F81-81C5-89942D99A164}"
 EndProject
@@ -19,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Mobile", "InFresh.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Reporting", "InFresh.Reporting\InFresh.Reporting.csproj", "{02B76821-A6B7-4E70-B4BB-2F2B2F54E796}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Controls", "InFresh.Controls\InFresh.Controls.csproj", "{EC11A052-CB96-44C2-8016-73F5F1785BF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Globalization", "InFresh.Globalization\InFresh.Globalization.csproj", "{6989923D-75A3-4022-B0D8-E21CE5A532E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,14 +29,6 @@ Global
 		{E5D5FB60-E450-438C-93B8-F5D929C00708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5D5FB60-E450-438C-93B8-F5D929C00708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5D5FB60-E450-438C-93B8-F5D929C00708}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA3B452D-AC0E-4A86-A3CA-5D1989A3FD6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA3B452D-AC0E-4A86-A3CA-5D1989A3FD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA3B452D-AC0E-4A86-A3CA-5D1989A3FD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA3B452D-AC0E-4A86-A3CA-5D1989A3FD6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9812C5C0-313F-4FD2-9173-7CBC8793B4B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9812C5C0-313F-4FD2-9173-7CBC8793B4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9812C5C0-313F-4FD2-9173-7CBC8793B4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9812C5C0-313F-4FD2-9173-7CBC8793B4B8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD6B182F-7840-4F81-81C5-89942D99A164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD6B182F-7840-4F81-81C5-89942D99A164}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD6B182F-7840-4F81-81C5-89942D99A164}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +49,14 @@ Global
 		{02B76821-A6B7-4E70-B4BB-2F2B2F54E796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02B76821-A6B7-4E70-B4BB-2F2B2F54E796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02B76821-A6B7-4E70-B4BB-2F2B2F54E796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC11A052-CB96-44C2-8016-73F5F1785BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC11A052-CB96-44C2-8016-73F5F1785BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC11A052-CB96-44C2-8016-73F5F1785BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC11A052-CB96-44C2-8016-73F5F1785BF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6989923D-75A3-4022-B0D8-E21CE5A532E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6989923D-75A3-4022-B0D8-E21CE5A532E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6989923D-75A3-4022-B0D8-E21CE5A532E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6989923D-75A3-4022-B0D8-E21CE5A532E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

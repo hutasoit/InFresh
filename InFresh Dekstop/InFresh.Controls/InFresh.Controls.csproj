@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\PrivateAssemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -53,6 +53,9 @@
     </Compile>
     <Compile Include="v1\LeftTabControl.Designer.cs">
       <DependentUpon>LeftTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="v1\WatermarkTextBox.cs">
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

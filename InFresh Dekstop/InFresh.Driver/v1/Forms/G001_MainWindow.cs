@@ -36,6 +36,37 @@ namespace InFresh.Driver.v1.Forms
         /// </summary>
         protected ResourceManager Resources { get; private set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected InFreshConfig Config { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender == tsmiImport)
+            {
+                new G002_WizardWindow().ShowDialog();
+                return;
+            }
+            //G002_WizardWindow f = null;
+            //if (sender == tsmiImport || sender == tsmiExport)
+            //    f = new G002_WizardWindow(WizardType.Import);
+            //else if (sender == tsbExport || sender == tsmiExport)
+            //    f = new G002_WizardWindow(WizardType.Export);
+
+            //if (f != null)
+            //{
+            //    if (f.ShowDialog() == DialogResult.OK)
+            //    {
+            //        Form fw = f.Wizard.Form(f.Type);
+            //        if (fw != null) fw.ShowDialog(Handler.Host as Form);
+            //    }
+            //}
+        }
     }
 }

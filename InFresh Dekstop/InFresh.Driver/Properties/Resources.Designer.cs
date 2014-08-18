@@ -63,6 +63,16 @@ namespace InFresh.Driver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_download {
+            get {
+                object obj = ResourceManager.GetObject("ic_download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_infresh_r1_16x16 {
             get {
                 object obj = ResourceManager.GetObject("ic_infresh_r1_16x16", resourceCulture);
@@ -86,6 +96,36 @@ namespace InFresh.Driver.Properties {
         internal static System.Drawing.Bitmap ic_infresh_r1_48x48 {
             get {
                 object obj = ResourceManager.GetObject("ic_infresh_r1_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_lock {
+            get {
+                object obj = ResourceManager.GetObject("ic_lock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_search {
+            get {
+                object obj = ResourceManager.GetObject("ic_search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_upload {
+            get {
+                object obj = ResourceManager.GetObject("ic_upload", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

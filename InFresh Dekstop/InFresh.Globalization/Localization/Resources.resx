@@ -117,34 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Administration" xml:space="preserve">
+    <value>&amp;Administration</value>
+  </data>
   <data name="App_Name" xml:space="preserve">
     <value>InFresh System {0}</value>
   </data>
-  <data name="Menu_Administration" xml:space="preserve">
-    <value>&amp;Administration</value>
-  </data>
-  <data name="Menu_File" xml:space="preserve">
+  <data name="File" xml:space="preserve">
     <value>&amp;File</value>
   </data>
-  <data name="Menu_General" xml:space="preserve">
+  <data name="General" xml:space="preserve">
     <value>&amp;General Data</value>
   </data>
-  <data name="Menu_Help" xml:space="preserve">
+  <data name="Help" xml:space="preserve">
     <value>&amp;Help</value>
   </data>
-  <data name="Menu_Master" xml:space="preserve">
+  <data name="Import_Data" xml:space="preserve">
+    <value>&amp;Import Data</value>
+  </data>
+  <data name="Master" xml:space="preserve">
     <value>&amp;Master Data</value>
   </data>
-  <data name="Menu_Mobile" xml:space="preserve">
+  <data name="Mobile" xml:space="preserve">
     <value>Mo&amp;bile</value>
   </data>
-  <data name="Menu_Reporting" xml:space="preserve">
+  <data name="Reporting" xml:space="preserve">
     <value>&amp;Reporting</value>
   </data>
-  <data name="Menu_Tools" xml:space="preserve">
+  <data name="Search_Item" xml:space="preserve">
+    <value>Search Item {0}...</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
     <value>&amp;Tools</value>
   </data>
-  <data name="Menu_Window" xml:space="preserve">
+  <data name="Window" xml:space="preserve">
     <value>&amp;Window</value>
   </data>
 </root>

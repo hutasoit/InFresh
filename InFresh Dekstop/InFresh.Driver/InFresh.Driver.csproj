@@ -91,6 +91,13 @@
   <ItemGroup>
     <Content Include="infresh.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InFresh.Globalization\InFresh.Globalization.csproj">
+      <Project>{6989923d-75a3-4022-b0d8-e21ce5a532e6}</Project>
+      <Name>InFresh.Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

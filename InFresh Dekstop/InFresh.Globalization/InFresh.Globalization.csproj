@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +46,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\Resources.id-ID.resx" />
@@ -52,6 +58,124 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_infresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_barcode_no_code.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_employee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_infresh_r1_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_infresh_r1_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_infresh_r1_48x48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_no_barcode.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_no_photo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_outlet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_profile.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_stop_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_stop_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_subdepo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_supplier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_truncate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_upload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

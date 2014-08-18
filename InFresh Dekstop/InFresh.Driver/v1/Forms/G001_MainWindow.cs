@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Windows.Forms;
+using InFresh.Framework.v1.Base;
 
 namespace InFresh.Driver.v1.Forms
 {
@@ -25,12 +26,16 @@ namespace InFresh.Driver.v1.Forms
 
             Resources = new ResourceManager("InFresh.Globalization.Localization.Resources", Assembly.LoadFrom(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\PrivateAssemblies\\InFresh.Globalization.dll"));
 
-            Text = string.Format(Resources.GetString("App_Name"), "1.0.1");
+            Config = InFreshConfig.Instance;
+
+            Text = string.Format(Resources.GetString("App_Name"), Config.AssemblyVersion);
         }
 
         /// <summary>
         /// 
         /// </summary>
         protected ResourceManager Resources { get; private set; }
+
+        protected InFreshConfig Config { get; private set; }
     }
 }

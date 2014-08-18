@@ -72,6 +72,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="v1\Forms\G001_MainWindow.resx">
       <DependentUpon>G001_MainWindow.cs</DependentUpon>
@@ -89,9 +90,23 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\InFresh.Globalization\Resources\ic_infresh_r1_16x16.png">
+      <Link>Resources\ic_infresh_r1_16x16.png</Link>
+    </Content>
+    <Content Include="..\InFresh.Globalization\Resources\ic_infresh_r1_32x32.png">
+      <Link>Resources\ic_infresh_r1_32x32.png</Link>
+    </Content>
+    <Content Include="..\InFresh.Globalization\Resources\ic_infresh_r1_48x48.png">
+      <Link>Resources\ic_infresh_r1_48x48.png</Link>
+    </Content>
     <Content Include="infresh.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InFresh.Framework\InFresh.Framework.csproj">
+      <Project>{e5d5fb60-e450-438c-93b8-f5d929c00708}</Project>
+      <Name>InFresh.Framework</Name>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\InFresh.Globalization\InFresh.Globalization.csproj">
       <Project>{6989923d-75a3-4022-b0d8-e21ce5a532e6}</Project>
       <Name>InFresh.Globalization</Name>

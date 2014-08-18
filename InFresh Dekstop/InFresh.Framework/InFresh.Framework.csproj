@@ -52,6 +52,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="v1\Base\InFreshConfig.cs" />
+    <Compile Include="v1\Interfaces\IDock.cs" />
+    <Compile Include="v1\Interfaces\IHost.cs" />
+    <Compile Include="v1\Interfaces\IModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -59,7 +62,6 @@
   <ItemGroup>
     <Folder Include="v1\Attributes\" />
     <Folder Include="v1\Enums\" />
-    <Folder Include="v1\Interfaces\" />
     <Folder Include="v1\Models\" />
     <Folder Include="v1\Utils\" />
   </ItemGroup>

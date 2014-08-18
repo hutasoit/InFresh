@@ -68,5 +68,86 @@ namespace InFresh.Globalization.Localization {
                 return ResourceManager.GetString("App_Name", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Administration.
+        /// </summary>
+        internal static string Menu_Administration {
+            get {
+                return ResourceManager.GetString("Menu_Administration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;File.
+        /// </summary>
+        internal static string Menu_File {
+            get {
+                return ResourceManager.GetString("Menu_File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;General Data.
+        /// </summary>
+        internal static string Menu_General {
+            get {
+                return ResourceManager.GetString("Menu_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Help.
+        /// </summary>
+        internal static string Menu_Help {
+            get {
+                return ResourceManager.GetString("Menu_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Master Data.
+        /// </summary>
+        internal static string Menu_Master {
+            get {
+                return ResourceManager.GetString("Menu_Master", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mo&amp;bile.
+        /// </summary>
+        internal static string Menu_Mobile {
+            get {
+                return ResourceManager.GetString("Menu_Mobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Reporting.
+        /// </summary>
+        internal static string Menu_Reporting {
+            get {
+                return ResourceManager.GetString("Menu_Reporting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Tools.
+        /// </summary>
+        internal static string Menu_Tools {
+            get {
+                return ResourceManager.GetString("Menu_Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Window.
+        /// </summary>
+        internal static string Menu_Window {
+            get {
+                return ResourceManager.GetString("Menu_Window", resourceCulture);
+            }
+        }
     }
 }

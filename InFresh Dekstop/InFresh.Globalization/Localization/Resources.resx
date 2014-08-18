@@ -120,4 +120,31 @@
   <data name="App_Name" xml:space="preserve">
     <value>InFresh System {0}</value>
   </data>
+  <data name="Menu_Administration" xml:space="preserve">
+    <value>&amp;Administration</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="Menu_General" xml:space="preserve">
+    <value>&amp;General Data</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="Menu_Master" xml:space="preserve">
+    <value>&amp;Master Data</value>
+  </data>
+  <data name="Menu_Mobile" xml:space="preserve">
+    <value>Mo&amp;bile</value>
+  </data>
+  <data name="Menu_Reporting" xml:space="preserve">
+    <value>&amp;Reporting</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>&amp;Tools</value>
+  </data>
+  <data name="Menu_Window" xml:space="preserve">
+    <value>&amp;Window</value>
+  </data>
 </root>

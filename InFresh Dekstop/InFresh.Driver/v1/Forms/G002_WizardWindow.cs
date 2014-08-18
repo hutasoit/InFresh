@@ -33,5 +33,42 @@ namespace InFresh.Driver.v1.Forms
         /// 
         /// </summary>
         protected ResourceManager Resources { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form_Load(object sender, EventArgs e)
+        {
+            if (lsbType.Items.Count != 0)
+                btnOK.Enabled = true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonItem_Click(object sender, EventArgs e)
+        {
+            if (sender == btnSearch)
+            {
+                return;
+            }
+
+            if (sender == btnOK)
+            {
+                return;
+            }
+
+            if (sender == btnCancel)
+            {
+                DialogResult = DialogResult.Cancel;
+                return;
+            }
+        }
+
+        
     }
 }

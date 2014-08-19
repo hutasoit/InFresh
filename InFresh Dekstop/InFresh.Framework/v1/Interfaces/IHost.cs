@@ -9,7 +9,9 @@ namespace InFresh.Framework.v1.Interfaces
 {
     public interface IHost
     {
-        string Host { get; }
+        string DomainName { get; }
+
+        Form MainWindow { get; }
 
         void ShowContent(DockContent content, DockState state);
 

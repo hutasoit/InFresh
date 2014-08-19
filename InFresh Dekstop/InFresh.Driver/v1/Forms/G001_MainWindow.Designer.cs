@@ -251,7 +251,6 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip mnsMenubar;
         private System.Windows.Forms.ToolStripMenuItem tsmiFile;
         private System.Windows.Forms.ToolStripMenuItem tsmiTools;
         private System.Windows.Forms.ToolStripMenuItem tsmiHelp;
@@ -262,9 +261,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tsmiLogout;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
-        private System.Windows.Forms.StatusStrip stsStatusbar;
-        private System.Windows.Forms.ToolStrip tlsToolbar;
-        private WeifenLuo.WinFormsUI.Docking.DockPanel dckMainPanel;
         private WeifenLuo.WinFormsUI.Docking.VS2012LightTheme thmVs2012;
+        public System.Windows.Forms.MenuStrip mnsMenubar;
+        public System.Windows.Forms.StatusStrip stsStatusbar;
+        public System.Windows.Forms.ToolStrip tlsToolbar;
+        public WeifenLuo.WinFormsUI.Docking.DockPanel dckMainPanel;
     }
 }

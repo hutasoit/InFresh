@@ -39,6 +39,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -55,16 +56,22 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="v1\Base\InFreshConfig.cs" />
+    <Compile Include="v1\Base\InFreshContext.cs" />
+    <Compile Include="v1\Base\InFreshHandler.cs" />
+    <Compile Include="v1\Base\UnitOfWork.cs" />
+    <Compile Include="v1\Enums\WizardType.cs" />
     <Compile Include="v1\Interfaces\IDock.cs" />
     <Compile Include="v1\Interfaces\IHost.cs" />
     <Compile Include="v1\Interfaces\IModule.cs" />
+    <Compile Include="v1\Interfaces\IModuleHandler.cs" />
+    <Compile Include="v1\Interfaces\IRepository.cs" />
+    <Compile Include="v1\Interfaces\IWizard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="v1\Attributes\" />
-    <Folder Include="v1\Enums\" />
     <Folder Include="v1\Models\" />
     <Folder Include="v1\Utils\" />
   </ItemGroup>

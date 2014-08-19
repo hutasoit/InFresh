@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using InFresh.Driver.v1.Forms;
+using InFresh.Framework.v1.Base;
+using InFresh.Framework.v1.Interfaces;
 
 namespace InFresh.Driver
 {
     static class Program
     {
+        public static InFreshHandler Handler = InFreshHandler.Instance;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +20,10 @@ namespace InFresh.Driver
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new G001_MainWindow());
+
+            Handler.Initialize();
+
+            Application.Run(Handler.Host.MainWindow);
         }
     }
 }

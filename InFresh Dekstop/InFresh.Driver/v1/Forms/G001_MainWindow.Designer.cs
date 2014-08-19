@@ -94,6 +94,7 @@
             this.tsmiStart.Name = "tsmiStart";
             this.tsmiStart.Size = new System.Drawing.Size(206, 22);
             this.tsmiStart.Text = "&Start Page";
+            this.tsmiStart.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -242,6 +243,7 @@
             this.Name = "G001_MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "G001_MainWindow";
+            this.Load += new System.EventHandler(this.Form_Load);
             this.mnsMenubar.ResumeLayout(false);
             this.mnsMenubar.PerformLayout();
             this.ResumeLayout(false);

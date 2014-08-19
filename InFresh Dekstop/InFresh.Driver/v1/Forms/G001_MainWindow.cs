@@ -10,6 +10,8 @@ using System.Resources;
 using System.Text;
 using System.Windows.Forms;
 using InFresh.Framework.v1.Base;
+using InFresh.Framework.v1.Interfaces;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace InFresh.Driver.v1.Forms
 {
@@ -24,17 +26,10 @@ namespace InFresh.Driver.v1.Forms
 
             MinimumSize = Size = new Size(Screen.PrimaryScreen.Bounds.Width - 60, Screen.PrimaryScreen.Bounds.Height - 100);
 
-            Resources = new ResourceManager("InFresh.Globalization.Localization.Resources", Assembly.LoadFrom(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\PrivateAssemblies\\InFresh.Globalization.dll"));
-
             Config = InFreshConfig.Instance;
 
-            Text = string.Format(Resources.GetString("App_Name"), Config.AssemblyVersion);
+            Text = string.Format(Program.Handler.Resources.GetString("App_Name"), Config.AssemblyVersion);
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected ResourceManager Resources { get; private set; }
 
         /// <summary>
         /// 
@@ -46,27 +41,60 @@ namespace InFresh.Driver.v1.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        private void Form_Load(object sender, EventArgs e)
+        {
+            tsmiStart.PerformClick();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Click(object sender, EventArgs e)
         {
-            if (sender == tsmiImport)
+            try
             {
-                new G002_WizardWindow().ShowDialog();
-                return;
-            }
-            //G002_WizardWindow f = null;
-            //if (sender == tsmiImport || sender == tsmiExport)
-            //    f = new G002_WizardWindow(WizardType.Import);
-            //else if (sender == tsbExport || sender == tsmiExport)
-            //    f = new G002_WizardWindow(WizardType.Export);
+                if (sender == tsmiStart)
+                {
+                    IDock dock = (IDock)Activator.CreateInstance(Type.GetType("InFresh.Driver.v1.Pages.P001_StartPage"));
 
-            //if (f != null)
-            //{
-            //    if (f.ShowDialog() == DialogResult.OK)
-            //    {
-            //        Form fw = f.Wizard.Form(f.Type);
-            //        if (fw != null) fw.ShowDialog(Handler.Host as Form);
-            //    }
-            //}
+                    Program.Handler.Host.ShowContent(dock as DockContent, dock.State);
+
+                    //if (dock != null)
+                    //{
+                    //    DockContent content = dock as DockContent;
+                    //    content.Show(dckMainPanel, dock.State);
+                    //}
+                }
+                else if (sender == tsmiImport)
+                {
+                    new G002_WizardWindow().ShowDialog();
+                    return;
+                }
+                //G002_WizardWindow f = null;
+                //if (sender == tsmiImport || sender == tsmiExport)
+                //    f = new G002_WizardWindow(WizardType.Import);
+                //else if (sender == tsbExport || sender == tsmiExport)
+                //    f = new G002_WizardWindow(WizardType.Export);
+
+                //if (f != null)
+                //{
+                //    if (f.ShowDialog() == DialogResult.OK)
+                //    {
+                //        Form fw = f.Wizard.Form(f.Type);
+                //        if (fw != null) fw.ShowDialog(Handler.Host as Form);
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null,
+                    ex.Message,
+                    Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+        
     }
 }

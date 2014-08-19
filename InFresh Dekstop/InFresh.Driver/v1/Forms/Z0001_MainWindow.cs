@@ -10,17 +10,18 @@ using System.Resources;
 using System.Text;
 using System.Windows.Forms;
 using InFresh.Framework.v1.Base;
+using InFresh.Framework.v1.Enums;
 using InFresh.Framework.v1.Interfaces;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace InFresh.Driver.v1.Forms
 {
-    public partial class G001_MainWindow : Form
+    public partial class Z0001_MainWindow : Form
     {
         /// <summary>
         /// 
         /// </summary>
-        public G001_MainWindow()
+        public Z0001_MainWindow()
         {
             InitializeComponent();
 
@@ -66,26 +67,36 @@ namespace InFresh.Driver.v1.Forms
                     //    DockContent content = dock as DockContent;
                     //    content.Show(dckMainPanel, dock.State);
                     //}
-                }
-                else if (sender == tsmiImport)
-                {
-                    new G002_WizardWindow().ShowDialog();
                     return;
                 }
-                //G002_WizardWindow f = null;
-                //if (sender == tsmiImport || sender == tsmiExport)
-                //    f = new G002_WizardWindow(WizardType.Import);
-                //else if (sender == tsbExport || sender == tsmiExport)
-                //    f = new G002_WizardWindow(WizardType.Export);
 
-                //if (f != null)
-                //{
-                //    if (f.ShowDialog() == DialogResult.OK)
-                //    {
-                //        Form fw = f.Wizard.Form(f.Type);
-                //        if (fw != null) fw.ShowDialog(Handler.Host as Form);
-                //    }
-                //}
+                if (sender == tsmiAboutApp)
+                {
+                    new Z0003_AboutWindow().ShowDialog();
+                    return;
+                }
+
+                if (sender == tsmiImport || sender == tsmiExport)
+                {
+                    Z0002_WizardWindow f = null;
+                    //if (sender == lnkNew)
+                    //    f = new FDWizard(WizardType.New); //(Form)Activator.CreateInstance(Type.GetType("InFresh.Main.v1.Forms.FDWizard"), WizardType.New);
+                    //else 
+                    if (sender == tsmiImport)
+                        f = new Z0002_WizardWindow(WizardType.Import);
+                    else if (sender == tsmiExport)
+                        f = new Z0002_WizardWindow(WizardType.Export);
+
+                    if (f != null)
+                    {
+                        if (f.ShowDialog(Program.Handler.Host.MainWindow) == DialogResult.OK)
+                        {
+                            Form fw = f.Wizard.Window(f.Type);
+                            if (fw != null) fw.ShowDialog(Program.Handler.Host.MainWindow);
+                        }
+                    }
+                    return;
+                }
             }
             catch (Exception ex)
             {

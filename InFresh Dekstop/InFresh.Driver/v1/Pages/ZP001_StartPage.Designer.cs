@@ -1,6 +1,6 @@
 ﻿namespace InFresh.Driver.v1.Pages
 {
-    partial class P001_StartPage
+    partial class ZP001_StartPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P001_StartPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZP001_StartPage));
             this.stsStatusbar = new System.Windows.Forms.StatusStrip();
             this.stxStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.stxGap = new System.Windows.Forms.ToolStripStatusLabel();
@@ -115,6 +115,7 @@
             this.lnkExport.TabStop = true;
             this.lnkExport.Text = "Export Data To File...";
             this.lnkExport.VisitedLinkColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lnkExport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkItem_LinkClicked);
             // 
             // lnkImport
             // 
@@ -130,6 +131,7 @@
             this.lnkImport.TabStop = true;
             this.lnkImport.Text = "Import Data From File...";
             this.lnkImport.VisitedLinkColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lnkImport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkItem_LinkClicked);
             // 
             // lnkNew
             // 
@@ -145,6 +147,7 @@
             this.lnkNew.TabStop = true;
             this.lnkNew.Text = "New Data...";
             this.lnkNew.VisitedLinkColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lnkNew.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkItem_LinkClicked);
             // 
             // label1
             // 

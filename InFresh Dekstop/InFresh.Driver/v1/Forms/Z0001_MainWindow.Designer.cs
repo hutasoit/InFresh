@@ -1,6 +1,6 @@
 ﻿namespace InFresh.Driver.v1.Forms
 {
-    partial class G001_MainWindow
+    partial class Z0001_MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -43,18 +43,20 @@
             WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(G001_MainWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Z0001_MainWindow));
             this.mnsMenubar = new System.Windows.Forms.MenuStrip();
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiStart = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiImport = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAdministration = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAboutApp = new System.Windows.Forms.ToolStripMenuItem();
             this.stsStatusbar = new System.Windows.Forms.StatusStrip();
             this.tlsToolbar = new System.Windows.Forms.ToolStrip();
             this.dckMainPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
@@ -66,6 +68,7 @@
             // 
             this.mnsMenubar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiFile,
+            this.tsmiAdministration,
             this.tsmiTools,
             this.tsmiHelp});
             this.mnsMenubar.Location = new System.Drawing.Point(0, 0);
@@ -80,7 +83,7 @@
             this.tsmiStart,
             this.toolStripSeparator1,
             this.tsmiImport,
-            this.exportDataToolStripMenuItem,
+            this.tsmiExport,
             this.toolStripSeparator2,
             this.tsmiLogout,
             this.tsmiExit});
@@ -111,14 +114,15 @@
             this.tsmiImport.Text = "&Import Data";
             this.tsmiImport.Click += new System.EventHandler(this.MenuItem_Click);
             // 
-            // exportDataToolStripMenuItem
+            // tsmiExport
             // 
-            this.exportDataToolStripMenuItem.Image = global::InFresh.Driver.Properties.Resources.ic_upload;
-            this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.tsmiExport.Image = global::InFresh.Driver.Properties.Resources.ic_upload;
+            this.tsmiExport.Name = "tsmiExport";
+            this.tsmiExport.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.E)));
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.exportDataToolStripMenuItem.Text = "&Export Data";
+            this.tsmiExport.Size = new System.Drawing.Size(206, 22);
+            this.tsmiExport.Text = "&Export Data";
+            this.tsmiExport.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -139,6 +143,12 @@
             this.tsmiExit.Size = new System.Drawing.Size(206, 22);
             this.tsmiExit.Text = "E&xit";
             // 
+            // tsmiAdministration
+            // 
+            this.tsmiAdministration.Name = "tsmiAdministration";
+            this.tsmiAdministration.Size = new System.Drawing.Size(98, 20);
+            this.tsmiAdministration.Text = "&Administration";
+            // 
             // tsmiTools
             // 
             this.tsmiTools.Name = "tsmiTools";
@@ -147,9 +157,18 @@
             // 
             // tsmiHelp
             // 
+            this.tsmiHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAboutApp});
             this.tsmiHelp.Name = "tsmiHelp";
             this.tsmiHelp.Size = new System.Drawing.Size(44, 20);
             this.tsmiHelp.Text = "&Help";
+            // 
+            // tsmiAboutApp
+            // 
+            this.tsmiAboutApp.Name = "tsmiAboutApp";
+            this.tsmiAboutApp.Size = new System.Drawing.Size(189, 22);
+            this.tsmiAboutApp.Text = "Abou&t InFresh System";
+            this.tsmiAboutApp.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // stsStatusbar
             // 
@@ -228,7 +247,7 @@
             this.dckMainPanel.TabIndex = 16;
             this.dckMainPanel.Theme = this.thmVs2012;
             // 
-            // G001_MainWindow
+            // Z001_MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -240,7 +259,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnsMenubar;
-            this.Name = "G001_MainWindow";
+            this.Name = "Z001_MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "G001_MainWindow";
             this.Load += new System.EventHandler(this.Form_Load);
@@ -259,7 +278,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiStart;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmiImport;
-        private System.Windows.Forms.ToolStripMenuItem exportDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiExport;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tsmiLogout;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
@@ -268,5 +287,7 @@
         public System.Windows.Forms.StatusStrip stsStatusbar;
         public System.Windows.Forms.ToolStrip tlsToolbar;
         public WeifenLuo.WinFormsUI.Docking.DockPanel dckMainPanel;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAdministration;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAboutApp;
     }
 }

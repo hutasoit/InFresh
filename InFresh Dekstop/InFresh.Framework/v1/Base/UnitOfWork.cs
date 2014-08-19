@@ -14,7 +14,7 @@ namespace InFresh.Framework.v1.Base
     /// <summary>
     /// 
     /// </summary>
-    [Export(typeof(IRepository))]
+    //[Export(typeof(IRepository))]
     public class UnitOfWork : IRepository
     {
         #region IRepository Members

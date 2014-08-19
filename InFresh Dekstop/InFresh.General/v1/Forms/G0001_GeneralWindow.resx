@@ -117,46 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About" xml:space="preserve">
-    <value>Abou&amp;t {0}</value>
-  </data>
-  <data name="Administration" xml:space="preserve">
-    <value>&amp;Administration</value>
-  </data>
-  <data name="App_Name" xml:space="preserve">
-    <value>InFresh System {0}</value>
-  </data>
-  <data name="Export_Data" xml:space="preserve">
-    <value>&amp;Export Data</value>
-  </data>
-  <data name="File" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
-  <data name="General" xml:space="preserve">
-    <value>&amp;General Data</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>&amp;Help</value>
-  </data>
-  <data name="Import_Data" xml:space="preserve">
-    <value>&amp;Import Data</value>
-  </data>
-  <data name="Master" xml:space="preserve">
-    <value>&amp;Master Data</value>
-  </data>
-  <data name="Mobile" xml:space="preserve">
-    <value>Mo&amp;bile</value>
-  </data>
-  <data name="Reporting" xml:space="preserve">
-    <value>&amp;Reporting</value>
-  </data>
-  <data name="Search_Item" xml:space="preserve">
-    <value>Search Item {0}...</value>
-  </data>
-  <data name="Tools" xml:space="preserve">
-    <value>&amp;Tools</value>
-  </data>
-  <data name="Window" xml:space="preserve">
-    <value>&amp;Window</value>
-  </data>
+  <metadata name="mnsMenubar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="tlsToolbar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>141, 17</value>
+  </metadata>
+  <metadata name="stsStatusbar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>247, 17</value>
+  </metadata>
 </root>

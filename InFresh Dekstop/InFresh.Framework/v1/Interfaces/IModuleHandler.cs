@@ -12,7 +12,7 @@ namespace InFresh.Framework.v1.Interfaces
 
         IRepository Repository { get; set; }
         
-        List<Lazy<IModule>> Modules { get; set; }
+        List<Lazy<IModule, IModuleMetadata>> Modules { get; set; }
 
         List<Lazy<IWizard>> Wizards { get; set; }
     }

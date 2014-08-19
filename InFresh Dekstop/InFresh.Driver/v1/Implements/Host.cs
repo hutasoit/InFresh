@@ -16,14 +16,14 @@ namespace InFresh.Driver.v1.Implements
         /// <summary>
         /// 
         /// </summary>
-        private G001_MainWindow window;
+        private Z0001_MainWindow window;
 
         /// <summary>
         /// 
         /// </summary>
         public Host()
         {
-            window = new G001_MainWindow();
+            window = new Z0001_MainWindow();
         }
 
         #region IHost Member
@@ -79,6 +79,7 @@ namespace InFresh.Driver.v1.Implements
         /// <param name="item">Current object of item that would be added</param>
         public void AddMenu(int pos, ToolStripMenuItem item)
         {
+            window.mnsMenubar.Invalidate();
             bool found = false;
             ToolStripMenuItem mnu = null;
 
@@ -101,10 +102,17 @@ namespace InFresh.Driver.v1.Implements
 
             if (found)
             {
-                mnu.DropDownItems.AddRange(item.DropDownItems);
+                IList<ToolStripItem> menus = new List<ToolStripItem>();
+                foreach (var menu in item.DropDownItems)
+                    menus.Add(menu as ToolStripMenuItem);
+
+                foreach (var menu in menus)
+                    AddMenuItem(item.Text, -1, menu);
+                //mnu.DropDownItems.AddRange(item.DropDownItems);
             }
             else
                 window.mnsMenubar.Items.Insert(pos, item);
+            window.Validate();
         }
 
         /// <summary>
@@ -123,9 +131,9 @@ namespace InFresh.Driver.v1.Implements
                 {
                     ToolStripMenuItem tMenu = (ToolStripMenuItem)menu;
                     if (tMenu.Text.Replace("&", "")
-                        .Equals(parent, StringComparison.CurrentCultureIgnoreCase))
+                        .Equals(parent.Replace("&", string.Empty), StringComparison.CurrentCultureIgnoreCase))
                     {
-                        if ((pos >= tMenu.DropDownItems.Count))
+                        if ((pos >= tMenu.DropDownItems.Count) || pos == -1)
                             tMenu.DropDownItems.Add(item);
                         else
                             tMenu.DropDownItems.Insert(pos, item);
@@ -133,12 +141,6 @@ namespace InFresh.Driver.v1.Implements
                     }
                     else if (tMenu.HasDropDownItems)
                     {
-                        //if (pos >= tMenu.DropDownItems.Count)
-                        //{
-                        //    tMenu.DropDownItems.AddRange(new ToolStripItem[] { item });
-                        //    return;
-                        //}
-
                         foreach (ToolStripItem child in tMenu.DropDownItems)
                         {
                             if (child.GetType() == typeof(ToolStripSeparator))
@@ -147,8 +149,11 @@ namespace InFresh.Driver.v1.Implements
                             {
                                 ToolStripMenuItem tChild = (ToolStripMenuItem)child;
                                 if (tChild.Text.Replace("&", "")
-                                    .Equals(parent, StringComparison.CurrentCultureIgnoreCase))
+                                    .Equals(parent.Replace("&", string.Empty), StringComparison.CurrentCultureIgnoreCase))
                                 {
+                                    if(pos == -1)
+                                        tChild.DropDownItems.Add(item);
+                                    else
                                     tChild.DropDownItems.Insert(pos, item);
                                     break;
                                 }

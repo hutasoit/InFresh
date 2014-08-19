@@ -88,6 +88,15 @@ namespace InFresh.Globalization.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Export Data.
+        /// </summary>
+        internal static string Export_Data {
+            get {
+                return ResourceManager.GetString("Export_Data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;File.
         /// </summary>
         internal static string File {

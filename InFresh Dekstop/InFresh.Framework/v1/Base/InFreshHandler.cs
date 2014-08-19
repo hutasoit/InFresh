@@ -32,6 +32,8 @@ namespace InFresh.Framework.v1.Base
         private InFreshHandler()
         {
             Resources = new ResourceManager("InFresh.Globalization.Localization.Resources", Assembly.LoadFrom(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\PrivateAssemblies\\InFresh.Globalization.dll"));
+
+            Repository = new UnitOfWork();
         }
 
         /// <summary>
@@ -62,7 +64,6 @@ namespace InFresh.Framework.v1.Base
                 catalog.Catalogs.Add(
                     new DirectoryCatalog(location, "*.dll"));
 
-
                 catalog.Catalogs.Add(
                     new DirectoryCatalog(location + "\\Modules\\", "*.dll"));
 
@@ -71,7 +72,9 @@ namespace InFresh.Framework.v1.Base
                 container.ComposeParts(this);
 
                 foreach (var module in Modules)
+                {
                     module.Value.Activate();
+                }
             }
             catch (Exception ex)
             {
@@ -85,11 +88,11 @@ namespace InFresh.Framework.v1.Base
 
         public ResourceManager Resources { get; set; }
 
-        [Import(typeof(IRepository))]
+        //[Import(typeof(IRepository))]
         public IRepository Repository { get; set; }
 
         [ImportMany(typeof(IModule), AllowRecomposition = true)]
-        public List<Lazy<IModule>> Modules { get; set; }
+        public List<Lazy<IModule, IModuleMetadata>> Modules { get; set; }
 
         [ImportMany(typeof(IWizard), AllowRecomposition = true)]
         public List<Lazy<IWizard>> Wizards { get; set; }

@@ -58,7 +58,7 @@ namespace InFresh.Driver.v1.Forms
             {
                 if (sender == tsmiStart)
                 {
-                    IDock dock = (IDock)Activator.CreateInstance(Type.GetType("InFresh.Driver.v1.Pages.P001_StartPage"));
+                    IDock dock = (IDock)Activator.CreateInstance(Type.GetType("InFresh.Driver.v1.Pages.ZP001_StartPage"));
 
                     Program.Handler.Host.ShowContent(dock as DockContent, dock.State);
 

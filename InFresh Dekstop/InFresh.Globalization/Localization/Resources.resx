@@ -123,6 +123,9 @@
   <data name="Administration" xml:space="preserve">
     <value>&amp;Administration</value>
   </data>
+  <data name="Administrative_Area" xml:space="preserve">
+    <value>&amp;Administrative Area</value>
+  </data>
   <data name="App_Name" xml:space="preserve">
     <value>InFresh System {0}</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="Reporting" xml:space="preserve">
     <value>&amp;Reporting</value>
+  </data>
+  <data name="Sales_Area" xml:space="preserve">
+    <value>&amp;Sales Area</value>
   </data>
   <data name="Search_Item" xml:space="preserve">
     <value>Search Item {0}...</value>

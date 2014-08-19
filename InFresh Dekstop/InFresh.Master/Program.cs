@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using InFresh.Master.v1.Forms;
 
 namespace InFresh.Master
 {
@@ -15,7 +16,7 @@ namespace InFresh.Master
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new M0001_MasterWindow());
         }
     }
 }

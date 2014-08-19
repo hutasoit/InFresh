@@ -247,7 +247,7 @@
             this.dckMainPanel.TabIndex = 16;
             this.dckMainPanel.Theme = this.thmVs2012;
             // 
-            // Z001_MainWindow
+            // Z0001_MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -259,7 +259,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnsMenubar;
-            this.Name = "Z001_MainWindow";
+            this.Name = "Z0001_MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "G001_MainWindow";
             this.Load += new System.EventHandler(this.Form_Load);

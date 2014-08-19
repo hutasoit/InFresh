@@ -79,6 +79,15 @@ namespace InFresh.Globalization.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Administrative Area.
+        /// </summary>
+        internal static string Administrative_Area {
+            get {
+                return ResourceManager.GetString("Administrative_Area", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to InFresh System {0}.
         /// </summary>
         internal static string App_Name {
@@ -156,6 +165,15 @@ namespace InFresh.Globalization.Localization {
         internal static string Reporting {
             get {
                 return ResourceManager.GetString("Reporting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Sales Area.
+        /// </summary>
+        internal static string Sales_Area {
+            get {
+                return ResourceManager.GetString("Sales_Area", resourceCulture);
             }
         }
         

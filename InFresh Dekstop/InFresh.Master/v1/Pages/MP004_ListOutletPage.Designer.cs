@@ -1,6 +1,6 @@
-﻿namespace InFresh.Master
+﻿namespace InFresh.Master.v1.Pages
 {
-    partial class Form1
+    partial class MP004_ListOutletPage
     {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.Text = "MP004_ListOutletPage";
         }
 
         #endregion
     }
 }
-

@@ -16,10 +16,14 @@ namespace InFresh.Controls.v1
         /// </summary>
         public LeftTabControl()
         {
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.ResizeRedraw, true);
+
+            InitializeComponent();
+
+            //SetStyle(ControlStyles.UserPaint, true);
+            //SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            //SetStyle(ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
 
             DrawItem += new DrawItemEventHandler(TabControl_DrawItem);
         }

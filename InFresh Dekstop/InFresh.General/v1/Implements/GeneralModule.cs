@@ -6,12 +6,13 @@ using System.Text;
 using System.Windows.Forms;
 using InFresh.Framework.v1.Attributes;
 using InFresh.Framework.v1.Interfaces;
+using InFresh.General.v1.Controls;
 using InFresh.General.v1.Forms;
 
 namespace InFresh.General.v1.Implements
 {
     [Module("General Module")]
-    public class General : IModule
+    public class GeneralModule : IModule
     {
         /// <summary>
         /// 
@@ -21,12 +22,17 @@ namespace InFresh.General.v1.Implements
         /// <summary>
         /// 
         /// </summary>
+        private GeneralMenu menu = null;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="handler"></param>
         [ImportingConstructor()]
-        public General([Import(typeof(IModuleHandler))] IModuleHandler handler)
+        public GeneralModule([Import(typeof(IModuleHandler))] IModuleHandler handler)
         {
             window = new G0001_GeneralWindow();
-
+            menu = new GeneralMenu();
             Handler = handler;
         }
 
@@ -35,6 +41,11 @@ namespace InFresh.General.v1.Implements
         /// </summary>
         public static IModuleHandler Handler { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string Name { get { return "General Module"; } }
+
         #region IModule Members
         /// <summary>
         /// 
@@ -42,8 +53,8 @@ namespace InFresh.General.v1.Implements
         public void Activate()
         {
             IList<ToolStripItem> menus = new List<ToolStripItem>();
-            foreach (var menu in window.mnsMenubar.Items)
-                menus.Add(menu as ToolStripMenuItem);
+            foreach (var me in menu.Items)
+                menus.Add(me as ToolStripMenuItem);
             //var menus = window.mnsMenubar.Items;
             for (int ii = 0; ii < menus.Count; ii++)
             {

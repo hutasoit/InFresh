@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace InFresh.Master
+namespace InFresh.Master.v1.Wizards.Imports
 {
-    public partial class Form1 : Form
+    public partial class MW002_ImportEmployee : Form
     {
-        public Form1()
+        public MW002_ImportEmployee()
         {
             InitializeComponent();
         }

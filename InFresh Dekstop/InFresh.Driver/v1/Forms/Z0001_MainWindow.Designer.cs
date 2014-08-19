@@ -53,7 +53,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAdministration = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAboutApp = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +67,6 @@
             // 
             this.mnsMenubar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiFile,
-            this.tsmiAdministration,
             this.tsmiTools,
             this.tsmiHelp});
             this.mnsMenubar.Location = new System.Drawing.Point(0, 0);
@@ -142,12 +140,6 @@
             this.tsmiExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.tsmiExit.Size = new System.Drawing.Size(206, 22);
             this.tsmiExit.Text = "E&xit";
-            // 
-            // tsmiAdministration
-            // 
-            this.tsmiAdministration.Name = "tsmiAdministration";
-            this.tsmiAdministration.Size = new System.Drawing.Size(98, 20);
-            this.tsmiAdministration.Text = "&Administration";
             // 
             // tsmiTools
             // 
@@ -287,7 +279,6 @@
         public System.Windows.Forms.StatusStrip stsStatusbar;
         public System.Windows.Forms.ToolStrip tlsToolbar;
         public WeifenLuo.WinFormsUI.Docking.DockPanel dckMainPanel;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAdministration;
         private System.Windows.Forms.ToolStripMenuItem tsmiAboutApp;
     }
 }

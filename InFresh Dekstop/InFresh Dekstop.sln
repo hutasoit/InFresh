@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Framework", "InFresh.Framework\InFresh.Framework.csproj", "{E5D5FB60-E450-438C-93B8-F5D929C00708}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3C53711B-A39C-4448-A18C-2E24DCA56C63}"
@@ -18,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Controls", "InFresh.Controls\InFresh.Controls.csproj", "{EC11A052-CB96-44C2-8016-73F5F1785BF4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Globalization", "InFresh.Globalization\InFresh.Globalization.csproj", "{6989923D-75A3-4022-B0D8-E21CE5A532E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InFresh.Utilization", "InFresh.Utilization\InFresh.Utilization.csproj", "{14D06A77-5D3E-4AC4-9B9C-98078E596DE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{6989923D-75A3-4022-B0D8-E21CE5A532E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6989923D-75A3-4022-B0D8-E21CE5A532E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6989923D-75A3-4022-B0D8-E21CE5A532E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D06A77-5D3E-4AC4-9B9C-98078E596DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D06A77-5D3E-4AC4-9B9C-98078E596DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D06A77-5D3E-4AC4-9B9C-98078E596DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D06A77-5D3E-4AC4-9B9C-98078E596DE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

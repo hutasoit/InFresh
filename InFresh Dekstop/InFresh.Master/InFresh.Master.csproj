@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="WeifenLuo.WinFormsUI.Docking">
       <HintPath>..\packages\DockPanelSuite.3.0.0-alpha8\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,11 @@
     <ProjectReference Include="..\InFresh.Globalization\InFresh.Globalization.csproj">
       <Project>{6989923d-75a3-4022-b0d8-e21ce5a532e6}</Project>
       <Name>InFresh.Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\InFresh.Utilization\InFresh.Utilization.csproj">
+      <Project>{14d06a77-5d3e-4ac4-9b9c-98078e596de9}</Project>
+      <Name>InFresh.Utilization</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

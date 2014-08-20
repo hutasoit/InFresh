@@ -135,6 +135,13 @@
   <data name="Export_Data" xml:space="preserve">
     <value>&amp;Export Data</value>
   </data>
+  <data name="Fields_Required" xml:space="preserve">
+    <value>Fields should be filled following are
+{0}</value>
+  </data>
+  <data name="Field_Required" xml:space="preserve">
+    <value>Field {0} should be filled!</value>
+  </data>
   <data name="File" xml:space="preserve">
     <value>&amp;File</value>
   </data>
@@ -167,6 +174,9 @@
   </data>
   <data name="Search_Item" xml:space="preserve">
     <value>Search Item {0}...</value>
+  </data>
+  <data name="Select_Item" xml:space="preserve">
+    <value>--- Select {0} item ---</value>
   </data>
   <data name="Subdepo" xml:space="preserve">
     <value>Master &amp;Subdepo</value>

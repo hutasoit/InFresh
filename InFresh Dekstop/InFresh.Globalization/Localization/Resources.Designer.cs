@@ -115,6 +115,25 @@ namespace InFresh.Globalization.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Field {0} should be filled!.
+        /// </summary>
+        internal static string Field_Required {
+            get {
+                return ResourceManager.GetString("Field_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fields should be filled following are
+        ///{0}.
+        /// </summary>
+        internal static string Fields_Required {
+            get {
+                return ResourceManager.GetString("Fields_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;File.
         /// </summary>
         internal static string File {
@@ -210,6 +229,15 @@ namespace InFresh.Globalization.Localization {
         internal static string Search_Item {
             get {
                 return ResourceManager.GetString("Search_Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --- Select {0} item ---.
+        /// </summary>
+        internal static string Select_Item {
+            get {
+                return ResourceManager.GetString("Select_Item", resourceCulture);
             }
         }
         

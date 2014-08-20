@@ -54,7 +54,7 @@ namespace InFresh.Framework.v1.Models.Systems
         [MaxLength(20)]
         public string LastUpdated { get; set; }
 
-        public virtual List<Template2Dto> DetailTemplate { get; set; }
+        public virtual List<Template2Dto> FieldsTemplate { get; set; }
 
         /// <summary>
         /// 

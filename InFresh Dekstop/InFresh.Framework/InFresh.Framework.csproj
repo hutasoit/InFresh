@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -67,6 +68,7 @@
     <Compile Include="v1\Base\NewUnitOfWork.cs" />
     <Compile Include="v1\Base\UnitOfWork.cs" />
     <Compile Include="v1\Enums\WizardType.cs" />
+    <Compile Include="v1\Globals\GlobalTemplate.cs" />
     <Compile Include="v1\Interfaces\IDock.cs" />
     <Compile Include="v1\Interfaces\IHost.cs" />
     <Compile Include="v1\Interfaces\IModule.cs" />
@@ -87,6 +89,7 @@
       <DependentUpon>201408200447039_IFDBV1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -22,6 +22,8 @@ namespace InFresh.Driver
             Application.SetCompatibleTextRenderingDefault(false);
 
             Handler.Initialize();
+            Handler.Repository = UnitOfWork.GetInstance();
+            Handler.RepositoryV2 = new NewUnitOfWork();
 
             Application.Run(Handler.Host.MainWindow);
         }

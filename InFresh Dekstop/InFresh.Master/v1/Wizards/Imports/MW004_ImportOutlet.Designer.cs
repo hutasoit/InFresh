@@ -1,6 +1,6 @@
 ﻿namespace InFresh.Master.v1.Wizards.Imports
 {
-    partial class MW001_ImportOutlet
+    partial class MW004_ImportOutlet
     {
         /// <summary>
         /// Required designer variable.

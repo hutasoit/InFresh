@@ -33,7 +33,7 @@ namespace InFresh.Framework.v1.Base
         {
             Resources = new ResourceManager("InFresh.Globalization.Localization.Resources", Assembly.LoadFrom(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\PrivateAssemblies\\InFresh.Globalization.dll"));
 
-            Repository = new UnitOfWork();
+            //Repository = new UnitOfWork();
         }
 
         /// <summary>
@@ -88,8 +88,9 @@ namespace InFresh.Framework.v1.Base
 
         public ResourceManager Resources { get; set; }
 
-        //[Import(typeof(IRepository))]
         public IRepository Repository { get; set; }
+
+        public INewRepository RepositoryV2 { get; set; }
 
         [ImportMany(typeof(IModule), AllowRecomposition = true)]
         public List<Lazy<IModule, IModuleMetadata>> Modules { get; set; }
@@ -108,5 +109,8 @@ namespace InFresh.Framework.v1.Base
             catalog = null;
         }
         #endregion
+
+
+        
     }
 }

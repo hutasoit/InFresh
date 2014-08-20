@@ -11,6 +11,8 @@ namespace InFresh.Framework.v1.Interfaces
         ResourceManager Resources { get; set; }
 
         IRepository Repository { get; set; }
+
+        INewRepository RepositoryV2 { get; set; }
         
         List<Lazy<IModule, IModuleMetadata>> Modules { get; set; }
 

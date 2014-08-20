@@ -57,6 +57,9 @@
     <Compile Include="v1\WatermarkTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="v1\WizardListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="v1\LeftTabControl.resx">

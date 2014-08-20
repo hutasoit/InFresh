@@ -97,6 +97,15 @@ namespace InFresh.Globalization.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Master &amp;Employee.
+        /// </summary>
+        internal static string Employee {
+            get {
+                return ResourceManager.GetString("Employee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Export Data.
         /// </summary>
         internal static string Export_Data {
@@ -142,6 +151,15 @@ namespace InFresh.Globalization.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Load data and references....
+        /// </summary>
+        internal static string Load_References {
+            get {
+                return ResourceManager.GetString("Load_References", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Master Data.
         /// </summary>
         internal static string Master {
@@ -156,6 +174,15 @@ namespace InFresh.Globalization.Localization {
         internal static string Mobile {
             get {
                 return ResourceManager.GetString("Mobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready.
+        /// </summary>
+        internal static string Ready {
+            get {
+                return ResourceManager.GetString("Ready", resourceCulture);
             }
         }
         
@@ -183,6 +210,24 @@ namespace InFresh.Globalization.Localization {
         internal static string Search_Item {
             get {
                 return ResourceManager.GetString("Search_Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Master &amp;Subdepo.
+        /// </summary>
+        internal static string Subdepo {
+            get {
+                return ResourceManager.GetString("Subdepo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Master Su&amp;pplier.
+        /// </summary>
+        internal static string Supplier {
+            get {
+                return ResourceManager.GetString("Supplier", resourceCulture);
             }
         }
         

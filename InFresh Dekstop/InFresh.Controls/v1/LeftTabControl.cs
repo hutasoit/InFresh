@@ -23,28 +23,23 @@ namespace InFresh.Controls.v1
             //SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             //SetStyle(ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-
-
-            DrawItem += new DrawItemEventHandler(TabControl_DrawItem);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TabControl_DrawItem(object sender, DrawItemEventArgs e)
+        protected override void OnDrawItem(DrawItemEventArgs e)
         {
+            //base.OnDrawItem(e);
             Graphics g = e.Graphics;
-            TabControl control = sender as TabControl;
-            string str = control.TabPages[e.Index].Text;
-            SizeF strLen = g.MeasureString(str, control.Font);
+            string str = this.TabPages[e.Index].Text;
+            SizeF strLen = g.MeasureString(str, this.Font);
 
             int x = (int)e.Bounds.Left + 6;
             int y = (int)(e.Bounds.Top + (e.Bounds.Height - strLen.Height) / 2);
 
-            g.DrawString(str, control.Font, Brushes.Black, x, y);
+            g.DrawString(str, this.Font, Brushes.Black, x, y);
         }
-
     }
 }

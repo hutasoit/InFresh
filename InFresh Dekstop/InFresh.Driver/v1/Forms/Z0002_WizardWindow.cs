@@ -47,9 +47,6 @@ namespace InFresh.Driver.v1.Forms
         /// <param name="e"></param>
         private void Form_Load(object sender, EventArgs e)
         {
-            if (lsbType.Items.Count != 0)
-                btnOK.Enabled = true;
-
             try
             {
                 var paths = Program.Handler.Wizards.Select(m => m.Value.FullPath).ToList();
@@ -64,6 +61,9 @@ namespace InFresh.Driver.v1.Forms
             {
                 MessageBox.Show(null, ex.Message, Program.Handler.Host.DomainName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+
+            if (lsbType.Items.Count != 0)
+                btnOK.Enabled = true;
         }
 
         /// <summary>
@@ -82,13 +82,6 @@ namespace InFresh.Driver.v1.Forms
             {
                 Close();
                 Dispose();
-                DialogResult = DialogResult.OK;
-                return;
-            }
-
-            if (sender == btnCancel)
-            {
-                DialogResult = DialogResult.Cancel;
                 return;
             }
         }
@@ -142,7 +135,7 @@ namespace InFresh.Driver.v1.Forms
         /// <param name="e"></param>
         private void ListItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Wizard = lsbType.SelectedItems[0] as IWizard;
+            Wizard = lsbType.SelectedItem as IWizard;
         }
 
         /// <summary>
@@ -190,12 +183,8 @@ namespace InFresh.Driver.v1.Forms
                 aWizards = Program.Handler.Wizards
                     .Select(m => m.Value).ToList();
 
-            foreach (var w in aWizards)
-                lsbType.Items.Add(new ListViewItem { Text = w.Description, Tag = w, });
-
-
-            //lsbType.DataBindings = aWizards;
-            //lsbType.DisplayMember = "Description";
+            lsbType.DataSource = aWizards;
+            lsbType.DisplayMember = "Description";
         }
     }
 }

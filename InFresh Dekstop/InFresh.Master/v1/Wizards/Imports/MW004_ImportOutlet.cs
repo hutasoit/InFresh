@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace InFresh.Master.v1.Wizards.Imports
 {
-    public partial class MW001_ImportOutlet : Form
+    public partial class MW004_ImportOutlet : Form
     {
-        public MW001_ImportOutlet()
+        public MW004_ImportOutlet()
         {
             InitializeComponent();
         }

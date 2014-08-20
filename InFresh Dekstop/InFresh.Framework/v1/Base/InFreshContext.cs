@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using InFresh.Framework.Migrations;
+using InFresh.Framework.v1.Models.Masters;
+using InFresh.Framework.v1.Models.Systems;
 
 namespace InFresh.Framework.v1.Base
 {
@@ -17,7 +20,9 @@ namespace InFresh.Framework.v1.Base
         public InFreshContext() :
             base("INFRDB")
         {
-            Database.SetInitializer<InFreshContext>(new DropCreateDatabaseIfModelChanges<InFreshContext>());
+            //Database.SetInitializer<InFreshContext>(new DropCreateDatabaseIfModelChanges<InFreshContext>());
+
+            Database.SetInitializer<InFreshContext>(new MigrateDatabaseToLatestVersion<InFreshContext, Configuration>());
         }
 
         /// <summary>
@@ -27,7 +32,7 @@ namespace InFresh.Framework.v1.Base
         public InFreshContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
-            Database.SetInitializer<InFreshContext>(new DropCreateDatabaseIfModelChanges<InFreshContext>());
+            Database.SetInitializer<InFreshContext>(new MigrateDatabaseToLatestVersion<InFreshContext, Configuration>());
         }
 
 
@@ -38,7 +43,7 @@ namespace InFresh.Framework.v1.Base
         //public DbSet<GroupCategory2Dto> EmployeeGroups { get; set; }
         //public DbSet<EmplTypeDto> EmployeeTypes { get; set; }
 
-        //public DbSet<SubdepoDto> Subdepos { get; set; }
+        public DbSet<SubdepoDto> Subdepos { get; set; }
         //public DbSet<EmployeeDto> Employees { get; set; }
         //public DbSet<SupplierDto> Suppliers { get; set; }
         //public DbSet<OutletDto> Outlets { get; set; }
@@ -53,8 +58,8 @@ namespace InFresh.Framework.v1.Base
         //public DbSet<Definition1Dto> Definition1s { get; set; }
 
         //public DbSet<CodeFormat1Dto> CodeFormat1s { get; set; }
-        //public DbSet<Template1Dto> Template1s { get; set; }
-        //public DbSet<Template2Dto> Template2s { get; set; }
+        public DbSet<Template1Dto> Template1s { get; set; }
+        public DbSet<Template2Dto> Template2s { get; set; }
 
         #endregion
 

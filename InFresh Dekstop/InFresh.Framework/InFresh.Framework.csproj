@@ -55,10 +55,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201408200447039_IFDBV1.cs" />
-    <Compile Include="Migrations\201408200447039_IFDBV1.Designer.cs">
-      <DependentUpon>201408200447039_IFDBV1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="v1\Attributes\ModuleAttribute.cs" />
@@ -77,6 +73,7 @@
     <Compile Include="v1\Interfaces\IRepository.cs" />
     <Compile Include="v1\Interfaces\INewRepository.cs" />
     <Compile Include="v1\Interfaces\IWizard.cs" />
+    <Compile Include="v1\Models\Masters\EmployeeDto.cs" />
     <Compile Include="v1\Models\Masters\SubdepoDto.cs" />
     <Compile Include="v1\Models\Systems\Template1Dto.cs" />
     <Compile Include="v1\Models\Systems\Template2Dto.cs" />
@@ -84,12 +81,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201408200447039_IFDBV1.resx">
-      <DependentUpon>201408200447039_IFDBV1.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -20,9 +20,9 @@ namespace InFresh.Framework.v1.Base
         public InFreshContext() :
             base("INFRDB")
         {
-            //Database.SetInitializer<InFreshContext>(new DropCreateDatabaseIfModelChanges<InFreshContext>());
+            Database.SetInitializer<InFreshContext>(new DropCreateDatabaseIfModelChanges<InFreshContext>());
 
-            Database.SetInitializer<InFreshContext>(new MigrateDatabaseToLatestVersion<InFreshContext, Configuration>());
+            //Database.SetInitializer<InFreshContext>(new MigrateDatabaseToLatestVersion<InFreshContext, Configuration>());
         }
 
         /// <summary>
@@ -32,7 +32,9 @@ namespace InFresh.Framework.v1.Base
         public InFreshContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
-            Database.SetInitializer<InFreshContext>(new MigrateDatabaseToLatestVersion<InFreshContext, Configuration>());
+            Database.SetInitializer<InFreshContext>(new DropCreateDatabaseIfModelChanges<InFreshContext>());
+
+            //Database.SetInitializer<InFreshContext>(new MigrateDatabaseToLatestVersion<InFreshContext, Configuration>());
         }
 
 
@@ -44,7 +46,7 @@ namespace InFresh.Framework.v1.Base
         //public DbSet<EmplTypeDto> EmployeeTypes { get; set; }
 
         public DbSet<SubdepoDto> Subdepos { get; set; }
-        //public DbSet<EmployeeDto> Employees { get; set; }
+        public DbSet<EmployeeDto> Employees { get; set; }
         //public DbSet<SupplierDto> Suppliers { get; set; }
         //public DbSet<OutletDto> Outlets { get; set; }
 
@@ -70,6 +72,12 @@ namespace InFresh.Framework.v1.Base
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<EmployeeDto>()
+                    .HasOptional(m => m.Subdepo);
+
+            modelBuilder.Entity<EmployeeDto>()
+                    .HasOptional(m => m.Boss);
 
             //modelBuilder.Entity<OutletContactDto>()
             //    .Map<OutletContactDto>(m => m.Requires("OCTYPE").HasValue("OCDT"))

@@ -104,6 +104,8 @@ namespace InFresh.Framework.v1.Models.Masters
         [MaxLength(20)]
         public string LastUpdated { get; set; }
 
+        public virtual ICollection<EmployeeDto> Employees { get; set; }
+
         /// <summary>
         /// 
         /// </summary>

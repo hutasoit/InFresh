@@ -15,5 +15,35 @@ namespace InFresh.Master.v1.Wizards.Imports
         {
             InitializeComponent();
         }
+
+        private void RadioButtonItem_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckboxItem_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
+
+        private void ComboboxItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
     }
 }

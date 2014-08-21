@@ -138,8 +138,14 @@
     <EmbeddedResource Include="v1\Wizards\Imports\MW001_ImportSubdepo.resx">
       <DependentUpon>MW001_ImportSubdepo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="v1\Wizards\Imports\MW002_ImportEmployee.resx">
+      <DependentUpon>MW002_ImportEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="v1\Wizards\Imports\MW003_ImportSupplier.resx">
       <DependentUpon>MW003_ImportSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="v1\Wizards\Imports\MW004_ImportOutlet.resx">
+      <DependentUpon>MW004_ImportOutlet.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

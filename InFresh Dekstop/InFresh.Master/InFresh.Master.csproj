@@ -116,6 +116,7 @@
     <Compile Include="v1\Wizards\Imports\MW003_ImportSupplier.Designer.cs">
       <DependentUpon>MW003_ImportSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="v1\Wizards\WizardSequence.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

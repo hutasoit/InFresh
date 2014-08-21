@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using InFresh.Framework.v1.Enums;
 using InFresh.Framework.v1.Globals;
 using InFresh.Framework.v1.Models.Masters;
 using InFresh.Framework.v1.Models.Systems;
@@ -62,7 +59,7 @@ namespace InFresh.Master.v1.Wizards.Imports
         /// <summary>
         /// 
         /// </summary>
-        protected IList<SubdepoDto> ExistSubdepo { get; set; }
+        protected IList<SubdepoDto> ExistSubdepoes { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -82,7 +79,7 @@ namespace InFresh.Master.v1.Wizards.Imports
             tsxStatus.Text = MasterModule.Handler.Resources.GetString("Load_References");
 
             if (!bgwWorker.IsBusy)
-                bgwWorker.RunWorkerAsync(0);
+                bgwWorker.RunWorkerAsync(WizardSequence.FormLoad);
         }
 
         /// <summary>
@@ -123,7 +120,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 pnlData.Enabled = btnShowData.Enabled = false;
                 crlDataLoading.Visible = true;
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(4);
+                    bgwWorker.RunWorkerAsync(WizardSequence.DataLoad);
                 return;
             }
 
@@ -137,7 +134,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 tspProgress.Value = 0;
 
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(5);
+                    bgwWorker.RunWorkerAsync(WizardSequence.DataSaving);
                 return;
             }
         }
@@ -162,7 +159,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                     Data.Clear();
 
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(2);
+                    bgwWorker.RunWorkerAsync(WizardSequence.SheetLoad);
                 return;
             }
 
@@ -174,7 +171,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                     Template = null;
 
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(3);
+                    bgwWorker.RunWorkerAsync(WizardSequence.TemplateLoad);
                 return;
             }
         }
@@ -199,7 +196,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                     else if (ext.Equals(".csv")) { }
 
                     if (!bgwWorker.IsBusy)
-                        bgwWorker.RunWorkerAsync(1);
+                        bgwWorker.RunWorkerAsync(WizardSequence.FileLoad);
                 }
                 return;
             }
@@ -214,65 +211,72 @@ namespace InFresh.Master.v1.Wizards.Imports
         {
             if (sender == bgwWorker)
             {
-                int idx = -1;
-
-                if (int.TryParse(e.Argument.ToString(), out idx))
+                WizardSequence idx = WizardSequence.IDLE;
+                try
                 {
-                    switch (idx)
+                    idx = (WizardSequence)e.Argument;
+                    if (idx != WizardSequence.IDLE)
                     {
-                        case 0:
-                            if (Templates != null)
-                                Templates.Clear();
+                        switch (idx)
+                        {
+                            case WizardSequence.FormLoad:
+                                if (Templates != null)
+                                    Templates.Clear();
 
-                            Templates = MasterModule.Handler.RepositoryV2.Get<Template1Dto>()
-                                            .Where(m => m.Status == 1).ToList();
-                            Templates.Insert(0, new Template1Dto
-                            {
-                                Description = string.Format(MasterModule.Handler.Resources.GetString("Select_Item"), "template")
-                            });
+                                Templates = MasterModule.Handler.RepositoryV2.Get<Template1Dto>()
+                                                .Where(m => m.Status == 1).ToList();
+                                Templates.Insert(0, new Template1Dto
+                                {
+                                    Description = string.Format(MasterModule.Handler.Resources.GetString("Select_Item"), "template")
+                                });
 
-                            ExistSubdepo = MasterModule.Handler.RepositoryV2.Get<SubdepoDto>()
-                                            .Where(m => m.Status == 1).ToList();
-
-                            e.Cancel = false;
-                            e.Result = idx;
-                            break;
-                        case 5:
-                            try
-                            {
-                                TResult = MasterModule.Handler.RepositoryV2.Insert<SubdepoDto>(Data);
-                                e.Cancel = false;
-                                e.Result = idx;
-                            }
-                            catch (Exception ex)
-                            {
-                                e.Cancel = true;
-                                e.Result = ex.Message;
-                            }
-                            break;
-                        case 6:
-                            try
-                            {
-                                TResult = MasterModule.Handler.RepositoryV2.Insert<Template1Dto>(Template);
-                                if(TResult.Equals("0"))
-                                    TResult = MasterModule.Handler.RepositoryV2.Insert<Template2Dto>(FieldsTemplate);
+                                ExistSubdepoes = MasterModule.Handler.RepositoryV2.Get<SubdepoDto>()
+                                                .Where(m => m.Status == 1).ToList();
 
                                 e.Cancel = false;
                                 e.Result = idx;
-                            }
-                            catch (Exception ex)
-                            {
-                                e.Cancel = true;
-                                e.Result = ex.Message;
-                            }
-                            break;
-                        default:
-                            e.Cancel = false;
-                            e.Result = idx;
-                            break;
+                                break;
+                            case WizardSequence.DataSaving:
+                                try
+                                {
+                                    TResult = MasterModule.Handler.RepositoryV2.Insert<SubdepoDto>(Data);
+                                    e.Cancel = false;
+                                    e.Result = idx;
+                                }
+                                catch (Exception ex)
+                                {
+                                    e.Cancel = true;
+                                    e.Result = ex.Message;
+                                }
+                                break;
+                            case WizardSequence.TemplateSaving:
+                                try
+                                {
+                                    TResult = MasterModule.Handler.RepositoryV2.Insert<Template1Dto>(Template);
+                                    if (TResult.Equals("0"))
+                                        TResult = MasterModule.Handler.RepositoryV2.Insert<Template2Dto>(FieldsTemplate);
+
+                                    e.Cancel = false;
+                                    e.Result = idx;
+                                }
+                                catch (Exception ex)
+                                {
+                                    e.Cancel = true;
+                                    e.Result = ex.Message;
+                                }
+                                break;
+                            default:
+                                e.Cancel = false;
+                                e.Result = idx;
+                                break;
+                        }
                     }
                 }
-                
+                catch (Exception ex)
+                {
+                    e.Cancel = true;
+                    e.Result = ex.Message;
+                }
             }
         }
 
@@ -297,120 +301,128 @@ namespace InFresh.Master.v1.Wizards.Imports
             {
                 if (!e.Cancelled)
                 {
-                    int idx = -1;
+                    WizardSequence idx = WizardSequence.IDLE;
 
-                    if (int.TryParse(e.Result.ToString(), out idx))
+                    try
                     {
-                        switch (idx)
+                        idx = (WizardSequence)e.Result;
+                        if (idx != WizardSequence.IDLE)
                         {
-                            case 0:
-                                btnBrowse.Enabled = true;
-                                tspProgress.Visible = false;
-                                tsxStatus.Text = MasterModule.Handler.Resources.GetString("Ready");
-                                break;
-                            case 1:
-                                cmbSheet.DataSource = new BindingSource(Processor.GetSheets(), null);
-                                cmbSheet.DisplayMember = "Value";
-                                cmbSheet.ValueMember = "Key";
-                                cmbSheet.SelectedIndex = 0;
-                                break;
-                            case 2:
-                                if (HeaderFile != null)
-                                    HeaderFile.Clear();
-                                HeaderFile = Processor.GetHeaders(cmbSheet.SelectedValue.ToString());
-                                HeaderFile.Insert(0, string.Format(MasterModule.Handler.Resources.GetString("Select_Item"), string.Empty));
+                            switch (idx)
+                            {
+                                case WizardSequence.FormLoad:
+                                    btnBrowse.Enabled = true;
+                                    tspProgress.Visible = false;
+                                    tsxStatus.Text = MasterModule.Handler.Resources.GetString("Ready");
+                                    break;
+                                case WizardSequence.FileLoad:
+                                    cmbSheet.DataSource = new BindingSource(Processor.GetSheets(), null);
+                                    cmbSheet.DisplayMember = "Value";
+                                    cmbSheet.ValueMember = "Key";
+                                    cmbSheet.SelectedIndex = 0;
+                                    break;
+                                case WizardSequence.SheetLoad:
+                                    if (HeaderFile != null)
+                                        HeaderFile.Clear();
+                                    HeaderFile = Processor.GetHeaders(cmbSheet.SelectedValue.ToString());
+                                    HeaderFile.Insert(0, string.Format(MasterModule.Handler.Resources.GetString("Select_Item"), string.Empty));
 
-                                cmbOldCodeField.DataSource = new List<string>(HeaderFile);
-                                cmbNameField.DataSource = new List<string>(HeaderFile);
-                                cmbAdd1Field.DataSource = new List<string>(HeaderFile);
-                                cmbAdd2Field.DataSource = new List<string>(HeaderFile);
-                                cmbCityField.DataSource = new List<string>(HeaderFile);
-                                cmbZipCodeField.DataSource = new List<string>(HeaderFile);
-                                cmbPhone1Field.DataSource = new List<string>(HeaderFile);
-                                cmbFax1Field.DataSource = new List<string>(HeaderFile);
+                                    cmbOldCodeField.DataSource = new List<string>(HeaderFile);
+                                    cmbNameField.DataSource = new List<string>(HeaderFile);
+                                    cmbAdd1Field.DataSource = new List<string>(HeaderFile);
+                                    cmbAdd2Field.DataSource = new List<string>(HeaderFile);
+                                    cmbCityField.DataSource = new List<string>(HeaderFile);
+                                    cmbZipCodeField.DataSource = new List<string>(HeaderFile);
+                                    cmbPhone1Field.DataSource = new List<string>(HeaderFile);
+                                    cmbFax1Field.DataSource = new List<string>(HeaderFile);
 
-                                cmbTemplate.DataSource = Templates;
-                                //cmbTemplate.ValueMember = "Code";
+                                    cmbTemplate.DataSource = Templates;
+                                    //cmbTemplate.ValueMember = "Code";
 
-                                if (Templates.Count == 1)
-                                {
-                                    if (!string.IsNullOrWhiteSpace(Templates[0].Code))
-                                        cmbTemplate.Enabled = true;
-                                }
-                                else
-                                    cmbTemplate.Enabled = true;
-                                cmbTemplate.SelectedIndex = 0;
-
-                                cmbSheet.Enabled = pnlField.Enabled = btnShowData.Enabled = true;
-                                crlFieldLoading.Visible = false;
-                                break;
-                            case 3:
-                                ReadTemplate();
-                                break;
-                            case 4:
-                                if (MappingValid())
-                                {
-                                    if (MappingValue())
+                                    if (Templates.Count == 1)
                                     {
-
-                                        dgvData.DataSource = null;
-                                        dgvData.DataSource = new BindingList<SubdepoDto>(Data);
-                                        pnlData.Enabled = true;
-
-                                        if (Data.Count != 0)
-                                            btnSave.Enabled = true;
-
-                                        MappingTemplate();
+                                        if (!string.IsNullOrWhiteSpace(Templates[0].Code))
+                                            cmbTemplate.Enabled = true;
                                     }
-                                }
-                                else
-                                {
-                                    pnlData.Enabled = false;
-                                }
-                                pnlField.Enabled = btnShowData.Enabled = true;
-                                crlDataLoading.Visible = false;
-                                break;
-                            case 5:
-                                if (TResult.Equals("0"))
-                                {
-                                    if (cmbTemplate.SelectedIndex == 0)
-                                    {
-                                        if (MessageBox.Show(this,
-                                            "Do you want to save this template?",
-                                            MasterModule.Name,
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Question) == DialogResult.Yes)
-                                        {
-                                            TResult = string.Empty;
-                                            tsxStatus.Text = "Saving Template...";
-                                            tspProgress.Visible = true;
-                                            tspProgress.Value = 0;
+                                    else
+                                        cmbTemplate.Enabled = true;
+                                    cmbTemplate.SelectedIndex = 0;
 
-                                            if (!bgwWorker.IsBusy)
-                                                bgwWorker.RunWorkerAsync(6);
+                                    cmbSheet.Enabled = pnlField.Enabled = btnShowData.Enabled = true;
+                                    crlFieldLoading.Visible = false;
+                                    break;
+                                case WizardSequence.TemplateLoad:
+                                    ReadTemplate();
+                                    break;
+                                case WizardSequence.DataLoad:
+                                    if (MappingValid())
+                                    {
+                                        if (MappingValue())
+                                        {
+
+                                            dgvData.DataSource = null;
+                                            dgvData.DataSource = new BindingList<SubdepoDto>(Data);
+                                            pnlData.Enabled = true;
+
+                                            if (Data.Count != 0)
+                                                btnSave.Enabled = true;
+
+                                            MappingTemplate();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        pnlData.Enabled = false;
+                                    }
+                                    pnlField.Enabled = btnShowData.Enabled = true;
+                                    crlDataLoading.Visible = false;
+                                    break;
+                                case WizardSequence.DataSaving:
+                                    if (TResult.Equals("0"))
+                                    {
+                                        if (cmbTemplate.SelectedIndex == 0)
+                                        {
+                                            if (MessageBox.Show(this,
+                                                "Do you want to save this template?",
+                                                MasterModule.Name,
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question) == DialogResult.Yes)
+                                            {
+                                                TResult = string.Empty;
+                                                tsxStatus.Text = "Saving Template...";
+                                                tspProgress.Visible = true;
+                                                tspProgress.Value = 0;
+
+                                                if (!bgwWorker.IsBusy)
+                                                    bgwWorker.RunWorkerAsync(WizardSequence.TemplateSaving);
+                                            }
+                                            else
+                                                this.Close();
                                         }
                                         else
                                             this.Close();
                                     }
-                                    else
-                                        this.Close();
-                                }
-                                break;
-                            case 6:
-                                if (TResult.Equals("0"))
-                                {
-                                    tsxStatus.Text = "Complete all task";
-                                    tspProgress.Visible = false;
-
-                                    try
+                                    break;
+                                case WizardSequence.TemplateSaving:
+                                    if (TResult.Equals("0"))
                                     {
-                                        Thread.Sleep(1000);
+                                        tsxStatus.Text = "Complete all task";
+                                        tspProgress.Visible = false;
+
+                                        try
+                                        {
+                                            Thread.Sleep(1000);
+                                        }
+                                        catch { }
+                                        this.Close();
                                     }
-                                    catch { }
-                                    this.Close();
-                                }
-                                break;
+                                    break;
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
                     }
                 }
                 else
@@ -475,7 +487,7 @@ namespace InFresh.Master.v1.Wizards.Imports
             string errMsg = string.Empty;
             try
             {
-                int countDepo = ExistSubdepo.Count();
+                int count = ExistSubdepoes.Count();
                 SubdepoDto mm = null;
                 int ii = 0;
                 foreach (var row in rows)
@@ -483,8 +495,8 @@ namespace InFresh.Master.v1.Wizards.Imports
                     mm = new SubdepoDto();
                     if (chkCode.Checked)
                     {
-                        countDepo++;
-                        mm.Code = string.Format("{0:0000000}", countDepo);
+                        count++;
+                        mm.Code = string.Format("{0:0000000}", count);
                     }
                     if (cmbOldCodeField.SelectedIndex != 0)
                     {

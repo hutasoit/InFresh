@@ -47,7 +47,7 @@ namespace InFresh.Framework.v1.Base
 
         public DbSet<SubdepoDto> Subdepos { get; set; }
         public DbSet<EmployeeDto> Employees { get; set; }
-        //public DbSet<SupplierDto> Suppliers { get; set; }
+        public DbSet<SupplierDto> Suppliers { get; set; }
         //public DbSet<OutletDto> Outlets { get; set; }
 
         //public DbSet<OutletPartDto> OutletParts { get; set; }

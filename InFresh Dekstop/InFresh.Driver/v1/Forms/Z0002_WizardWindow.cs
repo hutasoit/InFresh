@@ -141,6 +141,16 @@ namespace InFresh.Driver.v1.Forms
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ListItem_DoubleClick(object sender, EventArgs e)
+        {
+            btnOK.PerformClick();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="treeView"></param>
         /// <param name="paths"></param>
         /// <param name="pathSeparator"></param>

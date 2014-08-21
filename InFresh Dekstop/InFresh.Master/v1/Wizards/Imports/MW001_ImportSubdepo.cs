@@ -420,6 +420,7 @@ namespace InFresh.Master.v1.Wizards.Imports
 
         #endregion
 
+        #region Private Methods
         /// <summary>
         /// 
         /// </summary>
@@ -855,5 +856,6 @@ namespace InFresh.Master.v1.Wizards.Imports
                 }
             }
         }
+        #endregion
     }
 }

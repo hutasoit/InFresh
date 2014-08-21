@@ -75,6 +75,7 @@
     <Compile Include="v1\Interfaces\IWizard.cs" />
     <Compile Include="v1\Models\Masters\EmployeeDto.cs" />
     <Compile Include="v1\Models\Masters\SubdepoDto.cs" />
+    <Compile Include="v1\Models\Masters\SupplierDto.cs" />
     <Compile Include="v1\Models\Systems\Template1Dto.cs" />
     <Compile Include="v1\Models\Systems\Template2Dto.cs" />
   </ItemGroup>

@@ -624,7 +624,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 {
                     Code = code,
                     Description = string.Format("Template Import Supplier {0}", Templates.Count),
-                    Type = GlobalTemplate.Import,
+                    Type = GlobalVariables.Import,
                     Entity = Entity
                 };
                 if (FieldsTemplate != null)

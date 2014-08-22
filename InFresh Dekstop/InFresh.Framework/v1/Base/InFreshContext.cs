@@ -6,6 +6,7 @@ using System.Text;
 using InFresh.Framework.Migrations;
 using InFresh.Framework.v1.Models.Masters;
 using InFresh.Framework.v1.Models.Systems;
+using InFresh.Framework.v1.Models.Details;
 
 namespace InFresh.Framework.v1.Base
 {
@@ -48,9 +49,9 @@ namespace InFresh.Framework.v1.Base
         public DbSet<SubdepoDto> Subdepos { get; set; }
         public DbSet<EmployeeDto> Employees { get; set; }
         public DbSet<SupplierDto> Suppliers { get; set; }
-        //public DbSet<OutletDto> Outlets { get; set; }
+        public DbSet<OutletDto> Outlets { get; set; }
 
-        //public DbSet<OutletPartDto> OutletParts { get; set; }
+        public DbSet<OutletPart1Dto> OutletPart1s { get; set; }
         //public DbSet<SupplierOutletPartDto> SupplierOutletParts { get; set; }
         //public DbSet<OutletAccountDto> OutletAccounts { get; set; }
         //public DbSet<OutletContactDto> OutletContacts { get; set; }

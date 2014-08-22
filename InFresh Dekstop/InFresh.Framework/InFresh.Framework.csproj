@@ -64,7 +64,7 @@
     <Compile Include="v1\Base\NewUnitOfWork.cs" />
     <Compile Include="v1\Base\UnitOfWork.cs" />
     <Compile Include="v1\Enums\WizardType.cs" />
-    <Compile Include="v1\Globals\GlobalTemplate.cs" />
+    <Compile Include="v1\Globals\GlobalVariables.cs" />
     <Compile Include="v1\Interfaces\IDock.cs" />
     <Compile Include="v1\Interfaces\IHost.cs" />
     <Compile Include="v1\Interfaces\IModule.cs" />
@@ -73,7 +73,9 @@
     <Compile Include="v1\Interfaces\IRepository.cs" />
     <Compile Include="v1\Interfaces\INewRepository.cs" />
     <Compile Include="v1\Interfaces\IWizard.cs" />
+    <Compile Include="v1\Models\Details\OutletPart1Dto.cs" />
     <Compile Include="v1\Models\Masters\EmployeeDto.cs" />
+    <Compile Include="v1\Models\Masters\OutletDto.cs" />
     <Compile Include="v1\Models\Masters\SubdepoDto.cs" />
     <Compile Include="v1\Models\Masters\SupplierDto.cs" />
     <Compile Include="v1\Models\Systems\Template1Dto.cs" />

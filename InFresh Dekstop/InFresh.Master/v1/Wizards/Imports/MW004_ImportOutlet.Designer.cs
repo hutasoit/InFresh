@@ -183,10 +183,6 @@
             this.label74 = new System.Windows.Forms.Label();
             this.btnShowData = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.stsStatusbar = new System.Windows.Forms.StatusStrip();
-            this.tsxStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.pnlData = new System.Windows.Forms.Panel();
             this.crlDataLoading = new InFresh.Controls.v1.CircleLoading();
             this.leftTabControl1 = new InFresh.Controls.v1.LeftTabControl();
@@ -262,6 +258,12 @@
             this.dgxBName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgxAccNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgxBAddition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsxStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.stsStatusbar = new System.Windows.Forms.StatusStrip();
+            this.ofpFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.bgwWorker = new System.ComponentModel.BackgroundWorker();
             this.pnlField.SuspendLayout();
             this.tbcField.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -275,7 +277,6 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tlpBankTable.SuspendLayout();
-            this.stsStatusbar.SuspendLayout();
             this.pnlData.SuspendLayout();
             this.leftTabControl1.SuspendLayout();
             this.tabPage8.SuspendLayout();
@@ -292,6 +293,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).BeginInit();
             this.tabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
+            this.stsStatusbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -314,6 +316,7 @@
             this.cmbTemplate.Name = "cmbTemplate";
             this.cmbTemplate.Size = new System.Drawing.Size(208, 21);
             this.cmbTemplate.TabIndex = 62;
+            this.cmbTemplate.SelectedIndexChanged += new System.EventHandler(this.ComboItem_SelectedIndexChanged);
             // 
             // btnBrowse
             // 
@@ -325,6 +328,7 @@
             this.btnBrowse.TabIndex = 58;
             this.btnBrowse.Text = "&Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.ButtonItem_Click);
             // 
             // cmbSheet
             // 
@@ -336,6 +340,7 @@
             this.cmbSheet.Name = "cmbSheet";
             this.cmbSheet.Size = new System.Drawing.Size(208, 21);
             this.cmbSheet.TabIndex = 59;
+            this.cmbSheet.SelectedIndexChanged += new System.EventHandler(this.ComboItem_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -514,6 +519,7 @@
             this.rdoSupplier.TabIndex = 1;
             this.rdoSupplier.Text = "Supplier\'s Outlet";
             this.rdoSupplier.UseVisualStyleBackColor = true;
+            this.rdoSupplier.CheckedChanged += new System.EventHandler(this.RadioItem_CheckedChanged);
             // 
             // rdoDistributor
             // 
@@ -2002,6 +2008,7 @@
             this.btnShowData.TabIndex = 64;
             this.btnShowData.Text = "Show Data";
             this.btnShowData.UseVisualStyleBackColor = true;
+            this.btnShowData.Click += new System.EventHandler(this.ButtonItem_Click);
             // 
             // btnSave
             // 
@@ -2012,37 +2019,7 @@
             this.btnSave.TabIndex = 65;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // stsStatusbar
-            // 
-            this.stsStatusbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsxStatus,
-            this.toolStripStatusLabel2,
-            this.tspProgress});
-            this.stsStatusbar.Location = new System.Drawing.Point(0, 739);
-            this.stsStatusbar.Name = "stsStatusbar";
-            this.stsStatusbar.Size = new System.Drawing.Size(884, 22);
-            this.stsStatusbar.SizingGrip = false;
-            this.stsStatusbar.TabIndex = 73;
-            // 
-            // tsxStatus
-            // 
-            this.tsxStatus.Name = "tsxStatus";
-            this.tsxStatus.Size = new System.Drawing.Size(39, 17);
-            this.tsxStatus.Text = "Ready";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(830, 17);
-            this.toolStripStatusLabel2.Spring = true;
-            // 
-            // tspProgress
-            // 
-            this.tspProgress.Name = "tspProgress";
-            this.tspProgress.Size = new System.Drawing.Size(100, 16);
-            this.tspProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.tspProgress.Visible = false;
+            this.btnSave.Click += new System.EventHandler(this.ButtonItem_Click);
             // 
             // pnlData
             // 
@@ -2699,6 +2676,47 @@
             this.dgxBAddition.Name = "dgxBAddition";
             this.dgxBAddition.ReadOnly = true;
             // 
+            // tsxStatus
+            // 
+            this.tsxStatus.Name = "tsxStatus";
+            this.tsxStatus.Size = new System.Drawing.Size(39, 17);
+            this.tsxStatus.Text = "Ready";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(830, 17);
+            this.toolStripStatusLabel2.Spring = true;
+            // 
+            // tspProgress
+            // 
+            this.tspProgress.Name = "tspProgress";
+            this.tspProgress.Size = new System.Drawing.Size(100, 16);
+            this.tspProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.tspProgress.Visible = false;
+            // 
+            // stsStatusbar
+            // 
+            this.stsStatusbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsxStatus,
+            this.toolStripStatusLabel2,
+            this.tspProgress});
+            this.stsStatusbar.Location = new System.Drawing.Point(0, 739);
+            this.stsStatusbar.Name = "stsStatusbar";
+            this.stsStatusbar.Size = new System.Drawing.Size(884, 22);
+            this.stsStatusbar.SizingGrip = false;
+            this.stsStatusbar.TabIndex = 73;
+            // 
+            // ofpFileDialog
+            // 
+            this.ofpFileDialog.Filter = "Microsoft Excel files 2010-2013|*.xlsx|Microsoft Excel 2003-2007|*.xls|CSV format" +
+    "ed files|*.csv";
+            // 
+            // bgwWorker
+            // 
+            this.bgwWorker.WorkerReportsProgress = true;
+            this.bgwWorker.WorkerSupportsCancellation = true;
+            // 
             // MW004_ImportOutlet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2726,6 +2744,9 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Import Data Outlet";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.pnlField.ResumeLayout(false);
             this.pnlField.PerformLayout();
             this.tbcField.ResumeLayout(false);
@@ -2749,8 +2770,6 @@
             this.tabPage7.ResumeLayout(false);
             this.tlpBankTable.ResumeLayout(false);
             this.tlpBankTable.PerformLayout();
-            this.stsStatusbar.ResumeLayout(false);
-            this.stsStatusbar.PerformLayout();
             this.pnlData.ResumeLayout(false);
             this.leftTabControl1.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
@@ -2767,6 +2786,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).EndInit();
             this.tabPage14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).EndInit();
+            this.stsStatusbar.ResumeLayout(false);
+            this.stsStatusbar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2928,10 +2949,6 @@
         private System.Windows.Forms.ComboBox cmbBCodeField3;
         private System.Windows.Forms.Button btnShowData;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.StatusStrip stsStatusbar;
-        private System.Windows.Forms.ToolStripStatusLabel tsxStatus;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripProgressBar tspProgress;
         private System.Windows.Forms.Panel pnlData;
         private InFresh.Controls.v1.LeftTabControl leftTabControl1;
         private System.Windows.Forms.TabPage tabPage8;
@@ -3008,5 +3025,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgxBAddition;
         private InFresh.Controls.v1.CircleLoading crlFieldLoading;
         private InFresh.Controls.v1.CircleLoading crlDataLoading;
+        private System.Windows.Forms.ToolStripStatusLabel tsxStatus;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripProgressBar tspProgress;
+        private System.Windows.Forms.StatusStrip stsStatusbar;
+        private System.Windows.Forms.OpenFileDialog ofpFileDialog;
+        private System.ComponentModel.BackgroundWorker bgwWorker;
     }
 }

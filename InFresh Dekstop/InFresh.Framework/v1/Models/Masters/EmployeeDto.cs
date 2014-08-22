@@ -29,6 +29,11 @@ namespace InFresh.Framework.v1.Models.Masters
         [MaxLength(30)]
         public string Name { get; set; }
 
+        [Column("EMEMON")]
+        [Display(Name = "Employee Old Code")]
+        [MaxLength(15)]
+        public string OldCode { get; set; }
+
         [Column("EMADD1")]
         [Display(Name = "Address 1")]
         [MaxLength(100)]
@@ -40,7 +45,13 @@ namespace InFresh.Framework.v1.Models.Masters
 
         [Column("EMCITY")]
         [Display(Name = "City")]
+        [MaxLength(30)]
         public string City { get; set; }
+
+        [Column("EMZPCD")]
+        [Display(Name= "Zip Code")]
+        [MaxLength(5)]
+        public string ZipCode { get; set; }
 
         [Column("EMSDNO")]
         [Display(Name = "Subdepo Code")]
@@ -97,12 +108,12 @@ namespace InFresh.Framework.v1.Models.Masters
         [Column("EMPHN1")]
         [Display(Name = "Telephone")]
         [MaxLength(15)]
-        public string Telephone { get; set; }
+        public string Phone1 { get; set; }
 
         [Column("EMPHN2")]
         [Display(Name = "Handphone")]
         [MaxLength(15)]
-        public string Handphone { get; set; }
+        public string Phone2 { get; set; }
 
         [Column("EMJOIN")]
         [MaxLength(12)]

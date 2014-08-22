@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InFresh.Master.v1.Wizards
 {
-    public enum WizardSequence
+    public enum ImportSequence
     {
         IDLE = -1,
         FormLoad = 0,

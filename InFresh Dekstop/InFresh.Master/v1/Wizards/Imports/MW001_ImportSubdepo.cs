@@ -12,6 +12,7 @@ using InFresh.Framework.v1.Models.Systems;
 using InFresh.Master.v1.Implements;
 using InFresh.Utilization.v1.OleProcessor;
 using InFresh.Utilization.v1.Processors;
+using InFresh.Framework.v1.Enums;
 
 namespace InFresh.Master.v1.Wizards.Imports
 {
@@ -79,7 +80,7 @@ namespace InFresh.Master.v1.Wizards.Imports
             tsxStatus.Text = MasterModule.Handler.Resources.GetString("Load_References");
 
             if (!bgwWorker.IsBusy)
-                bgwWorker.RunWorkerAsync(WizardSequence.FormLoad);
+                bgwWorker.RunWorkerAsync(ImportSequence.FormLoad);
         }
 
         /// <summary>
@@ -120,7 +121,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 pnlData.Enabled = btnShowData.Enabled = false;
                 crlDataLoading.Visible = true;
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(WizardSequence.DataLoad);
+                    bgwWorker.RunWorkerAsync(ImportSequence.DataLoad);
                 return;
             }
 
@@ -134,7 +135,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 tspProgress.Value = 0;
 
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(WizardSequence.DataSaving);
+                    bgwWorker.RunWorkerAsync(ImportSequence.DataSaving);
                 return;
             }
         }
@@ -159,7 +160,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                     Data.Clear();
 
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(WizardSequence.SheetLoad);
+                    bgwWorker.RunWorkerAsync(ImportSequence.SheetLoad);
                 return;
             }
 
@@ -171,7 +172,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                     Template = null;
 
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(WizardSequence.TemplateLoad);
+                    bgwWorker.RunWorkerAsync(ImportSequence.TemplateLoad);
                 return;
             }
         }
@@ -196,7 +197,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                     else if (ext.Equals(".csv")) { }
 
                     if (!bgwWorker.IsBusy)
-                        bgwWorker.RunWorkerAsync(WizardSequence.FileLoad);
+                        bgwWorker.RunWorkerAsync(ImportSequence.FileLoad);
                 }
                 return;
             }
@@ -211,20 +212,22 @@ namespace InFresh.Master.v1.Wizards.Imports
         {
             if (sender == bgwWorker)
             {
-                WizardSequence idx = WizardSequence.IDLE;
+                ImportSequence idx = ImportSequence.IDLE;
                 try
                 {
-                    idx = (WizardSequence)e.Argument;
-                    if (idx != WizardSequence.IDLE)
+                    idx = (ImportSequence)e.Argument;
+                    if (idx != ImportSequence.IDLE)
                     {
                         switch (idx)
                         {
-                            case WizardSequence.FormLoad:
+                            case ImportSequence.FormLoad:
                                 if (Templates != null)
                                     Templates.Clear();
 
                                 Templates = MasterModule.Handler.RepositoryV2.Get<Template1Dto>()
-                                                .Where(m => m.Status == 1).ToList();
+                                                .Where(m => m.Status == 1
+                                                        && m.Entity.Equals(Entity)
+                                                        && m.Type.Equals(WizardType.Import)).ToList();
                                 Templates.Insert(0, new Template1Dto
                                 {
                                     Description = string.Format(MasterModule.Handler.Resources.GetString("Select_Item"), "template")
@@ -236,7 +239,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                 e.Cancel = false;
                                 e.Result = idx;
                                 break;
-                            case WizardSequence.DataSaving:
+                            case ImportSequence.DataSaving:
                                 try
                                 {
                                     TResult = MasterModule.Handler.RepositoryV2.Insert<SubdepoDto>(Data);
@@ -249,7 +252,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                     e.Result = ex.Message;
                                 }
                                 break;
-                            case WizardSequence.TemplateSaving:
+                            case ImportSequence.TemplateSaving:
                                 try
                                 {
                                     TResult = MasterModule.Handler.RepositoryV2.Insert<Template1Dto>(Template);
@@ -301,27 +304,27 @@ namespace InFresh.Master.v1.Wizards.Imports
             {
                 if (!e.Cancelled)
                 {
-                    WizardSequence idx = WizardSequence.IDLE;
+                    ImportSequence idx = ImportSequence.IDLE;
 
                     try
                     {
-                        idx = (WizardSequence)e.Result;
-                        if (idx != WizardSequence.IDLE)
+                        idx = (ImportSequence)e.Result;
+                        if (idx != ImportSequence.IDLE)
                         {
                             switch (idx)
                             {
-                                case WizardSequence.FormLoad:
+                                case ImportSequence.FormLoad:
                                     btnBrowse.Enabled = true;
                                     tspProgress.Visible = false;
                                     tsxStatus.Text = MasterModule.Handler.Resources.GetString("Ready");
                                     break;
-                                case WizardSequence.FileLoad:
+                                case ImportSequence.FileLoad:
                                     cmbSheet.DataSource = new BindingSource(Processor.GetSheets(), null);
                                     cmbSheet.DisplayMember = "Value";
                                     cmbSheet.ValueMember = "Key";
                                     cmbSheet.SelectedIndex = 0;
                                     break;
-                                case WizardSequence.SheetLoad:
+                                case ImportSequence.SheetLoad:
                                     if (HeaderFile != null)
                                         HeaderFile.Clear();
                                     HeaderFile = Processor.GetHeaders(cmbSheet.SelectedValue.ToString());
@@ -351,10 +354,10 @@ namespace InFresh.Master.v1.Wizards.Imports
                                     cmbSheet.Enabled = pnlField.Enabled = btnShowData.Enabled = true;
                                     crlFieldLoading.Visible = false;
                                     break;
-                                case WizardSequence.TemplateLoad:
+                                case ImportSequence.TemplateLoad:
                                     ReadTemplate();
                                     break;
-                                case WizardSequence.DataLoad:
+                                case ImportSequence.DataLoad:
                                     if (MappingValid())
                                     {
                                         if (MappingValue())
@@ -377,7 +380,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                     pnlField.Enabled = btnShowData.Enabled = true;
                                     crlDataLoading.Visible = false;
                                     break;
-                                case WizardSequence.DataSaving:
+                                case ImportSequence.DataSaving:
                                     if (TResult.Equals("0"))
                                     {
                                         if (cmbTemplate.SelectedIndex == 0)
@@ -394,7 +397,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                                 tspProgress.Value = 0;
 
                                                 if (!bgwWorker.IsBusy)
-                                                    bgwWorker.RunWorkerAsync(WizardSequence.TemplateSaving);
+                                                    bgwWorker.RunWorkerAsync(ImportSequence.TemplateSaving);
                                             }
                                             else
                                                 this.Close();
@@ -403,7 +406,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                             this.Close();
                                     }
                                     break;
-                                case WizardSequence.TemplateSaving:
+                                case ImportSequence.TemplateSaving:
                                     if (TResult.Equals("0"))
                                     {
                                         tsxStatus.Text = "Complete all task";

@@ -86,7 +86,6 @@ namespace InFresh.Driver.v1.Forms
             }
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -106,6 +105,7 @@ namespace InFresh.Driver.v1.Forms
         {
             trvCategory.SelectedNode = e.Node;
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -127,6 +127,15 @@ namespace InFresh.Driver.v1.Forms
             ShowDetail();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ComboItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowDetail();
+        }
 
         /// <summary>
         /// 
@@ -183,7 +192,7 @@ namespace InFresh.Driver.v1.Forms
         private void ShowDetail()
         {
             Wizard = null;
-            List<IWizard> aWizards = null;
+            IList<IWizard> aWizards = null;
             if (trvCategory.SelectedNode != null)
 
                 aWizards = Program.Handler.Wizards
@@ -193,8 +202,15 @@ namespace InFresh.Driver.v1.Forms
                 aWizards = Program.Handler.Wizards
                     .Select(m => m.Value).ToList();
 
+            if (cmbSort.SelectedIndex == 1)
+                aWizards = aWizards.OrderBy(m => m.Description).ToList();
+            else if (cmbSort.SelectedIndex == 2)
+                aWizards = aWizards.OrderByDescending(m => m.Description).ToList();
+
             lsbType.DataSource = aWizards;
             lsbType.DisplayMember = "Description";
         }
+
+        
     }
 }

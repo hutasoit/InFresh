@@ -1,6 +1,6 @@
 ﻿namespace InFresh.Master.v1.Pages
 {
-    partial class MP002_ListEmployeePage
+    partial class MP001_SubdepoPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // MP001_ListSubdepoPage
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "MP002_ListEmployeePage";
+            this.ClientSize = new System.Drawing.Size(877, 524);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = "MP001_ListSubdepoPage";
+            this.Text = "MP001_ListSubdepoPage";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
     }
 }

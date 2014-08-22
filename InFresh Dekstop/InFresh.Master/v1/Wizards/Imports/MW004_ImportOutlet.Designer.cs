@@ -609,6 +609,7 @@
             this.btnSearchSubdepo.TabIndex = 46;
             this.btnSearchSubdepo.Text = "...";
             this.btnSearchSubdepo.UseVisualStyleBackColor = true;
+            this.btnSearchSubdepo.Click += new System.EventHandler(this.ButtonItem_Click);
             // 
             // txtSubdepoName
             // 
@@ -650,6 +651,7 @@
             this.btnSearchSupplier.TabIndex = 51;
             this.btnSearchSupplier.Text = "...";
             this.btnSearchSupplier.UseVisualStyleBackColor = true;
+            this.btnSearchSupplier.Click += new System.EventHandler(this.ButtonItem_Click);
             // 
             // tabPage2
             // 

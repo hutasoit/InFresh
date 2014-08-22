@@ -35,8 +35,17 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,29 +77,35 @@
     </Compile>
     <Compile Include="v1\Implements\MasterModule.cs" />
     <Compile Include="v1\Implements\MasterWizard.cs" />
-    <Compile Include="v1\Pages\MP001_ListSubdepoPage.cs">
+    <Compile Include="v1\Lists\MS001_ListSubdepo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="v1\Pages\MP001_ListSubdepoPage.Designer.cs">
-      <DependentUpon>MP001_ListSubdepoPage.cs</DependentUpon>
+    <Compile Include="v1\Lists\MS001_ListSubdepo.Designer.cs">
+      <DependentUpon>MS001_ListSubdepo.cs</DependentUpon>
     </Compile>
-    <Compile Include="v1\Pages\MP002_ListEmployeePage.cs">
+    <Compile Include="v1\Pages\MP001_SubdepoPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="v1\Pages\MP002_ListEmployeePage.Designer.cs">
-      <DependentUpon>MP002_ListEmployeePage.cs</DependentUpon>
+    <Compile Include="v1\Pages\MP001_SubdepoPage.Designer.cs">
+      <DependentUpon>MP001_SubdepoPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="v1\Pages\MP003_ListSupplierPage.cs">
+    <Compile Include="v1\Pages\MP002_EmployeePage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="v1\Pages\MP003_ListSupplierPage.Designer.cs">
-      <DependentUpon>MP003_ListSupplierPage.cs</DependentUpon>
+    <Compile Include="v1\Pages\MP002_EmployeePage.Designer.cs">
+      <DependentUpon>MP002_EmployeePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="v1\Pages\MP004_ListOutletPage.cs">
+    <Compile Include="v1\Pages\MP003_SupplierPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="v1\Pages\MP004_ListOutletPage.Designer.cs">
-      <DependentUpon>MP004_ListOutletPage.cs</DependentUpon>
+    <Compile Include="v1\Pages\MP003_SupplierPage.Designer.cs">
+      <DependentUpon>MP003_SupplierPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="v1\Pages\MP004_OutletPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="v1\Pages\MP004_OutletPage.Designer.cs">
+      <DependentUpon>MP004_OutletPage.cs</DependentUpon>
     </Compile>
     <Compile Include="v1\Wizards\Imports\MW004_ImportOutlet.cs">
       <SubType>Form</SubType>
@@ -132,8 +147,11 @@
     <EmbeddedResource Include="v1\Forms\M0001_MasterWindow.resx">
       <DependentUpon>M0001_MasterWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="v1\Pages\MP001_ListSubdepoPage.resx">
-      <DependentUpon>MP001_ListSubdepoPage.cs</DependentUpon>
+    <EmbeddedResource Include="v1\Lists\MS001_ListSubdepo.resx">
+      <DependentUpon>MS001_ListSubdepo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="v1\Pages\MP001_SubdepoPage.resx">
+      <DependentUpon>MP001_SubdepoPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="v1\Wizards\Imports\MW001_ImportSubdepo.resx">
       <DependentUpon>MW001_ImportSubdepo.cs</DependentUpon>
@@ -179,6 +197,9 @@
       <Name>InFresh.Utilization</Name>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="v1\Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

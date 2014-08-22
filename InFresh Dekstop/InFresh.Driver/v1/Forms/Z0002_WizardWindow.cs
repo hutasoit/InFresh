@@ -184,6 +184,7 @@ namespace InFresh.Driver.v1.Forms
                 }
                 lastNode = null; // This is the place code was changed
             }
+            treeView.SelectedNode = treeView.Nodes[0];
         }
 
         /// <summary>

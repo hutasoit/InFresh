@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace InFresh.Master.v1.Pages
 {
-    public partial class MP004_ListOutletPage : Form
+    public partial class MP004_OutletPage : Form
     {
-        public MP004_ListOutletPage()
+        public MP004_OutletPage()
         {
             InitializeComponent();
         }

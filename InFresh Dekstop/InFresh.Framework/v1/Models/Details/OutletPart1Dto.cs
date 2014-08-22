@@ -11,7 +11,7 @@ namespace InFresh.Framework.v1.Models.Details
     /// </summary>
     [Serializable()]
     [Table("OTPR")]
-    public class OutletPart1Dto
+    public partial class OutletPart1Dto
     {
         public OutletPart1Dto()
         {
@@ -51,17 +51,23 @@ namespace InFresh.Framework.v1.Models.Details
         [MaxLength(15)]
         public string SubdepoCode { get; set; }
 
+        [ForeignKey("SubdepoCode")]
+        public virtual SubdepoDto Subdepo { get; set; }
+
         [Column("O1SPNO")]
         [Display(Name = "Supplier Code")]
         [MaxLength(15)]
         public string SupplierCode { get; set; }
+
+        [ForeignKey("SupplierCode")]
+        public virtual SupplierDto Supplier { get; set; }
 
         [Column("O1OTSR")]
         [Display(Name = "Outlet Source")]
         [MaxLength(10)]
         public string OutletSource { get; set; }
 
-        #region Territory
+        #region Administration
         [Column("O1LOCD")]
         [Display(Name = "Location Code")]
         public string LocationCode { get; set; }
@@ -121,9 +127,11 @@ namespace InFresh.Framework.v1.Models.Details
         [Column("O1ISCL")]
         [Display(Name = "Credit Limit")]
         public int IsCreditLimit { get; set; }
-        [NotMapped]
-        public string CreditLimitType { get; set; }
-
+        [Column("O1CLTC")]
+        [Display(Name = "Credit Limit Code")]
+        public string CreditLimitTypeCode { get; set; }
+        [NotMapped()]
+        public string CreditLimitTypeName { get; set; }
         [Column("O11TSL")]
         [Display(Name = "First Sales Date")]
         [MaxLength(12)]
@@ -207,5 +215,28 @@ namespace InFresh.Framework.v1.Models.Details
         [MaxLength(20)]
         public string LastUpdated { get; set; }
 
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public partial class OutletPart1Dto
+    {
+        [NotMapped()]
+        public string Name { get; set; }
+        [NotMapped()]
+        public string Address { get; set; }
+        [NotMapped()]
+        public string City { get; set; }
+        [NotMapped()]
+        public string ZipCode { get; set; }
+        [NotMapped()]
+        public string Phone1 { get; set; }
+        [NotMapped()]
+        public string Fax1 { get; set; }
+        [NotMapped()]
+        public string Email { get; set; }
+        [NotMapped()]
+        public string JoinDate { get; set; }
     }
 }

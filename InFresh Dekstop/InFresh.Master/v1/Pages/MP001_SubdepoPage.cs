@@ -11,9 +11,9 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace InFresh.Master.v1.Pages
 {
-    public partial class MP001_ListSubdepoPage : DockContent, IDock
+    public partial class MP001_SubdepoPage : DockContent, IDock
     {
-        public MP001_ListSubdepoPage()
+        public MP001_SubdepoPage()
         {
             InitializeComponent();
         }

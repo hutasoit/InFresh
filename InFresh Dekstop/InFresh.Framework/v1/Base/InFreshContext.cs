@@ -52,9 +52,8 @@ namespace InFresh.Framework.v1.Base
         public DbSet<OutletDto> Outlets { get; set; }
 
         public DbSet<OutletPart1Dto> OutletPart1s { get; set; }
-        //public DbSet<SupplierOutletPartDto> SupplierOutletParts { get; set; }
-        //public DbSet<OutletAccountDto> OutletAccounts { get; set; }
-        //public DbSet<OutletContactDto> OutletContacts { get; set; }
+        public DbSet<OutletAccountDto> OutletAccounts { get; set; }
+        public DbSet<OutletContactDto> OutletContacts { get; set; }
 
 
         //public DbSet<VariableDto> Variables { get; set; }

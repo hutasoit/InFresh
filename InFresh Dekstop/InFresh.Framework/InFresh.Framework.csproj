@@ -73,6 +73,8 @@
     <Compile Include="v1\Interfaces\IRepository.cs" />
     <Compile Include="v1\Interfaces\INewRepository.cs" />
     <Compile Include="v1\Interfaces\IWizard.cs" />
+    <Compile Include="v1\Models\Details\OutletAccountDto.cs" />
+    <Compile Include="v1\Models\Details\OutletContactDto.cs" />
     <Compile Include="v1\Models\Details\OutletPart1Dto.cs" />
     <Compile Include="v1\Models\Masters\EmployeeDto.cs" />
     <Compile Include="v1\Models\Masters\OutletDto.cs" />

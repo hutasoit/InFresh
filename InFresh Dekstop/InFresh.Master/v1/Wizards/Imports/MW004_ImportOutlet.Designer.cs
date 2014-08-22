@@ -2025,6 +2025,7 @@
             // 
             this.pnlData.Controls.Add(this.crlDataLoading);
             this.pnlData.Controls.Add(this.leftTabControl1);
+            this.pnlData.Enabled = false;
             this.pnlData.Location = new System.Drawing.Point(12, 446);
             this.pnlData.Name = "pnlData";
             this.pnlData.Size = new System.Drawing.Size(860, 290);
@@ -2711,11 +2712,15 @@
             // 
             this.ofpFileDialog.Filter = "Microsoft Excel files 2010-2013|*.xlsx|Microsoft Excel 2003-2007|*.xls|CSV format" +
     "ed files|*.csv";
+            this.ofpFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.OpenFileDialog_FileOk);
             // 
             // bgwWorker
             // 
             this.bgwWorker.WorkerReportsProgress = true;
             this.bgwWorker.WorkerSupportsCancellation = true;
+            this.bgwWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_DoWork);
+            this.bgwWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker_ProgressChanged);
+            this.bgwWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker_RunWorkerCompleted);
             // 
             // MW004_ImportOutlet
             // 

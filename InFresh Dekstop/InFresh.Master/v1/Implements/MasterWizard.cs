@@ -50,6 +50,10 @@ namespace InFresh.Master.v1.Implements
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Description;
@@ -97,6 +101,10 @@ namespace InFresh.Master.v1.Implements
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Description;
@@ -144,6 +152,10 @@ namespace InFresh.Master.v1.Implements
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Description;
@@ -151,4 +163,55 @@ namespace InFresh.Master.v1.Implements
         #endregion
     }
 
+
+    [Export(typeof(IWizard))]
+    public class OutletWizard : IWizard
+    {
+        #region IWizard Member
+        /// <summary>
+        /// 
+        /// </summary>
+        public string FullPath
+        {
+            get
+            {
+                return string.Format("{0}",
+                    MasterModule.Handler.Resources.GetString("Master").Replace("&", string.Empty));
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Description
+        {
+            get { return MasterModule.Handler.Resources.GetString("Outlet").Replace("&", string.Empty); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public Form Window(WizardType type)
+        {
+            switch (type)
+            {
+                case WizardType.Import:
+                    return new MW004_ImportOutlet();
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Description;
+        }
+        #endregion
+    }
 }

@@ -197,6 +197,15 @@ namespace InFresh.Globalization.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Master &amp;Outlet.
+        /// </summary>
+        internal static string Outlet {
+            get {
+                return ResourceManager.GetString("Outlet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ready.
         /// </summary>
         internal static string Ready {

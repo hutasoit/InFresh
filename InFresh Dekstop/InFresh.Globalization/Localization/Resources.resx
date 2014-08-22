@@ -190,4 +190,7 @@
   <data name="Window" xml:space="preserve">
     <value>&amp;Window</value>
   </data>
+  <data name="Outlet" xml:space="preserve">
+    <value>Master &amp;Outlet</value>
+  </data>
 </root>

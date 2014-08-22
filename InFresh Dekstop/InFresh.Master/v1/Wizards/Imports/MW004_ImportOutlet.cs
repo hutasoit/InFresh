@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,6 +13,7 @@ using InFresh.Framework.v1.Globals;
 using InFresh.Framework.v1.Models.Masters;
 using InFresh.Framework.v1.Models.Systems;
 using InFresh.Master.v1.Implements;
+using InFresh.Utilization.v1.OleProcessor;
 using InFresh.Utilization.v1.Processors;
 
 namespace InFresh.Master.v1.Wizards.Imports
@@ -25,6 +27,10 @@ namespace InFresh.Master.v1.Wizards.Imports
         public MW004_ImportOutlet()
         {
             InitializeComponent();
+
+            dgvData.AutoGenerateColumns = dgvTaxes.AutoGenerateColumns = dgvGroup.AutoGenerateColumns =
+                dgvAdministration.AutoGenerateColumns = dgvTransaction.AutoGenerateColumns =
+                dgvContacts.AutoGenerateColumns = dgvAccounts.AutoGenerateColumns = false;
         }
 
         /// <summary>
@@ -58,7 +64,7 @@ namespace InFresh.Master.v1.Wizards.Imports
         /// <summary>
         /// 
         /// </summary>
-        protected IList<SubdepoDto> ExistSubdepoes { get; set; }
+        protected IList<OutletDto> ExistOutlets { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -88,7 +94,8 @@ namespace InFresh.Master.v1.Wizards.Imports
         /// <param name="e"></param>
         private void Form_Closing(object sender, FormClosingEventArgs e)
         {
-
+            if (bgwWorker.IsBusy)
+                e.Cancel = true;
         }
 
         /// <summary>
@@ -180,11 +187,36 @@ namespace InFresh.Master.v1.Wizards.Imports
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        private void OpenFileDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            if (sender == ofpFileDialog)
+            {
+                if (!e.Cancel)
+                {
+                    txtFilename.Text = ofpFileDialog.FileName;
+
+                    string ext = Path.GetExtension(txtFilename.Text.Trim());
+
+                    if (ext.Equals(".xls") || ext.Equals(".xlsx"))
+                        Processor = new XlsOleProcessor(txtFilename.Text.Trim());
+                    else if (ext.Equals(".csv")) { }
+
+                    if (!bgwWorker.IsBusy)
+                        bgwWorker.RunWorkerAsync(ImportSequence.FileLoad);
+                }
+                return;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioItem_CheckedChanged(object sender, EventArgs e)
         {
 
         }
-
 
         /// <summary>
         /// 
@@ -216,7 +248,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                     Description = string.Format(MasterModule.Handler.Resources.GetString("Select_Item"), "template")
                                 });
 
-                                ExistSubdepoes = MasterModule.Handler.RepositoryV2.Get<SubdepoDto>()
+                                ExistOutlets = MasterModule.Handler.RepositoryV2.Get<OutletDto>()
                                                 .Where(m => m.Status == 1).ToList();
 
                                 e.Cancel = false;
@@ -308,18 +340,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                     cmbSheet.SelectedIndex = 0;
                                     break;
                                 case ImportSequence.SheetLoad:
-                                    if (HeaderFile != null)
-                                        HeaderFile.Clear();
-                                    HeaderFile = Processor.GetHeaders(cmbSheet.SelectedValue.ToString());
-                                    HeaderFile.Insert(0, string.Format(MasterModule.Handler.Resources.GetString("Select_Item"), string.Empty));
-
-                                    cmbNameField.DataSource = new List<string>(HeaderFile);
-                                    cmbAdd1Field.DataSource = new List<string>(HeaderFile);
-                                    cmbAdd2Field.DataSource = new List<string>(HeaderFile);
-                                    cmbCityField.DataSource = new List<string>(HeaderFile);
-                                    cmbZipCodeField.DataSource = new List<string>(HeaderFile);
-                                    cmbPhone1Field.DataSource = new List<string>(HeaderFile);
-                                    cmbFax1Field.DataSource = new List<string>(HeaderFile);
+                                    ReadHeaderFile();
 
                                     cmbTemplate.DataSource = Templates;
                                     //cmbTemplate.ValueMember = "Code";
@@ -424,40 +445,326 @@ namespace InFresh.Master.v1.Wizards.Imports
         /// <returns></returns>
         private bool MappingValid()
         {
-            if (cmbNameField.SelectedIndex == 0 &&
-                        cmbAdd1Field.SelectedIndex == 0)
+
+            bool valid = true;
+
+            if (cmbAdd1Field.SelectedIndex == 0)
             {
-                MessageBox.Show(null,
-                    string.Format(MasterModule.Handler.Resources.GetString("Fields_Required"),
-                        string.Format("- {0} \n -{1}", "Subdepo Name", "Subdepo Address")),
-                    MasterModule.Name,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                cmbNameField.Focus();
-                return false;
+                if (cmbNameField.SelectedIndex == 0)
+                {
+                    if (cmbCodeField.SelectedIndex == 0)
+                    {
+                        MessageBox.Show(null,
+                            string.Format(MasterModule.Handler.Resources.GetString("Fields_Required"),
+                                string.Format("- {0}\n -{1}\n -{2}", "Outlet Code", "Outlet Name", "Outlet Address")),
+                            MasterModule.Name,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        cmbCodeField.Focus();
+                        return false;
+                    }
+                    else
+                    {
+                        MessageBox.Show(null,
+                            string.Format(MasterModule.Handler.Resources.GetString("Fields_Required"),
+                                string.Format("- {0}\n -{1}", "Outlet Name", "Outlet Address")),
+                            MasterModule.Name,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        cmbAdd1Field.Focus();
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(null,
+                            string.Format(MasterModule.Handler.Resources.GetString("Field_Required"), "Outlet Address"),
+                            MasterModule.Name,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                    cmbAdd1Field.Focus();
+                    return false;
+                }
             }
-            else if (cmbNameField.SelectedIndex == 0)
+            else valid = true;
+
+            #region References Tab
+
+            if (chkSubdepoColumn.Checked)
             {
-                MessageBox.Show(null,
-                    string.Format(MasterModule.Handler.Resources.GetString("Field_Required"), "Subdepo Name"),
-                    MasterModule.Name,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                cmbNameField.Focus();
-                return false;
+                if (cmbSubdCodeField.SelectedIndex == 0)
+                {
+                    tbcField.SelectedIndex = 0;
+                    MessageBox.Show(null,
+                                string.Format(MasterModule.Handler.Resources.GetString("Field_Required"), "Subdepo Outlet"),
+                                MasterModule.Name,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                    cmbSubdCodeField.Focus();
+                    return false;
+                }
+                else valid = true;
             }
-            else if (cmbAdd1Field.SelectedIndex == 0)
+            else
             {
-                MessageBox.Show(null,
-                    string.Format(MasterModule.Handler.Resources.GetString("Field_Required"), "Subdepo Address"),
-                    MasterModule.Name,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                cmbAdd1Field.Focus();
-                return false;
+                if (rdoDistributor.Checked)
+                {
+                    if (txtSubdepoCode.Tag == null)
+                    {
+                        tbcField.SelectedIndex = 0;
+                        MessageBox.Show(null,
+                                    string.Format(MasterModule.Handler.Resources.GetString("Field_Required"), "Subdepo Outlet"),
+                                    MasterModule.Name,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                        txtSubdepoCode.Focus();
+                        return false;
+                    }
+                    else valid = true;
+                }
+                else valid = true;
             }
 
-            return true;
+            if (chkSupplierColumn.Checked)
+            {
+                if (cmbSuppCodeField.SelectedIndex == 0)
+                {
+                    tbcField.SelectedIndex = 0;
+                    MessageBox.Show(null,
+                                string.Format(MasterModule.Handler.Resources.GetString("Field_Required"), "Supplier Outlet"),
+                                MasterModule.Name,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                    cmbSuppCodeField.Focus();
+                    return false;
+                }
+                else valid = true;
+            }
+            else
+            {
+                if (rdoSupplier.Checked)
+                {
+                    if (txtSupplierCode.Tag == null)
+                    {
+                        tbcField.SelectedIndex = 0;
+                        MessageBox.Show(null,
+                                    string.Format(MasterModule.Handler.Resources.GetString("Field_Required"), "Supplier Outlet"),
+                                    MasterModule.Name,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                        txtSupplierCode.Focus();
+                        return false;
+                    }
+                    else valid = true;
+                }
+                else valid = true;
+            }
+            #endregion
+
+            #region Tax Tab
+            //if (!cmbTaxCodeField.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //{
+            //    if (cmbTaxNameField.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //    {
+            //        tbcField.SelectedIndex = 1;
+            //        cmbTaxNameField.Focus();
+            //        return false;
+            //    }
+            //    else valid = true;
+
+            //    if (cmbTaxAdd1Field.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //    {
+            //        tbcField.SelectedIndex = 2;
+            //        cmbTaxAdd1Field.Focus();
+            //        return false;
+            //    }
+            //    else valid = true;
+            //}
+            //else valid = true;
+            #endregion
+
+            #region Contact Tab
+
+            #region Row 1
+
+            //if (cmbCNameField0.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //{
+            //    if (cmbCPhone1Field0.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //    {
+            //        if (cmbCPhone2Field0.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //        {
+            //            if (cmbCEmailField0.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //                valid = true;
+            //            else
+            //            {
+            //                tbcField.SelectedIndex = 5;
+            //                cmbCNameField0.Focus();
+            //                return false;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            tbcField.SelectedIndex = 5;
+            //            cmbCNameField0.Focus();
+            //            return false;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        tbcField.SelectedIndex = 5;
+            //        cmbCNameField0.Focus();
+            //        return false;
+            //    }
+            //}
+            //else
+            //{
+            //    if (!cmbCPhone1Field0.SelectedValue.Equals(Properties.Resources.Label_Select_Item) ||
+            //        !cmbCPhone2Field0.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //        valid = true;
+            //    else
+            //    {
+            //        tbcField.SelectedIndex = 5;
+            //        cmbCPhone1Field0.Focus();
+            //        return false;
+            //    }
+            //}
+            #endregion
+
+            #region Row 2
+            //if (cmbCNameField1.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //{
+            //    if (cmbCPhone1Field1.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //    {
+            //        if (cmbCPhone2Field1.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //        {
+            //            if (cmbCEmailField1.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //                valid = true;
+            //            else
+            //            {
+            //                tbcField.SelectedIndex = 5;
+            //                cmbCNameField1.Focus();
+            //                return false;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            tbcField.SelectedIndex = 5;
+            //            cmbCNameField1.Focus();
+            //            return false;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        tbcField.SelectedIndex = 5;
+            //        cmbCNameField1.Focus();
+            //        return false;
+            //    }
+            //}
+            //else
+            //{
+            //    if (!cmbCPhone1Field1.SelectedValue.Equals(Properties.Resources.Label_Select_Item) ||
+            //        !cmbCPhone2Field1.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //        valid = true;
+            //    else
+            //    {
+            //        tbcField.SelectedIndex = 5;
+            //        cmbCPhone1Field1.Focus();
+            //        return false;
+            //    }
+            //}
+            #endregion
+
+            #region Row 3
+            //if (cmbCNameField2.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //{
+            //    if (cmbCPhone1Field2.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //    {
+            //        if (cmbCPhone2Field2.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //        {
+            //            if (cmbCEmailField2.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //                valid = true;
+            //            else
+            //            {
+            //                tbcField.SelectedIndex = 5;
+            //                cmbCNameField2.Focus();
+            //                return false;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            tbcField.SelectedIndex = 5;
+            //            cmbCNameField2.Focus();
+            //            return false;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        tbcField.SelectedIndex = 5;
+            //        cmbCNameField2.Focus();
+            //        return false;
+            //    }
+            //}
+            //else
+            //{
+            //    if (!cmbCPhone1Field2.SelectedValue.Equals(Properties.Resources.Label_Select_Item) ||
+            //        !cmbCPhone2Field2.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //        valid = true;
+            //    else
+            //    {
+            //        tbcField.SelectedIndex = 5;
+            //        cmbCPhone1Field2.Focus();
+            //        return false;
+            //    }
+            //}
+            #endregion
+
+            #region Row 4
+            //if (cmbCNameField3.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //{
+            //    if (cmbCPhone1Field3.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //    {
+            //        if (cmbCPhone2Field3.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //        {
+            //            if (cmbCEmailField3.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //                valid = true;
+            //            else
+            //            {
+            //                tbcField.SelectedIndex = 5;
+            //                cmbCNameField3.Focus();
+            //                return false;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            tbcField.SelectedIndex = 5;
+            //            cmbCNameField3.Focus();
+            //            return false;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        tbcField.SelectedIndex = 5;
+            //        cmbCNameField3.Focus();
+            //        return false;
+            //    }
+            //}
+            //else
+            //{
+            //    if (!cmbCPhone1Field3.SelectedValue.Equals(Properties.Resources.Label_Select_Item) ||
+            //        !cmbCPhone2Field3.SelectedValue.Equals(Properties.Resources.Label_Select_Item))
+            //        valid = true;
+            //    else
+            //    {
+            //        tbcField.SelectedIndex = 5;
+            //        cmbCPhone1Field3.Focus();
+            //        return false;
+            //    }
+            //}
+            #endregion
+
+            #endregion
+
+            return valid;
         }
 
         /// <summary>
@@ -472,7 +779,7 @@ namespace InFresh.Master.v1.Wizards.Imports
             string errMsg = string.Empty;
             try
             {
-                int count = ExistSubdepoes.Count();
+                int count = ExistOutlets.Count();
                 OutletDto mm = null;
                 int ii = 0;
                 foreach (var row in rows)
@@ -852,6 +1159,115 @@ namespace InFresh.Master.v1.Wizards.Imports
                     //cmbFax1Field.Enabled = false;
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ReadHeaderFile()
+        {
+            if (HeaderFile != null)
+                HeaderFile.Clear();
+            HeaderFile = Processor.GetHeaders(cmbSheet.SelectedValue.ToString());
+            HeaderFile.Insert(0, string.Format(MasterModule.Handler.Resources.GetString("Select_Item"), string.Empty));
+
+            cmbCodeField.DataSource = new List<string>(HeaderFile);
+            cmbNameField.DataSource = new List<string>(HeaderFile);
+            cmbAdd1Field.DataSource = new List<string>(HeaderFile);
+            cmbAdd2Field.DataSource = new List<string>(HeaderFile);
+            cmbCityField.DataSource = new List<string>(HeaderFile);
+            cmbZipCodeField.DataSource = new List<string>(HeaderFile);
+            cmbPhone1Field.DataSource = new List<string>(HeaderFile);
+            cmbFax1Field.DataSource = new List<string>(HeaderFile);
+            cmbEmailField.DataSource = new List<string>(HeaderFile);
+            cmbJoinDateField.DataSource = new List<string>(HeaderFile);
+
+            cmbSubdCodeField.DataSource = new List<string>(HeaderFile);
+            cmbSubdNameField.DataSource = new List<string>(HeaderFile);
+            cmbSuppCodeField.DataSource = new List<string>(HeaderFile);
+            cmbSuppNameField.DataSource = new List<string>(HeaderFile);
+
+            #region Tax Tab
+            cmbTaxCodeField.DataSource = new List<string>(HeaderFile);
+            cmbTaxNameField.DataSource = new List<string>(HeaderFile);
+            cmbTaxAdd1Field.DataSource = new List<string>(HeaderFile);
+            cmbTaxAdd2Field.DataSource = new List<string>(HeaderFile);
+            cmbTaxCityField.DataSource = new List<string>(HeaderFile);
+            cmbTaxZipCodeField.DataSource = new List<string>(HeaderFile);
+            cmbTaxRegDateField.DataSource = new List<string>(HeaderFile);
+            #endregion
+
+            #region Territorial Tab
+            cmbLocationField.DataSource = new List<string>(HeaderFile);
+            cmbDistrictField.DataSource = new List<string>(HeaderFile);
+            cmbBeatField.DataSource = new List<string>(HeaderFile);
+            cmbSubbeatField.DataSource = new List<string>(HeaderFile);
+            cmbClasificationField.DataSource = new List<string>(HeaderFile);
+            cmbMarketField.DataSource = new List<string>(HeaderFile);
+            cmbIndustryField.DataSource = new List<string>(HeaderFile);
+            #endregion
+
+            #region Group Tab
+            cmbOutTypeField.DataSource = new List<string>(HeaderFile);
+            cmbOutGroupField.DataSource = new List<string>(HeaderFile);
+            cmbPriceGroupField.DataSource = new List<string>(HeaderFile);
+            cmbDiscGroupField.DataSource = new List<string>(HeaderFile);
+            cmbPLUGroupField.DataSource = new List<string>(HeaderFile);
+            cmbConverGroupField.DataSource = new List<string>(HeaderFile);
+            #endregion
+
+            #region Transaction Tab
+            cmbContrabillField.DataSource = new List<string>(HeaderFile);
+            cmbPayTypeField.DataSource = new List<string>(HeaderFile);
+            cmbTOPField.DataSource = new List<string>(HeaderFile);
+            cmbCLFlagField.DataSource = new List<string>(HeaderFile);
+            cmbCLTypeField.DataSource = new List<string>(HeaderFile);
+            cmbCLValueField.DataSource = new List<string>(HeaderFile);
+            cmbJoinDateField.DataSource = new List<string>(HeaderFile);
+            cmbFTrxDateField.DataSource = new List<string>(HeaderFile);
+            cmbLTrxDateField.DataSource = new List<string>(HeaderFile);
+            cmbWeekField.DataSource = new List<string>(HeaderFile);
+            cmbMarketShareField.DataSource = new List<string>(HeaderFile);
+            #endregion
+
+            #region Contact Tab
+            cmbCNameField0.DataSource = new List<string>(HeaderFile);
+            cmbCNameField1.DataSource = new List<string>(HeaderFile);
+            cmbCNameField2.DataSource = new List<string>(HeaderFile);
+            cmbCNameField3.DataSource = new List<string>(HeaderFile);
+
+            cmbCPhone1Field0.DataSource = new List<string>(HeaderFile);
+            cmbCPhone1Field1.DataSource = new List<string>(HeaderFile);
+            cmbCPhone1Field2.DataSource = new List<string>(HeaderFile);
+            cmbCPhone1Field3.DataSource = new List<string>(HeaderFile);
+
+            cmbCPhone2Field0.DataSource = new List<string>(HeaderFile);
+            cmbCPhone2Field1.DataSource = new List<string>(HeaderFile);
+            cmbCPhone2Field2.DataSource = new List<string>(HeaderFile);
+            cmbCPhone2Field3.DataSource = new List<string>(HeaderFile);
+
+            cmbCEmailField0.DataSource = new List<string>(HeaderFile);
+            cmbCEmailField1.DataSource = new List<string>(HeaderFile);
+            cmbCEmailField2.DataSource = new List<string>(HeaderFile);
+            cmbCEmailField3.DataSource = new List<string>(HeaderFile);
+            #endregion
+
+            #region Bank Tab
+            cmbBCodeField0.DataSource = new List<string>(HeaderFile);
+            cmbBCodeField1.DataSource = new List<string>(HeaderFile);
+            cmbBCodeField2.DataSource = new List<string>(HeaderFile);
+            cmbBCodeField3.DataSource = new List<string>(HeaderFile);
+
+            cmbBNameField0.DataSource = new List<string>(HeaderFile);
+            cmbBNameField1.DataSource = new List<string>(HeaderFile);
+            cmbBNameField2.DataSource = new List<string>(HeaderFile);
+            cmbBNameField3.DataSource = new List<string>(HeaderFile);
+
+            cmbAccNoField0.DataSource = new List<string>(HeaderFile);
+            cmbAccNoField1.DataSource = new List<string>(HeaderFile);
+            cmbAccNoField2.DataSource = new List<string>(HeaderFile);
+            cmbAccNoField3.DataSource = new List<string>(HeaderFile);
+            #endregion
         }
         #endregion
 

@@ -12,11 +12,18 @@ namespace InFresh.Framework.v1.Models.Masters
     [Table("OTLT")]
     public class OutletDto
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public OutletDto()
         {
             Status = 1;
             DateCreated = DateTime.Now.ToString("yyyyMMddhhmmss");
             Longitude = Latitude = 0;
+
+            Part1s = new List<OutletPart1Dto>();
+            Accounts = new List<OutletAccountDto>();
+            Contacts = new List<OutletContactDto>();
         }
 
         [Key]
@@ -156,7 +163,18 @@ namespace InFresh.Framework.v1.Models.Masters
         [MaxLength(20)]
         public string LastUpdated { get; set; }
 
-        public virtual ICollection<OutletPart1Dto> Part1es { get; set }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual ICollection<OutletPart1Dto> Part1s { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual ICollection<OutletAccountDto> Accounts { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual ICollection<OutletContactDto> Contacts { get; set; }
 
         /// <summary>
         /// 

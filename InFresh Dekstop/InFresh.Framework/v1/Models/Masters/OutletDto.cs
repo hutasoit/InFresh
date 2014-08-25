@@ -20,10 +20,6 @@ namespace InFresh.Framework.v1.Models.Masters
             Status = 1;
             DateCreated = DateTime.Now.ToString("yyyyMMddhhmmss");
             Longitude = Latitude = 0;
-
-            Part1s = new List<OutletPart1Dto>();
-            Accounts = new List<OutletAccountDto>();
-            Contacts = new List<OutletContactDto>();
         }
 
         [Key]

@@ -6,6 +6,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using InFresh.Framework.v1.Interfaces;
+using WeifenLuo.WinFormsUI.Docking;
+using InFresh.Master.v1.Implements;
 
 namespace InFresh.Master.v1.Controls
 {
@@ -23,7 +26,22 @@ namespace InFresh.Master.v1.Controls
         /// <param name="e"></param>
         private void MenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello Menu " + (sender as ToolStripMenuItem).Text.Replace("&", string.Empty));
+            try
+            {
+                IDock dock = null;
+                if (sender == tsmiSubdepo)
+                    dock = (IDock)Activator.CreateInstance(Type.GetType("InFresh.Master.v1.Pages.MP001_SubdepoPage"));
+
+                if (dock != null)
+                    MasterModule.Handler.Host.ShowContent(dock as DockContent, dock.State);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null,
+                    ex.Message,
+                    MasterModule.Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            //MessageBox.Show("Hello Menu " + (sender as ToolStripMenuItem).Text.Replace("&", string.Empty));
             //if (sender == tsmiSubdepo)
             //{
             //    MessageBox.Show("Hello Menu Master Subdepo");

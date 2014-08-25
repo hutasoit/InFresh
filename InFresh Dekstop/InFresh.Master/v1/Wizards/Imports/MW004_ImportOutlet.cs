@@ -308,6 +308,13 @@ namespace InFresh.Master.v1.Wizards.Imports
                                 try
                                 {
                                     TResult = MasterModule.Handler.RepositoryV2.Insert<OutletDto>(Data);
+                                    if (TResult.Equals("0"))
+                                        TResult = MasterModule.Handler.RepositoryV2.Insert<OutletPart1Dto>(Part1s);
+                                    if (TResult.Equals("0"))
+                                        TResult = MasterModule.Handler.RepositoryV2.Insert<OutletContactDto>(Contacts);
+                                    if (TResult.Equals("0"))
+                                        TResult = MasterModule.Handler.RepositoryV2.Insert<OutletAccountDto>(Accounts);
+
                                     e.Cancel = false;
                                     e.Result = idx;
                                 }
@@ -1233,7 +1240,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                             }
                             else oc.Email = string.Empty;
 
-                            mm.Contacts.Add(oc);
+                            //mm.Contacts.Add(oc);
                             Contacts.Add(oc);
                         }
                     }
@@ -1275,7 +1282,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                             }
                             else oc.Email = string.Empty;
 
-                            mm.Contacts.Add(oc);
+                            //mm.Contacts.Add(oc);
                             Contacts.Add(oc);
                         }
                     }
@@ -1317,7 +1324,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                             }
                             else oc.Email = string.Empty;
 
-                            mm.Contacts.Add(oc);
+                            //mm.Contacts.Add(oc);
                             Contacts.Add(oc);
                         }
                     }
@@ -1359,7 +1366,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                             }
                             else oc.Email = string.Empty;
 
-                            mm.Contacts.Add(oc);
+                            //mm.Contacts.Add(oc);
                             Contacts.Add(oc);
                         }
                     }
@@ -1408,7 +1415,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                             //    oa.BankName = bm.Name;
                             //}
 
-                            mm.Accounts.Add(oa);
+                            //mm.Accounts.Add(oa);
                             Accounts.Add(oa);
                         }
                     }
@@ -1453,7 +1460,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                             //    oa.BankName = bm.Name;
                             //}
 
-                            mm.Accounts.Add(oa);
+                            //mm.Accounts.Add(oa);
                             Accounts.Add(oa);
                         }
                     }
@@ -1497,7 +1504,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                             //    oa.BankName = bm.Name;
                             //}
 
-                            mm.Accounts.Add(oa);
+                            //mm.Accounts.Add(oa);
                             Accounts.Add(oa);
                         }
                     }
@@ -1542,7 +1549,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                             //    oa.BankName = bm.Name;
                             //}
 
-                            mm.Accounts.Add(oa);
+                            //mm.Accounts.Add(oa);
                             Accounts.Add(oa);
                         }
                     }
@@ -1551,7 +1558,7 @@ namespace InFresh.Master.v1.Wizards.Imports
 
                     #endregion
 
-                    mm.Part1s.Add(m1);
+                    //mm.Part1s.Add(m1);
                     Part1s.Add(m1);
                     Data.Add(mm);
                     ii++;

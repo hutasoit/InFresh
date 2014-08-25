@@ -173,6 +173,9 @@
     <Content Include="..\InFresh.Globalization\Resources\ic_search.png">
       <Link>Resources\ic_search.png</Link>
     </Content>
+    <Content Include="..\InFresh.Globalization\Resources\ic_setting.png">
+      <Link>Resources\ic_setting.png</Link>
+    </Content>
     <Content Include="..\InFresh.Globalization\Resources\ic_upload.png">
       <Link>Resources\ic_upload.png</Link>
     </Content>

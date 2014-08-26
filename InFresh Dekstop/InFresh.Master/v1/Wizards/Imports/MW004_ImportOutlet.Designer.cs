@@ -184,7 +184,7 @@
             this.btnShowData = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.pnlData = new System.Windows.Forms.Panel();
-            this.crlDataLoading = new InFresh.Controls.v1.CircleLoading();
+            this.crlDataLoadinging = new InFresh.Controls.v1.CircleLoading();
             this.leftTabControl1 = new InFresh.Controls.v1.LeftTabControl();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.dgvData = new System.Windows.Forms.DataGridView();
@@ -2025,7 +2025,7 @@
             // 
             // pnlData
             // 
-            this.pnlData.Controls.Add(this.crlDataLoading);
+            this.pnlData.Controls.Add(this.crlDataLoadinging);
             this.pnlData.Controls.Add(this.leftTabControl1);
             this.pnlData.Enabled = false;
             this.pnlData.Location = new System.Drawing.Point(12, 446);
@@ -2033,24 +2033,24 @@
             this.pnlData.Size = new System.Drawing.Size(860, 290);
             this.pnlData.TabIndex = 74;
             // 
-            // crlDataLoading
+            // crlDataLoadinging
             // 
-            this.crlDataLoading.Active = true;
-            this.crlDataLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.crlDataLoading.BackColor = System.Drawing.Color.White;
-            this.crlDataLoading.Color = System.Drawing.Color.DarkGray;
-            this.crlDataLoading.InnerCircleRadius = 5;
-            this.crlDataLoading.Location = new System.Drawing.Point(393, 134);
-            this.crlDataLoading.Name = "crlDataLoading";
-            this.crlDataLoading.NumberSpoke = 12;
-            this.crlDataLoading.OuterCircleRadius = 11;
-            this.crlDataLoading.RotationSpeed = 100;
-            this.crlDataLoading.Size = new System.Drawing.Size(75, 23);
-            this.crlDataLoading.SpokeThickness = 2;
-            this.crlDataLoading.StylePreset = InFresh.Controls.v1.CircleLoading.StylePresets.MacOSX;
-            this.crlDataLoading.TabIndex = 52;
-            this.crlDataLoading.Text = "Loading...";
-            this.crlDataLoading.Visible = false;
+            this.crlDataLoadinging.Active = true;
+            this.crlDataLoadinging.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.crlDataLoadinging.BackColor = System.Drawing.Color.White;
+            this.crlDataLoadinging.Color = System.Drawing.Color.DarkGray;
+            this.crlDataLoadinging.InnerCircleRadius = 5;
+            this.crlDataLoadinging.Location = new System.Drawing.Point(393, 134);
+            this.crlDataLoadinging.Name = "crlDataLoadinging";
+            this.crlDataLoadinging.NumberSpoke = 12;
+            this.crlDataLoadinging.OuterCircleRadius = 11;
+            this.crlDataLoadinging.RotationSpeed = 100;
+            this.crlDataLoadinging.Size = new System.Drawing.Size(75, 23);
+            this.crlDataLoadinging.SpokeThickness = 2;
+            this.crlDataLoadinging.StylePreset = InFresh.Controls.v1.CircleLoading.StylePresets.MacOSX;
+            this.crlDataLoadinging.TabIndex = 52;
+            this.crlDataLoadinging.Text = "Loading...";
+            this.crlDataLoadinging.Visible = false;
             // 
             // leftTabControl1
             // 
@@ -3031,7 +3031,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgxAccNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgxBAddition;
         private InFresh.Controls.v1.CircleLoading crlFieldLoading;
-        private InFresh.Controls.v1.CircleLoading crlDataLoading;
+        private InFresh.Controls.v1.CircleLoading crlDataLoadinging;
         private System.Windows.Forms.ToolStripStatusLabel tsxStatus;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripProgressBar tspProgress;

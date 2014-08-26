@@ -13,6 +13,7 @@ using InFresh.Framework.v1.Globals;
 using InFresh.Framework.v1.Models.Details;
 using InFresh.Framework.v1.Models.Masters;
 using InFresh.Framework.v1.Models.Systems;
+using InFresh.Master.v1.Enums;
 using InFresh.Master.v1.Implements;
 using InFresh.Master.v1.Lists;
 using InFresh.Utilization.v1.OleProcessor;
@@ -98,7 +99,7 @@ namespace InFresh.Master.v1.Wizards.Imports
             tsxStatus.Text = MasterModule.Handler.Resources.GetString("Load_References");
 
             if (!bgwWorker.IsBusy)
-                bgwWorker.RunWorkerAsync(ImportSequence.FormLoad);
+                bgwWorker.RunWorkerAsync(Flag.FormLoading);
         }
 
         /// <summary>
@@ -138,9 +139,9 @@ namespace InFresh.Master.v1.Wizards.Imports
             if (sender == btnShowData)
             {
                 pnlData.Enabled = btnShowData.Enabled = false;
-                crlDataLoading.Visible = true;
+                crlDataLoadinging.Visible = true;
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(ImportSequence.DataLoad);
+                    bgwWorker.RunWorkerAsync(Flag.DataLoading);
                 return;
             }
 
@@ -154,7 +155,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 tspProgress.Value = 0;
 
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(ImportSequence.DataSaving);
+                    bgwWorker.RunWorkerAsync(Flag.DataSaving);
                 return;
             }
 
@@ -215,7 +216,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                     Data.Clear();
 
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(ImportSequence.SheetLoad);
+                    bgwWorker.RunWorkerAsync(Flag.SheetLoading);
                 return;
             }
 
@@ -227,7 +228,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                     Template = null;
 
                 if (!bgwWorker.IsBusy)
-                    bgwWorker.RunWorkerAsync(ImportSequence.TemplateLoad);
+                    bgwWorker.RunWorkerAsync(Flag.TemplateLoading);
                 return;
             }
         }
@@ -252,7 +253,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                     else if (ext.Equals(".csv")) { }
 
                     if (!bgwWorker.IsBusy)
-                        bgwWorker.RunWorkerAsync(ImportSequence.FileLoad);
+                        bgwWorker.RunWorkerAsync(Flag.FileLoading);
                 }
                 return;
             }
@@ -277,15 +278,15 @@ namespace InFresh.Master.v1.Wizards.Imports
         {
             if (sender == bgwWorker)
             {
-                ImportSequence idx = ImportSequence.IDLE;
+                Flag idx = Flag.IDLE;
                 try
                 {
-                    idx = (ImportSequence)e.Argument;
-                    if (idx != ImportSequence.IDLE)
+                    idx = (Flag)e.Argument;
+                    if (idx != Flag.IDLE)
                     {
                         switch (idx)
                         {
-                            case ImportSequence.FormLoad:
+                            case Flag.FormLoading:
                                 if (Templates != null)
                                     Templates.Clear();
 
@@ -304,7 +305,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                 e.Cancel = false;
                                 e.Result = idx;
                                 break;
-                            case ImportSequence.DataSaving:
+                            case Flag.DataSaving:
                                 try
                                 {
                                     TResult = MasterModule.Handler.RepositoryV2.Insert<OutletDto>(Data);
@@ -324,7 +325,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                     e.Result = ex.Message;
                                 }
                                 break;
-                            case ImportSequence.TemplateSaving:
+                            case Flag.TemplateSaving:
                                 try
                                 {
                                     TResult = MasterModule.Handler.RepositoryV2.Insert<Template1Dto>(Template);
@@ -376,27 +377,27 @@ namespace InFresh.Master.v1.Wizards.Imports
             {
                 if (!e.Cancelled)
                 {
-                    ImportSequence idx = ImportSequence.IDLE;
+                    Flag idx = Flag.IDLE;
 
                     try
                     {
-                        idx = (ImportSequence)e.Result;
-                        if (idx != ImportSequence.IDLE)
+                        idx = (Flag)e.Result;
+                        if (idx != Flag.IDLE)
                         {
                             switch (idx)
                             {
-                                case ImportSequence.FormLoad:
+                                case Flag.FormLoading:
                                     btnBrowse.Enabled = true;
                                     tspProgress.Visible = false;
                                     tsxStatus.Text = MasterModule.Handler.Resources.GetString("Ready");
                                     break;
-                                case ImportSequence.FileLoad:
+                                case Flag.FileLoading:
                                     cmbSheet.DataSource = new BindingSource(Processor.GetSheets(), null);
                                     cmbSheet.DisplayMember = "Value";
                                     cmbSheet.ValueMember = "Key";
                                     cmbSheet.SelectedIndex = 0;
                                     break;
-                                case ImportSequence.SheetLoad:
+                                case Flag.SheetLoading:
                                     ReadHeaderFile();
 
                                     cmbTemplate.DataSource = Templates;
@@ -414,10 +415,10 @@ namespace InFresh.Master.v1.Wizards.Imports
                                     cmbSheet.Enabled = pnlField.Enabled = btnShowData.Enabled = true;
                                     crlFieldLoading.Visible = false;
                                     break;
-                                case ImportSequence.TemplateLoad:
+                                case Flag.TemplateLoading:
                                     ReadTemplate();
                                     break;
-                                case ImportSequence.DataLoad:
+                                case Flag.DataLoading:
                                     if (MappingValid())
                                     {
                                         if (MappingValue())
@@ -440,9 +441,9 @@ namespace InFresh.Master.v1.Wizards.Imports
                                         pnlData.Enabled = false;
                                     }
                                     pnlField.Enabled = btnShowData.Enabled = true;
-                                    crlDataLoading.Visible = false;
+                                    crlDataLoadinging.Visible = false;
                                     break;
-                                case ImportSequence.DataSaving:
+                                case Flag.DataSaving:
                                     if (TResult.Equals("0"))
                                     {
                                         if (cmbTemplate.SelectedIndex == 0)
@@ -459,7 +460,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                                 tspProgress.Value = 0;
 
                                                 if (!bgwWorker.IsBusy)
-                                                    bgwWorker.RunWorkerAsync(ImportSequence.TemplateSaving);
+                                                    bgwWorker.RunWorkerAsync(Flag.TemplateSaving);
                                             }
                                             else
                                                 this.Close();
@@ -468,7 +469,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                             this.Close();
                                     }
                                     break;
-                                case ImportSequence.TemplateSaving:
+                                case Flag.TemplateSaving:
                                     if (TResult.Equals("0"))
                                     {
                                         tsxStatus.Text = "Complete all task";
@@ -1616,7 +1617,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 1,
+                //        Flag = 1,
                 //        Source = cmbNameField.SelectedValue.ToString(),
                 //        Destination = "SDSDNM"
                 //    });
@@ -1624,7 +1625,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 1,
+                //        Flag = 1,
                 //        Source = string.Empty,
                 //        Destination = "SDSDNM"
                 //    });
@@ -1634,7 +1635,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 2,
+                //        Flag = 2,
                 //        Source = cmbOldCodeField.SelectedValue.ToString(),
                 //        Destination = "SDSDON"
                 //    });
@@ -1643,7 +1644,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 2,
+                //        Flag = 2,
                 //        Source = string.Empty,
                 //        Destination = "SDSDON"
                 //    });
@@ -1652,7 +1653,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 3,
+                //        Flag = 3,
                 //        Source = cmbAdd1Field.SelectedValue.ToString(),
                 //        Destination = "SDADD1"
                 //    });
@@ -1660,7 +1661,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 3,
+                //        Flag = 3,
                 //        Source = string.Empty,
                 //        Destination = "SDADD1"
                 //    });
@@ -1669,7 +1670,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 4,
+                //        Flag = 4,
                 //        Source = cmbAdd2Field.SelectedValue.ToString(),
                 //        Destination = "SDADD2"
                 //    });
@@ -1677,7 +1678,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 4,
+                //        Flag = 4,
                 //        Source = string.Empty,
                 //        Destination = "SDADD2"
                 //    });
@@ -1686,7 +1687,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 5,
+                //        Flag = 5,
                 //        Source = cmbCityField.SelectedValue.ToString(),
                 //        Destination = "SDCITY"
                 //    });
@@ -1694,7 +1695,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 5,
+                //        Flag = 5,
                 //        Source = string.Empty,
                 //        Destination = "SDCITY"
                 //    });
@@ -1703,7 +1704,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 6,
+                //        Flag = 6,
                 //        Source = cmbZipCodeField.SelectedValue.ToString(),
                 //        Destination = "SDZPCD"
                 //    });
@@ -1711,7 +1712,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 6,
+                //        Flag = 6,
                 //        Source = string.Empty,
                 //        Destination = "SDZPCD"
                 //    });
@@ -1720,7 +1721,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 7,
+                //        Flag = 7,
                 //        Source = cmbPhone1Field.SelectedValue.ToString(),
                 //        Destination = "SDPHN1"
                 //    });
@@ -1728,7 +1729,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 7,
+                //        Flag = 7,
                 //        Source = string.Empty,
                 //        Destination = "SDPHN1"
                 //    });
@@ -1737,7 +1738,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 8,
+                //        Flag = 8,
                 //        Source = cmbFax1Field.SelectedValue.ToString(),
                 //        Destination = "SDFAX1"
                 //    });
@@ -1745,7 +1746,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                 //    FieldsTemplate.Add(new Template2Dto()
                 //    {
                 //        Code = code,
-                //        Sequence = 8,
+                //        Flag = 8,
                 //        Source = string.Empty,
                 //        Destination = "SDFAX1"
                 //    });

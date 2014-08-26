@@ -97,6 +97,15 @@ namespace InFresh.Globalization.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel Changes.
+        /// </summary>
+        internal static string Cancel_Changes {
+            get {
+                return ResourceManager.GetString("Cancel_Changes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Master &amp;Employee.
         /// </summary>
         internal static string Employee {
@@ -211,6 +220,15 @@ namespace InFresh.Globalization.Localization {
         internal static string Ready {
             get {
                 return ResourceManager.GetString("Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Record {0} of {1}.
+        /// </summary>
+        internal static string Record_Number {
+            get {
+                return ResourceManager.GetString("Record_Number", resourceCulture);
             }
         }
         

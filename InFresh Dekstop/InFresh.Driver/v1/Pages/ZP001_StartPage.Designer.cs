@@ -57,13 +57,16 @@
             this.stsStatusbar.SizingGrip = false;
             this.stsStatusbar.TabIndex = 5;
             this.stsStatusbar.Text = "statusStrip1";
-            this.stsStatusbar.Visible = false;
             // 
             // stxStatus
             // 
+            this.stxStatus.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.stxStatus.MergeIndex = 0;
             this.stxStatus.Name = "stxStatus";
-            this.stxStatus.Size = new System.Drawing.Size(103, 17);
-            this.stxStatus.Text = "Application Ready";
+            this.stxStatus.Size = new System.Drawing.Size(736, 17);
+            this.stxStatus.Spring = true;
+            this.stxStatus.Text = "Ready";
+            this.stxStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // stxGap
             // 
@@ -72,6 +75,8 @@
             // 
             // stpProgress
             // 
+            this.stpProgress.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            this.stpProgress.MergeIndex = 2;
             this.stpProgress.Name = "stpProgress";
             this.stpProgress.Size = new System.Drawing.Size(100, 16);
             this.stpProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -84,8 +89,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(884, 561);
-            this.panel1.TabIndex = 6;
+            this.panel1.Size = new System.Drawing.Size(884, 539);
+            this.panel1.TabIndex = 7;
             // 
             // panel2
             // 
@@ -98,7 +103,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(290, 561);
+            this.panel2.Size = new System.Drawing.Size(290, 539);
             this.panel2.TabIndex = 0;
             // 
             // lnkExport
@@ -115,7 +120,6 @@
             this.lnkExport.TabStop = true;
             this.lnkExport.Text = "Export Data To File...";
             this.lnkExport.VisitedLinkColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lnkExport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkItem_LinkClicked);
             // 
             // lnkImport
             // 
@@ -131,7 +135,6 @@
             this.lnkImport.TabStop = true;
             this.lnkImport.Text = "Import Data From File...";
             this.lnkImport.VisitedLinkColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lnkImport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkItem_LinkClicked);
             // 
             // lnkNew
             // 
@@ -147,7 +150,6 @@
             this.lnkNew.TabStop = true;
             this.lnkNew.Text = "New Data...";
             this.lnkNew.VisitedLinkColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lnkNew.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkItem_LinkClicked);
             // 
             // label1
             // 
@@ -170,20 +172,23 @@
             this.lblApplication.TabIndex = 0;
             this.lblApplication.Text = "InFresh";
             // 
-            // P001_StartPage
+            // ZP001_StartPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.stsStatusbar);
+            this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 600);
-            this.Name = "P001_StartPage";
+            this.Name = "ZP001_StartPage";
             this.Text = "P001_StartPage";
+            this.DockStateChanged += new System.EventHandler(this.Form_DockStateChanged);
             this.Activated += new System.EventHandler(this.Form_Activated);
             this.Deactivate += new System.EventHandler(this.Form_Deactivate);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closing);
             this.stsStatusbar.ResumeLayout(false);
             this.stsStatusbar.PerformLayout();
             this.panel1.ResumeLayout(false);

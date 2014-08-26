@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using InFresh.Framework.v1.Models.Masters;
+using InFresh.Master.v1.Enums;
 using InFresh.Master.v1.Implements;
 using InFresh.Master.v1.Wizards;
 
@@ -72,17 +73,32 @@ namespace InFresh.Master.v1.Lists
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        private void DataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                Tag = Data[e.RowIndex];
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            ImportSequence idx = ImportSequence.IDLE;
+            Flag idx = Flag.IDLE;
             try
             {
-                idx = (ImportSequence)e.Argument;
-                if (idx != ImportSequence.IDLE)
+                idx = (Flag)e.Argument;
+                if (idx != Flag.IDLE)
                 {
                     switch (idx)
                     {
-                        case ImportSequence.DataLoad:
+                        case Flag.DataLoading:
                             if (Data != null)
                                 Data.Clear();
                             Data = MasterModule.Handler.RepositoryV2.Get<SubdepoDto>()
@@ -106,15 +122,15 @@ namespace InFresh.Master.v1.Lists
         /// <param name="e"></param>
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            ImportSequence idx = ImportSequence.IDLE;
+            Flag idx = Flag.IDLE;
             try
             {
-                idx = (ImportSequence)e.Result;
-                if (idx != ImportSequence.IDLE)
+                idx = (Flag)e.Result;
+                if (idx != Flag.IDLE)
                 {
                     switch (idx)
                     {
-                        case ImportSequence.DataLoad:
+                        case Flag.DataLoading:
                             dgvData.DataSource = null;
                             dgvData.DataSource = Data;
                             Tag = Data[0];
@@ -141,7 +157,9 @@ namespace InFresh.Master.v1.Lists
             dgvData.Enabled = btnOK.Enabled = btnCancel.Enabled = false;
             crlLoading.Visible = true;
             if (!bgwWorker.IsBusy)
-                bgwWorker.RunWorkerAsync(ImportSequence.DataLoad);
+                bgwWorker.RunWorkerAsync(Flag.DataLoading);
         }
+
+        
     }
 }

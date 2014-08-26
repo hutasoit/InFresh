@@ -193,4 +193,10 @@
   <data name="Outlet" xml:space="preserve">
     <value>Master &amp;Outlet</value>
   </data>
+  <data name="Record_Number" xml:space="preserve">
+    <value>Record {0} of {1}</value>
+  </data>
+  <data name="Cancel_Changes" xml:space="preserve">
+    <value>Cancel Changes</value>
+  </data>
 </root>

@@ -66,7 +66,7 @@
             this.btnShowData = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.pnlData = new System.Windows.Forms.Panel();
-            this.crlDataLoading = new InFresh.Controls.v1.CircleLoading();
+            this.crlDataLoadinging = new InFresh.Controls.v1.CircleLoading();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.dtxCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgxOlCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -472,7 +472,7 @@
             // pnlData
             // 
             this.pnlData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlData.Controls.Add(this.crlDataLoading);
+            this.pnlData.Controls.Add(this.crlDataLoadinging);
             this.pnlData.Controls.Add(this.dgvData);
             this.pnlData.Enabled = false;
             this.pnlData.Location = new System.Drawing.Point(319, 83);
@@ -480,24 +480,24 @@
             this.pnlData.Size = new System.Drawing.Size(524, 324);
             this.pnlData.TabIndex = 84;
             // 
-            // crlDataLoading
+            // crlDataLoadinging
             // 
-            this.crlDataLoading.Active = true;
-            this.crlDataLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.crlDataLoading.BackColor = System.Drawing.Color.White;
-            this.crlDataLoading.Color = System.Drawing.Color.DarkGray;
-            this.crlDataLoading.InnerCircleRadius = 5;
-            this.crlDataLoading.Location = new System.Drawing.Point(224, 150);
-            this.crlDataLoading.Name = "crlDataLoading";
-            this.crlDataLoading.NumberSpoke = 12;
-            this.crlDataLoading.OuterCircleRadius = 11;
-            this.crlDataLoading.RotationSpeed = 100;
-            this.crlDataLoading.Size = new System.Drawing.Size(75, 23);
-            this.crlDataLoading.SpokeThickness = 2;
-            this.crlDataLoading.StylePreset = InFresh.Controls.v1.CircleLoading.StylePresets.MacOSX;
-            this.crlDataLoading.TabIndex = 51;
-            this.crlDataLoading.Text = "Loading...";
-            this.crlDataLoading.Visible = false;
+            this.crlDataLoadinging.Active = true;
+            this.crlDataLoadinging.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.crlDataLoadinging.BackColor = System.Drawing.Color.White;
+            this.crlDataLoadinging.Color = System.Drawing.Color.DarkGray;
+            this.crlDataLoadinging.InnerCircleRadius = 5;
+            this.crlDataLoadinging.Location = new System.Drawing.Point(224, 150);
+            this.crlDataLoadinging.Name = "crlDataLoadinging";
+            this.crlDataLoadinging.NumberSpoke = 12;
+            this.crlDataLoadinging.OuterCircleRadius = 11;
+            this.crlDataLoadinging.RotationSpeed = 100;
+            this.crlDataLoadinging.Size = new System.Drawing.Size(75, 23);
+            this.crlDataLoadinging.SpokeThickness = 2;
+            this.crlDataLoadinging.StylePreset = InFresh.Controls.v1.CircleLoading.StylePresets.MacOSX;
+            this.crlDataLoadinging.TabIndex = 51;
+            this.crlDataLoadinging.Text = "Loading...";
+            this.crlDataLoadinging.Visible = false;
             // 
             // dgvData
             // 
@@ -656,7 +656,7 @@
         private System.Windows.Forms.Button btnShowData;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Panel pnlData;
-        private InFresh.Controls.v1.CircleLoading crlDataLoading;
+        private InFresh.Controls.v1.CircleLoading crlDataLoadinging;
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtxCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgxOlCode;

@@ -109,6 +109,16 @@ namespace InFresh.Framework.v1.Models.Masters
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return Code.Equals((obj as SubdepoDto).Code);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public override string ToString()
         {

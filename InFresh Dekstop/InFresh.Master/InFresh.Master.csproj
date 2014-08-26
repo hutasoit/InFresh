@@ -43,6 +43,14 @@
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="GMap.NET.Core">
+      <HintPath>..\packages\GMap.NET.WindowsForms.1.7\lib\net40\GMap.NET.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsForms">
+      <HintPath>..\packages\GMap.NET.WindowsForms.1.7\lib\net40\GMap.NET.WindowsForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -77,6 +85,7 @@
     <Compile Include="v1\Controls\MasterMenu.Designer.cs">
       <DependentUpon>MasterMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="v1\Enums\Flag.cs" />
     <Compile Include="v1\Forms\M0001_MasterWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,7 +148,6 @@
     <Compile Include="v1\Wizards\Imports\MW003_ImportSupplier.Designer.cs">
       <DependentUpon>MW003_ImportSupplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="v1\Wizards\ImportSequence.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -225,6 +233,9 @@
     </Content>
     <Content Include="..\InFresh.Globalization\Resources\ic_left.png">
       <Link>Resources\ic_left.png</Link>
+    </Content>
+    <Content Include="..\InFresh.Globalization\Resources\ic_list.png">
+      <Link>Resources\ic_list.png</Link>
     </Content>
     <Content Include="..\InFresh.Globalization\Resources\ic_refresh.png">
       <Link>Resources\ic_refresh.png</Link>

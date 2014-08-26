@@ -31,14 +31,14 @@
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGeneral = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMaster = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSubdepo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEmployee = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiSupplier = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOutlet = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdministration = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSubdepo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSupplier = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiOutlet = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEmployee = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.SuspendLayout();
             // 
             // tsmiFile
@@ -65,6 +65,39 @@
             this.tsmiMaster.Size = new System.Drawing.Size(82, 20);
             this.tsmiMaster.Text = "&Master Data";
             // 
+            // tsmiSubdepo
+            // 
+            this.tsmiSubdepo.Name = "tsmiSubdepo";
+            this.tsmiSubdepo.Size = new System.Drawing.Size(165, 22);
+            this.tsmiSubdepo.Text = "Master &Subdepo";
+            this.tsmiSubdepo.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
+            // tsmiEmployee
+            // 
+            this.tsmiEmployee.Name = "tsmiEmployee";
+            this.tsmiEmployee.Size = new System.Drawing.Size(165, 22);
+            this.tsmiEmployee.Text = "Master &Employee";
+            this.tsmiEmployee.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
+            // 
+            // tsmiSupplier
+            // 
+            this.tsmiSupplier.Name = "tsmiSupplier";
+            this.tsmiSupplier.Size = new System.Drawing.Size(165, 22);
+            this.tsmiSupplier.Text = "Master Su&pplier";
+            this.tsmiSupplier.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
+            // tsmiOutlet
+            // 
+            this.tsmiOutlet.Name = "tsmiOutlet";
+            this.tsmiOutlet.Size = new System.Drawing.Size(165, 22);
+            this.tsmiOutlet.Text = "Master &Outlet";
+            this.tsmiOutlet.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
             // tsmiAdministration
             // 
             this.tsmiAdministration.Name = "tsmiAdministration";
@@ -82,39 +115,6 @@
             this.tsmiHelp.Name = "tsmiHelp";
             this.tsmiHelp.Size = new System.Drawing.Size(44, 20);
             this.tsmiHelp.Text = "&Help";
-            // 
-            // tsmiSubdepo
-            // 
-            this.tsmiSubdepo.Name = "tsmiSubdepo";
-            this.tsmiSubdepo.Size = new System.Drawing.Size(181, 22);
-            this.tsmiSubdepo.Text = "Master &Subdepo";
-            this.tsmiSubdepo.Click += new System.EventHandler(this.MenuItem_Click);
-            // 
-            // tsmiSupplier
-            // 
-            this.tsmiSupplier.Name = "tsmiSupplier";
-            this.tsmiSupplier.Size = new System.Drawing.Size(181, 22);
-            this.tsmiSupplier.Text = "Master Su&pplier";
-            this.tsmiSupplier.Click += new System.EventHandler(this.MenuItem_Click);
-            // 
-            // tsmiOutlet
-            // 
-            this.tsmiOutlet.Name = "tsmiOutlet";
-            this.tsmiOutlet.Size = new System.Drawing.Size(181, 22);
-            this.tsmiOutlet.Text = "Master &Outlet";
-            this.tsmiOutlet.Click += new System.EventHandler(this.MenuItem_Click);
-            // 
-            // tsmiEmployee
-            // 
-            this.tsmiEmployee.Name = "tsmiEmployee";
-            this.tsmiEmployee.Size = new System.Drawing.Size(165, 22);
-            this.tsmiEmployee.Text = "Master &Employee";
-            this.tsmiEmployee.Click += new System.EventHandler(this.MenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
             // 
             // MasterMenu
             // 

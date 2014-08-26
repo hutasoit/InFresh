@@ -233,6 +233,16 @@ namespace InFresh.Globalization.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_list {
+            get {
+                object obj = ResourceManager.GetObject("ic_list", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_lock {
             get {
                 object obj = ResourceManager.GetObject("ic_lock", resourceCulture);

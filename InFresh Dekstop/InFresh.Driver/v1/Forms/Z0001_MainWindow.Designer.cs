@@ -57,10 +57,18 @@
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAboutApp = new System.Windows.Forms.ToolStripMenuItem();
             this.stsStatusbar = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tlsToolbar = new System.Windows.Forms.ToolStrip();
             this.dckMainPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.thmVs2012 = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
+            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.mnsMenubar.SuspendLayout();
+            this.stsStatusbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnsMenubar
@@ -164,12 +172,45 @@
             // 
             // stsStatusbar
             // 
+            this.stsStatusbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel4,
+            this.toolStripStatusLabel5,
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel6,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel7,
+            this.toolStripStatusLabel3});
             this.stsStatusbar.Location = new System.Drawing.Point(0, 447);
             this.stsStatusbar.Name = "stsStatusbar";
             this.stsStatusbar.Size = new System.Drawing.Size(845, 22);
             this.stsStatusbar.SizingGrip = false;
             this.stsStatusbar.TabIndex = 13;
             this.stsStatusbar.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(551, 17);
+            this.toolStripStatusLabel4.Spring = true;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(120, 17);
+            this.toolStripStatusLabel1.Text = "Database Connection";
+            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(60, 17);
+            this.toolStripStatusLabel2.Text = "Username";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(87, 17);
+            this.toolStripStatusLabel3.Text = "Copyright 2014";
             // 
             // tlsToolbar
             // 
@@ -239,6 +280,24 @@
             this.dckMainPanel.TabIndex = 16;
             this.dckMainPanel.Theme = this.thmVs2012;
             // 
+            // toolStripStatusLabel6
+            // 
+            this.toolStripStatusLabel6.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(4, 17);
+            // 
+            // toolStripStatusLabel7
+            // 
+            this.toolStripStatusLabel7.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
+            this.toolStripStatusLabel7.Size = new System.Drawing.Size(4, 17);
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(4, 17);
+            // 
             // Z0001_MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,6 +316,8 @@
             this.Load += new System.EventHandler(this.Form_Load);
             this.mnsMenubar.ResumeLayout(false);
             this.mnsMenubar.PerformLayout();
+            this.stsStatusbar.ResumeLayout(false);
+            this.stsStatusbar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,5 +341,12 @@
         public System.Windows.Forms.ToolStrip tlsToolbar;
         public WeifenLuo.WinFormsUI.Docking.DockPanel dckMainPanel;
         private System.Windows.Forms.ToolStripMenuItem tsmiAboutApp;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
     }
 }

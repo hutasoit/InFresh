@@ -6,7 +6,7 @@ using System.Text;
 
 namespace InFresh.Framework.v1.Interfaces
 {
-    public interface INewRepository
+    public interface IRepositoryV2
     {
         IEnumerable<TEntity> Get<TEntity>(Expression<Func<TEntity, bool>> predicate = null)
             where TEntity : class;
@@ -23,6 +23,8 @@ namespace InFresh.Framework.v1.Interfaces
         string Update<TEntity>(TEntity t) where TEntity : class;
 
         string Update<TEntity>(IList<TEntity> dt) where TEntity : class;
+
+        string Delete<TEntity>(string id) where TEntity : class;
 
         string Delete<TEntity>(TEntity t = null) where TEntity : class;
 

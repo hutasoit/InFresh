@@ -106,6 +106,33 @@ namespace InFresh.Globalization.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure to cancel all changes?.
+        /// </summary>
+        internal static string Cancel_Save {
+            get {
+                return ResourceManager.GetString("Cancel_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to leave the window without saving data?.
+        /// </summary>
+        internal static string Close_Without_Save {
+            get {
+                return ResourceManager.GetString("Close_Without_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete {0}.
+        /// </summary>
+        internal static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Master &amp;Employee.
         /// </summary>
         internal static string Employee {
@@ -206,6 +233,24 @@ namespace InFresh.Globalization.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure to delete data {0}?.
+        /// </summary>
+        internal static string Msg_Delete {
+            get {
+                return ResourceManager.GetString("Msg_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to clear all data?.
+        /// </summary>
+        internal static string Msg_Delete_All {
+            get {
+                return ResourceManager.GetString("Msg_Delete_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Master &amp;Outlet.
         /// </summary>
         internal static string Outlet {
@@ -278,6 +323,15 @@ namespace InFresh.Globalization.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Code suggested is {0}..
+        /// </summary>
+        internal static string Suggested_Code {
+            get {
+                return ResourceManager.GetString("Suggested_Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Master Su&amp;pplier.
         /// </summary>
         internal static string Supplier {
@@ -292,6 +346,15 @@ namespace InFresh.Globalization.Localization {
         internal static string Tools {
             get {
                 return ResourceManager.GetString("Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable close the window with background running!.
+        /// </summary>
+        internal static string Unable_Close {
+            get {
+                return ResourceManager.GetString("Unable_Close", resourceCulture);
             }
         }
         

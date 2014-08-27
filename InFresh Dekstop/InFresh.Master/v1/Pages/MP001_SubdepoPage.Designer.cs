@@ -87,6 +87,7 @@
             this.txtPhone1 = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.bgwMap = new System.ComponentModel.BackgroundWorker();
             this.tlsToolbar.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFoto)).BeginInit();
@@ -159,7 +160,7 @@
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "New";
+            this.tsbNew.Text = "New (Ctrl + N)";
             this.tsbNew.ToolTipText = "New Record";
             this.tsbNew.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
@@ -171,7 +172,7 @@
             this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Text = "Edit";
+            this.tsbEdit.Text = "Edit (F2)";
             this.tsbEdit.ToolTipText = "Edit Selected Record";
             this.tsbEdit.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
@@ -183,7 +184,7 @@
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "Save";
+            this.tsbSave.Text = "Save (Ctrl + S)";
             this.tsbSave.ToolTipText = "Commit Changes";
             this.tsbSave.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
@@ -205,7 +206,7 @@
             // 
             this.tsbDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbDelete.Image")));
             this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(128, 22);
+            this.tsbDelete.Size = new System.Drawing.Size(152, 22);
             this.tsbDelete.Text = "Delete";
             this.tsbDelete.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
@@ -213,7 +214,7 @@
             // 
             this.tsbTruncate.Image = ((System.Drawing.Image)(resources.GetObject("tsbTruncate.Image")));
             this.tsbTruncate.Name = "tsbTruncate";
-            this.tsbTruncate.Size = new System.Drawing.Size(128, 22);
+            this.tsbTruncate.Size = new System.Drawing.Size(152, 22);
             this.tsbTruncate.Text = "Clear Data";
             this.tsbTruncate.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
@@ -420,6 +421,8 @@
             // 
             // ofdFileDialog
             // 
+            this.ofdFileDialog.Filter = "Image Files (*.bmp;*.gif;*.jpeg;*.jpg;*.png;*.tif)|*.bmp;*.gif;*.jpeg;*.jpg;*.png" +
+    ";*.tif";
             this.ofdFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.OpenFileDialog_FileOk);
             // 
             // stsStatusbar
@@ -715,6 +718,12 @@
             this.label9.TabIndex = 148;
             this.label9.Text = "Fax";
             // 
+            // bgwMap
+            // 
+            this.bgwMap.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_DoWork);
+            this.bgwMap.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker_ProgressChanged);
+            this.bgwMap.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker_RunWorkerCompleted);
+            // 
             // MP001_SubdepoPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -742,6 +751,7 @@
             this.DockStateChanged += new System.EventHandler(this.Form_DockStateChanged);
             this.Activated += new System.EventHandler(this.Form_Activated);
             this.Deactivate += new System.EventHandler(this.Form_Deactivate);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
             this.Load += new System.EventHandler(this.Form_Load);
             this.tlsToolbar.ResumeLayout(false);
@@ -819,6 +829,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tsxStatus;
         private System.Windows.Forms.ToolStripStatusLabel stxGap;
         private System.Windows.Forms.ToolStripProgressBar tspProgress;
+        private System.ComponentModel.BackgroundWorker bgwMap;
 
     }
 }

@@ -403,9 +403,7 @@ namespace InFresh.Framework.v1.Base
             {
                 DbSet<TEntity> set = Context.Set<TEntity>();
                 if (Context.Entry(t).State == EntityState.Detached)
-                {
                     set.Attach(t);
-                }
                 var obj = set.Remove(t);
                 if (obj.Equals(t))
                     return 0;

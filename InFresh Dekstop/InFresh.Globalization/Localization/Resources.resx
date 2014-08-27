@@ -199,4 +199,25 @@
   <data name="Cancel_Changes" xml:space="preserve">
     <value>Cancel Changes</value>
   </data>
+  <data name="Suggested_Code" xml:space="preserve">
+    <value>Code suggested is {0}.</value>
+  </data>
+  <data name="Close_Without_Save" xml:space="preserve">
+    <value>Are you sure to leave the window without saving data?</value>
+  </data>
+  <data name="Cancel_Save" xml:space="preserve">
+    <value>Are you sure to cancel all changes?</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete {0}</value>
+  </data>
+  <data name="Msg_Delete" xml:space="preserve">
+    <value>Are you sure to delete data {0}?</value>
+  </data>
+  <data name="Msg_Delete_All" xml:space="preserve">
+    <value>Are you sure to clear all data?</value>
+  </data>
+  <data name="Unable_Close" xml:space="preserve">
+    <value>Unable close the window with background running!</value>
+  </data>
 </root>

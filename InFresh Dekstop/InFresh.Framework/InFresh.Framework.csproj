@@ -61,7 +61,7 @@
     <Compile Include="v1\Base\InFreshConfig.cs" />
     <Compile Include="v1\Base\InFreshContext.cs" />
     <Compile Include="v1\Base\InFreshHandler.cs" />
-    <Compile Include="v1\Base\NewUnitOfWork.cs" />
+    <Compile Include="v1\Base\UnitOfWorkV2.cs" />
     <Compile Include="v1\Base\UnitOfWork.cs" />
     <Compile Include="v1\Enums\WizardType.cs" />
     <Compile Include="v1\Globals\GlobalVariables.cs" />
@@ -71,7 +71,7 @@
     <Compile Include="v1\Interfaces\IModuleHandler.cs" />
     <Compile Include="v1\Interfaces\IModuleMetadata.cs" />
     <Compile Include="v1\Interfaces\IRepository.cs" />
-    <Compile Include="v1\Interfaces\INewRepository.cs" />
+    <Compile Include="v1\Interfaces\IRepositoryV2.cs" />
     <Compile Include="v1\Interfaces\IWizard.cs" />
     <Compile Include="v1\Models\Details\OutletAccountDto.cs" />
     <Compile Include="v1\Models\Details\OutletContactDto.cs" />

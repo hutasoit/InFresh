@@ -19,6 +19,7 @@ namespace InFresh.Master.v1.Enums
         DataSaving = 00000050,
         TemplateSaving = 00000060,
         MapLoading = 00000070,
+        PointLoading = 00000071,
 
         // Database's Flag Operation
         DataCreating = 00000100,

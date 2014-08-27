@@ -9,7 +9,7 @@ namespace InFresh.Framework.v1.Models.Masters
 {
     [Serializable()]
     [Table("SBDP")]
-    public class SubdepoDto
+    public class SubdepoDto : IEquatable<SubdepoDto>
     {
         public SubdepoDto()
         {
@@ -123,6 +123,17 @@ namespace InFresh.Framework.v1.Models.Masters
         public override string ToString()
         {
             return string.Format("{0} - {1}", Code, Name);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(SubdepoDto other)
+        {
+            if (other == null) return false;
+            return (this.Code.Equals(other.Code));
         }
     }
 }

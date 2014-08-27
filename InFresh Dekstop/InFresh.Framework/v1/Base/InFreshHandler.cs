@@ -90,7 +90,7 @@ namespace InFresh.Framework.v1.Base
 
         public IRepository Repository { get; set; }
 
-        public INewRepository RepositoryV2 { get; set; }
+        public IRepositoryV2 RepositoryV2 { get; set; }
 
         [ImportMany(typeof(IModule), AllowRecomposition = true)]
         public List<Lazy<IModule, IModuleMetadata>> Modules { get; set; }

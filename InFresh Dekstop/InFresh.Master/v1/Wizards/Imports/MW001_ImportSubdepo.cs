@@ -120,7 +120,7 @@ namespace InFresh.Master.v1.Wizards.Imports
             if (sender == btnShowData)
             {
                 pnlData.Enabled = btnShowData.Enabled = false;
-                crlDataLoadinging.Visible = true;
+                crlDataLoading.Visible = true;
                 if (!bgwWorker.IsBusy)
                     bgwWorker.RunWorkerAsync(Flag.DataLoading);
                 return;
@@ -379,7 +379,7 @@ namespace InFresh.Master.v1.Wizards.Imports
                                         pnlData.Enabled = false;
                                     }
                                     pnlField.Enabled = btnShowData.Enabled = true;
-                                    crlDataLoadinging.Visible = false;
+                                    crlDataLoading.Visible = false;
                                     break;
                                 case Flag.DataSaving:
                                     if (TResult.Equals("0"))

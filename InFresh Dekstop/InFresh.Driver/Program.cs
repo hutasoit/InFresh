@@ -23,7 +23,7 @@ namespace InFresh.Driver
 
             Handler.Initialize();
             Handler.Repository = UnitOfWork.GetInstance();
-            Handler.RepositoryV2 = new NewUnitOfWork();
+            Handler.RepositoryV2 = new UnitOfWorkV2();
 
             Application.Run(Handler.Host.MainWindow);
         }

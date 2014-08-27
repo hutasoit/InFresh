@@ -40,6 +40,7 @@ namespace InFresh.Master.v1.Pages
         /// 
         /// </summary>
         private static int Index { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -135,34 +136,6 @@ namespace InFresh.Master.v1.Pages
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Form_Activated(object sender, EventArgs e)
-        {
-            if (DockState == DockState.Document)
-            {
-                MasterModule.Handler.Host.MergeToolbar(tlsToolbar);
-                MasterModule.Handler.Host.MergeStatusbar(stsStatusbar);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Form_Deactivate(object sender, EventArgs e)
-        {
-            if (DockState == DockState.Document)
-            {
-                MasterModule.Handler.Host.ReverseToolbar(tlsToolbar);
-                MasterModule.Handler.Host.ReverseStatusbar(stsStatusbar);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Form_Closing(object sender, FormClosingEventArgs e)
         {
             if (Flag == Flag.DataCreating || Flag == Flag.DataUpdating)
@@ -199,6 +172,34 @@ namespace InFresh.Master.v1.Pages
         {
             MasterModule.Handler.Host.ReverseToolbar(tlsToolbar);
             MasterModule.Handler.Host.ReverseStatusbar(stsStatusbar);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form_Activated(object sender, EventArgs e)
+        {
+            if (DockState == DockState.Document)
+            {
+                MasterModule.Handler.Host.MergeToolbar(tlsToolbar);
+                MasterModule.Handler.Host.MergeStatusbar(stsStatusbar);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form_Deactivate(object sender, EventArgs e)
+        {
+            if (DockState == DockState.Document)
+            {
+                MasterModule.Handler.Host.ReverseToolbar(tlsToolbar);
+                MasterModule.Handler.Host.ReverseStatusbar(stsStatusbar);
+            }
         }
 
         /// <summary>

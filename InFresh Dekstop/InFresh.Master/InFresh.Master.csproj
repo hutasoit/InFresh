@@ -170,6 +170,12 @@
     <EmbeddedResource Include="v1\Pages\MP001_SubdepoPage.resx">
       <DependentUpon>MP001_SubdepoPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="v1\Pages\MP002_EmployeePage.resx">
+      <DependentUpon>MP002_EmployeePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="v1\Pages\MP003_SupplierPage.resx">
+      <DependentUpon>MP003_SupplierPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="v1\Wizards\Imports\MW001_ImportSubdepo.resx">
       <DependentUpon>MW001_ImportSubdepo.cs</DependentUpon>
     </EmbeddedResource>

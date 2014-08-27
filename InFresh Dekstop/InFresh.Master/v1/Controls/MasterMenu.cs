@@ -31,6 +31,10 @@ namespace InFresh.Master.v1.Controls
                 IDock dock = null;
                 if (sender == tsmiSubdepo)
                     dock = (IDock)Activator.CreateInstance(Type.GetType("InFresh.Master.v1.Pages.MP001_SubdepoPage"));
+                else if(sender == tsmiEmployee)
+                    dock = (IDock)Activator.CreateInstance(Type.GetType("InFresh.Master.v1.Pages.MP002_EmployeePage"));
+                else if (sender == tsmiSupplier)
+                    dock = (IDock)Activator.CreateInstance(Type.GetType("InFresh.Master.v1.Pages.MP003_SupplierPage"));
 
                 if (dock != null)
                     MasterModule.Handler.Host.ShowContent(dock as DockContent, dock.State);

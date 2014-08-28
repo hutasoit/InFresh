@@ -30,11 +30,12 @@
         {
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAdministrative = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSalesArea = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdministration = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAdministrative = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSalesArea = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCode = new System.Windows.Forms.ToolStripMenuItem();
             this.SuspendLayout();
             // 
             // tsmiFile
@@ -52,8 +53,24 @@
             this.tsmiGeneral.Size = new System.Drawing.Size(86, 35);
             this.tsmiGeneral.Text = "&General Data";
             // 
+            // tsmiAdministrative
+            // 
+            this.tsmiAdministrative.Name = "tsmiAdministrative";
+            this.tsmiAdministrative.Size = new System.Drawing.Size(178, 22);
+            this.tsmiAdministrative.Text = "&Administrative Area";
+            this.tsmiAdministrative.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
+            // tsmiSalesArea
+            // 
+            this.tsmiSalesArea.Name = "tsmiSalesArea";
+            this.tsmiSalesArea.Size = new System.Drawing.Size(178, 22);
+            this.tsmiSalesArea.Text = "&Sales Area";
+            this.tsmiSalesArea.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
             // tsmiAdministration
             // 
+            this.tsmiAdministration.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCode});
             this.tsmiAdministration.Name = "tsmiAdministration";
             this.tsmiAdministration.Size = new System.Drawing.Size(98, 35);
             this.tsmiAdministration.Text = "&Administration";
@@ -70,19 +87,12 @@
             this.tsmiHelp.Size = new System.Drawing.Size(44, 35);
             this.tsmiHelp.Text = "&Help";
             // 
-            // tsmiAdministrative
+            // tsmiCode
             // 
-            this.tsmiAdministrative.Name = "tsmiAdministrative";
-            this.tsmiAdministrative.Size = new System.Drawing.Size(178, 22);
-            this.tsmiAdministrative.Text = "&Administrative Area";
-            this.tsmiAdministrative.Click += new System.EventHandler(this.MenuItem_Click);
-            // 
-            // tsmiSalesArea
-            // 
-            this.tsmiSalesArea.Name = "tsmiSalesArea";
-            this.tsmiSalesArea.Size = new System.Drawing.Size(178, 22);
-            this.tsmiSalesArea.Text = "&Sales Area";
-            this.tsmiSalesArea.Click += new System.EventHandler(this.MenuItem_Click);
+            this.tsmiCode.Name = "tsmiCode";
+            this.tsmiCode.Size = new System.Drawing.Size(157, 22);
+            this.tsmiCode.Text = "Code Definition";
+            this.tsmiCode.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // GeneralMenu
             // 
@@ -107,5 +117,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiHelp;
         private System.Windows.Forms.ToolStripMenuItem tsmiAdministrative;
         private System.Windows.Forms.ToolStripMenuItem tsmiSalesArea;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCode;
     }
 }

@@ -27,6 +27,8 @@ namespace InFresh.General.v1.Controls
                     dock = (IDock)Activator.CreateInstance(Type.GetType("InFresh.General.v1.Pages.GP001_AdministrativePage"));
                 else if (sender == tsmiSalesArea)
                     dock = (IDock)Activator.CreateInstance(Type.GetType("InFresh.General.v1.Pages.GP002_SalesAreaPage"));
+                else if (sender == tsmiCode)
+                    dock = (IDock)Activator.CreateInstance(Type.GetType("InFresh.General.v1.Pages.GP003A_CodeDefinitionPage"));
 
                 if (dock != null)
                     GeneralModule.Handler.Host.ShowContent(dock as DockContent, dock.State);

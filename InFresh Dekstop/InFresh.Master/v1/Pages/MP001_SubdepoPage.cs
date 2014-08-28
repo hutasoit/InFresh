@@ -540,7 +540,6 @@ namespace InFresh.Master.v1.Pages
                             case Flag.DataLoading:
                                 tspProgress.Visible = false;
                                 tsxStatus.Text = MasterModule.Handler.Resources.GetString("Ready");
-                                tsbList.Enabled = tsbNew.Enabled = tsbRefresh.Enabled = true;
 
                                 if (Index == -1)
                                 {
@@ -632,6 +631,7 @@ namespace InFresh.Master.v1.Pages
         /// </summary>
         private void ConfigureToolbar()
         {
+            tsbList.Enabled = tsbNew.Enabled = tsbRefresh.Enabled = true;
             if (Data.Count != 0)
             {
                 tslRecord.Text = string.Format(MasterModule.Handler.Resources.GetString("Record_Number"), Index + 1, Data.Count);

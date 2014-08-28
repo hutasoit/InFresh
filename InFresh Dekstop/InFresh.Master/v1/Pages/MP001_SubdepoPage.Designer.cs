@@ -30,11 +30,25 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MP001_SubdepoPage));
             this.tlsToolbar = new System.Windows.Forms.ToolStrip();
+            this.tsbList = new System.Windows.Forms.ToolStripButton();
+            this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbNew = new System.Windows.Forms.ToolStripButton();
+            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
+            this.tsbSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancel = new System.Windows.Forms.ToolStripSplitButton();
+            this.tsbDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbTruncate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbGenerate = new System.Windows.Forms.ToolStripButton();
             this.tslRecord = new System.Windows.Forms.ToolStripLabel();
+            this.tsbLast = new System.Windows.Forms.ToolStripButton();
+            this.tsbNext = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrevious = new System.Windows.Forms.ToolStripButton();
+            this.tsbFirst = new System.Windows.Forms.ToolStripButton();
             this.lblInfo = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pbxFoto = new System.Windows.Forms.PictureBox();
             this.btnFoto = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtOldCode = new System.Windows.Forms.TextBox();
@@ -51,47 +65,33 @@
             this.stxGap = new System.Windows.Forms.ToolStripStatusLabel();
             this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.bgwMap = new System.ComponentModel.BackgroundWorker();
-            this.pbxFoto = new System.Windows.Forms.PictureBox();
-            this.tsbList = new System.Windows.Forms.ToolStripButton();
-            this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
-            this.tsbCancel = new System.Windows.Forms.ToolStripSplitButton();
-            this.tsbDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbTruncate = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbGenerate = new System.Windows.Forms.ToolStripButton();
-            this.tsbLast = new System.Windows.Forms.ToolStripButton();
-            this.tsbNext = new System.Windows.Forms.ToolStripButton();
-            this.tsbPrevious = new System.Windows.Forms.ToolStripButton();
-            this.tsbFirst = new System.Windows.Forms.ToolStripButton();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPhone1 = new System.Windows.Forms.MaskedTextBox();
-            this.txtFax1 = new System.Windows.Forms.MaskedTextBox();
-            this.txtCity = new System.Windows.Forms.TextBox();
-            this.txtAddr2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtZipCode = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtLongitude = new System.Windows.Forms.TextBox();
-            this.txtAddr1 = new System.Windows.Forms.TextBox();
-            this.txtLatitude = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtGeoAddr1 = new System.Windows.Forms.TextBox();
-            this.txtGeoAddr2 = new System.Windows.Forms.TextBox();
-            this.btnGeolocation = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.gmpMap = new GMap.NET.WindowsForms.GMapControl();
+            this.btnGeolocation = new System.Windows.Forms.Button();
+            this.txtGeoAddr2 = new System.Windows.Forms.TextBox();
+            this.txtGeoAddr1 = new System.Windows.Forms.TextBox();
+            this.txtLatitude = new System.Windows.Forms.TextBox();
+            this.txtAddr1 = new System.Windows.Forms.TextBox();
+            this.txtLongitude = new System.Windows.Forms.TextBox();
+            this.txtZipCode = new System.Windows.Forms.TextBox();
+            this.txtAddr2 = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtFax1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtPhone1 = new System.Windows.Forms.MaskedTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tbcDetail = new InFresh.Controls.v1.LeftTabControl();
             this.tlsToolbar.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.stsStatusbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFoto)).BeginInit();
+            this.stsStatusbar.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tbcDetail.SuspendLayout();
@@ -99,7 +99,6 @@
             // 
             // tlsToolbar
             // 
-            this.tlsToolbar.Enabled = false;
             this.tlsToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tlsToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbList,
@@ -124,15 +123,116 @@
             this.tlsToolbar.TabIndex = 67;
             this.tlsToolbar.Text = "toolStrip1";
             // 
+            // tsbList
+            // 
+            this.tsbList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbList.Enabled = false;
+            this.tsbList.Image = global::InFresh.Master.Properties.Resources.ic_list;
+            this.tsbList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbList.Name = "tsbList";
+            this.tsbList.Size = new System.Drawing.Size(23, 22);
+            this.tsbList.Text = "List All";
+            this.tsbList.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRefresh.Enabled = false;
+            this.tsbRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.Image")));
+            this.tsbRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.Size = new System.Drawing.Size(23, 22);
+            this.tsbRefresh.Text = "Refresh";
+            this.tsbRefresh.ToolTipText = "Refresh Data";
+            this.tsbRefresh.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
+            // tsbNew
+            // 
+            this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNew.Enabled = false;
+            this.tsbNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbNew.Image")));
+            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNew.Name = "tsbNew";
+            this.tsbNew.Size = new System.Drawing.Size(23, 22);
+            this.tsbNew.Text = "New (Ctrl + N)";
+            this.tsbNew.ToolTipText = "New Record";
+            this.tsbNew.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // tsbEdit
+            // 
+            this.tsbEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEdit.Enabled = false;
+            this.tsbEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbEdit.Image")));
+            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEdit.Name = "tsbEdit";
+            this.tsbEdit.Size = new System.Drawing.Size(23, 22);
+            this.tsbEdit.Text = "Edit (F2)";
+            this.tsbEdit.ToolTipText = "Edit Selected Record";
+            this.tsbEdit.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // tsbSave
+            // 
+            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSave.Enabled = false;
+            this.tsbSave.Image = ((System.Drawing.Image)(resources.GetObject("tsbSave.Image")));
+            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSave.Name = "tsbSave";
+            this.tsbSave.Size = new System.Drawing.Size(23, 22);
+            this.tsbSave.Text = "Save (Ctrl + S)";
+            this.tsbSave.ToolTipText = "Commit Changes";
+            this.tsbSave.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // tsbCancel
+            // 
+            this.tsbCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbCancel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbDelete,
+            this.tsbTruncate});
+            this.tsbCancel.Enabled = false;
+            this.tsbCancel.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancel.Image")));
+            this.tsbCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancel.Name = "tsbCancel";
+            this.tsbCancel.Size = new System.Drawing.Size(32, 22);
+            this.tsbCancel.Text = "Delete";
+            this.tsbCancel.ButtonClick += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // tsbDelete
+            // 
+            this.tsbDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbDelete.Image")));
+            this.tsbDelete.Name = "tsbDelete";
+            this.tsbDelete.Size = new System.Drawing.Size(128, 22);
+            this.tsbDelete.Text = "Delete";
+            this.tsbDelete.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // tsbTruncate
+            // 
+            this.tsbTruncate.Image = ((System.Drawing.Image)(resources.GetObject("tsbTruncate.Image")));
+            this.tsbTruncate.Name = "tsbTruncate";
+            this.tsbTruncate.Size = new System.Drawing.Size(128, 22);
+            this.tsbTruncate.Text = "Clear Data";
+            this.tsbTruncate.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbGenerate
+            // 
+            this.tsbGenerate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbGenerate.Enabled = false;
+            this.tsbGenerate.Image = global::InFresh.Master.Properties.Resources.ic_setting;
+            this.tsbGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbGenerate.Name = "tsbGenerate";
+            this.tsbGenerate.Size = new System.Drawing.Size(23, 22);
+            this.tsbGenerate.Text = "Generate Code";
+            this.tsbGenerate.ToolTipText = "Generate Suggest Code";
+            this.tsbGenerate.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // tslRecord
             // 
@@ -140,6 +240,58 @@
             this.tslRecord.Name = "tslRecord";
             this.tslRecord.Size = new System.Drawing.Size(79, 22);
             this.tslRecord.Text = "Record: 0 of 0";
+            // 
+            // tsbLast
+            // 
+            this.tsbLast.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbLast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbLast.Enabled = false;
+            this.tsbLast.Image = ((System.Drawing.Image)(resources.GetObject("tsbLast.Image")));
+            this.tsbLast.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLast.Name = "tsbLast";
+            this.tsbLast.Size = new System.Drawing.Size(23, 22);
+            this.tsbLast.Text = "Last";
+            this.tsbLast.ToolTipText = "Last Record (Ctrl + Arrow Down)";
+            this.tsbLast.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // tsbNext
+            // 
+            this.tsbNext.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNext.Enabled = false;
+            this.tsbNext.Image = ((System.Drawing.Image)(resources.GetObject("tsbNext.Image")));
+            this.tsbNext.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNext.Name = "tsbNext";
+            this.tsbNext.Size = new System.Drawing.Size(23, 22);
+            this.tsbNext.Text = "Next";
+            this.tsbNext.ToolTipText = "Next Record (Ctrl + Arrow Right)";
+            this.tsbNext.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // tsbPrevious
+            // 
+            this.tsbPrevious.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbPrevious.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPrevious.Enabled = false;
+            this.tsbPrevious.Image = ((System.Drawing.Image)(resources.GetObject("tsbPrevious.Image")));
+            this.tsbPrevious.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPrevious.Name = "tsbPrevious";
+            this.tsbPrevious.Size = new System.Drawing.Size(23, 22);
+            this.tsbPrevious.Text = "Previous";
+            this.tsbPrevious.ToolTipText = "Previous Record (Ctrl + Arrow Left)";
+            this.tsbPrevious.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // tsbFirst
+            // 
+            this.tsbFirst.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbFirst.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbFirst.Enabled = false;
+            this.tsbFirst.Image = ((System.Drawing.Image)(resources.GetObject("tsbFirst.Image")));
+            this.tsbFirst.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFirst.Name = "tsbFirst";
+            this.tsbFirst.Size = new System.Drawing.Size(23, 22);
+            this.tsbFirst.Text = "First";
+            this.tsbFirst.ToolTipText = "First Record (Ctrl + Arrow Up)";
+            this.tsbFirst.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // lblInfo
             // 
@@ -163,6 +315,16 @@
             this.groupBox2.TabIndex = 105;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Outlet Image";
+            // 
+            // pbxFoto
+            // 
+            this.pbxFoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbxFoto.Location = new System.Drawing.Point(3, 16);
+            this.pbxFoto.Name = "pbxFoto";
+            this.pbxFoto.Size = new System.Drawing.Size(342, 175);
+            this.pbxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxFoto.TabIndex = 33;
+            this.pbxFoto.TabStop = false;
             // 
             // btnFoto
             // 
@@ -305,169 +467,6 @@
             this.bgwMap.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker_ProgressChanged);
             this.bgwMap.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker_RunWorkerCompleted);
             // 
-            // pbxFoto
-            // 
-            this.pbxFoto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbxFoto.Location = new System.Drawing.Point(3, 16);
-            this.pbxFoto.Name = "pbxFoto";
-            this.pbxFoto.Size = new System.Drawing.Size(342, 175);
-            this.pbxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxFoto.TabIndex = 33;
-            this.pbxFoto.TabStop = false;
-            // 
-            // tsbList
-            // 
-            this.tsbList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbList.Enabled = false;
-            this.tsbList.Image = global::InFresh.Master.Properties.Resources.ic_list;
-            this.tsbList.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbList.Name = "tsbList";
-            this.tsbList.Size = new System.Drawing.Size(23, 22);
-            this.tsbList.Text = "List All";
-            this.tsbList.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbRefresh
-            // 
-            this.tsbRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRefresh.Enabled = false;
-            this.tsbRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.Image")));
-            this.tsbRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRefresh.Name = "tsbRefresh";
-            this.tsbRefresh.Size = new System.Drawing.Size(23, 22);
-            this.tsbRefresh.Text = "Refresh";
-            this.tsbRefresh.ToolTipText = "Refresh Data";
-            this.tsbRefresh.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbNew
-            // 
-            this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNew.Enabled = false;
-            this.tsbNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbNew.Image")));
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbNew.Text = "New (Ctrl + N)";
-            this.tsbNew.ToolTipText = "New Record";
-            this.tsbNew.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbEdit
-            // 
-            this.tsbEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEdit.Enabled = false;
-            this.tsbEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbEdit.Image")));
-            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsbEdit.Text = "Edit (F2)";
-            this.tsbEdit.ToolTipText = "Edit Selected Record";
-            this.tsbEdit.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbSave
-            // 
-            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSave.Enabled = false;
-            this.tsbSave.Image = ((System.Drawing.Image)(resources.GetObject("tsbSave.Image")));
-            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSave.Name = "tsbSave";
-            this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "Save (Ctrl + S)";
-            this.tsbSave.ToolTipText = "Commit Changes";
-            this.tsbSave.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbCancel
-            // 
-            this.tsbCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbCancel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbDelete,
-            this.tsbTruncate});
-            this.tsbCancel.Enabled = false;
-            this.tsbCancel.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancel.Image")));
-            this.tsbCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCancel.Name = "tsbCancel";
-            this.tsbCancel.Size = new System.Drawing.Size(32, 22);
-            this.tsbCancel.Text = "Delete";
-            this.tsbCancel.ButtonClick += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbDelete
-            // 
-            this.tsbDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbDelete.Image")));
-            this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(128, 22);
-            this.tsbDelete.Text = "Delete";
-            this.tsbDelete.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbTruncate
-            // 
-            this.tsbTruncate.Image = ((System.Drawing.Image)(resources.GetObject("tsbTruncate.Image")));
-            this.tsbTruncate.Name = "tsbTruncate";
-            this.tsbTruncate.Size = new System.Drawing.Size(128, 22);
-            this.tsbTruncate.Text = "Clear Data";
-            this.tsbTruncate.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbGenerate
-            // 
-            this.tsbGenerate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbGenerate.Enabled = false;
-            this.tsbGenerate.Image = global::InFresh.Master.Properties.Resources.ic_setting;
-            this.tsbGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbGenerate.Name = "tsbGenerate";
-            this.tsbGenerate.Size = new System.Drawing.Size(23, 22);
-            this.tsbGenerate.Text = "Generate Code";
-            this.tsbGenerate.ToolTipText = "Generate Suggest Code";
-            this.tsbGenerate.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbLast
-            // 
-            this.tsbLast.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbLast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbLast.Enabled = false;
-            this.tsbLast.Image = ((System.Drawing.Image)(resources.GetObject("tsbLast.Image")));
-            this.tsbLast.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbLast.Name = "tsbLast";
-            this.tsbLast.Size = new System.Drawing.Size(23, 22);
-            this.tsbLast.Text = "Last";
-            this.tsbLast.ToolTipText = "Last Record (Ctrl + Arrow Down)";
-            this.tsbLast.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbNext
-            // 
-            this.tsbNext.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNext.Enabled = false;
-            this.tsbNext.Image = ((System.Drawing.Image)(resources.GetObject("tsbNext.Image")));
-            this.tsbNext.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNext.Name = "tsbNext";
-            this.tsbNext.Size = new System.Drawing.Size(23, 22);
-            this.tsbNext.Text = "Next";
-            this.tsbNext.ToolTipText = "Next Record (Ctrl + Arrow Right)";
-            this.tsbNext.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbPrevious
-            // 
-            this.tsbPrevious.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbPrevious.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrevious.Enabled = false;
-            this.tsbPrevious.Image = ((System.Drawing.Image)(resources.GetObject("tsbPrevious.Image")));
-            this.tsbPrevious.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPrevious.Name = "tsbPrevious";
-            this.tsbPrevious.Size = new System.Drawing.Size(23, 22);
-            this.tsbPrevious.Text = "Previous";
-            this.tsbPrevious.ToolTipText = "Previous Record (Ctrl + Arrow Left)";
-            this.tsbPrevious.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
-            // tsbFirst
-            // 
-            this.tsbFirst.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbFirst.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFirst.Enabled = false;
-            this.tsbFirst.Image = ((System.Drawing.Image)(resources.GetObject("tsbFirst.Image")));
-            this.tsbFirst.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFirst.Name = "tsbFirst";
-            this.tsbFirst.Size = new System.Drawing.Size(23, 22);
-            this.tsbFirst.Text = "First";
-            this.tsbFirst.ToolTipText = "First Record (Ctrl + Arrow Up)";
-            this.tsbFirst.Click += new System.EventHandler(this.ToolbarItem_Click);
-            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel5);
@@ -497,177 +496,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Address";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 139);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(24, 13);
-            this.label9.TabIndex = 148;
-            this.label9.Text = "Fax";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 113);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
-            this.label5.TabIndex = 145;
-            this.label5.Text = "Telephone";
-            // 
-            // txtPhone1
-            // 
-            this.txtPhone1.Location = new System.Drawing.Point(79, 110);
-            this.txtPhone1.Mask = "###############";
-            this.txtPhone1.Name = "txtPhone1";
-            this.txtPhone1.ReadOnly = true;
-            this.txtPhone1.Size = new System.Drawing.Size(236, 20);
-            this.txtPhone1.TabIndex = 139;
-            // 
-            // txtFax1
-            // 
-            this.txtFax1.Location = new System.Drawing.Point(79, 136);
-            this.txtFax1.Mask = "###############";
-            this.txtFax1.Name = "txtFax1";
-            this.txtFax1.ReadOnly = true;
-            this.txtFax1.Size = new System.Drawing.Size(236, 20);
-            this.txtFax1.TabIndex = 140;
-            // 
-            // txtCity
-            // 
-            this.txtCity.Location = new System.Drawing.Point(79, 58);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.ReadOnly = true;
-            this.txtCity.Size = new System.Drawing.Size(236, 20);
-            this.txtCity.TabIndex = 137;
-            // 
-            // txtAddr2
-            // 
-            this.txtAddr2.Location = new System.Drawing.Point(79, 32);
-            this.txtAddr2.Name = "txtAddr2";
-            this.txtAddr2.ReadOnly = true;
-            this.txtAddr2.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtAddr2.Size = new System.Drawing.Size(236, 20);
-            this.txtAddr2.TabIndex = 136;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 87);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 13);
-            this.label7.TabIndex = 147;
-            this.label7.Text = "Zip Code";
-            // 
-            // txtZipCode
-            // 
-            this.txtZipCode.Location = new System.Drawing.Point(79, 84);
-            this.txtZipCode.Name = "txtZipCode";
-            this.txtZipCode.ReadOnly = true;
-            this.txtZipCode.Size = new System.Drawing.Size(80, 20);
-            this.txtZipCode.TabIndex = 138;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 59);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 13);
-            this.label4.TabIndex = 146;
-            this.label4.Text = "City";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 165);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 13);
-            this.label11.TabIndex = 149;
-            this.label11.Text = "Longitude";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 144;
-            this.label3.Text = "Address";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(5, 191);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(45, 13);
-            this.label12.TabIndex = 150;
-            this.label12.Text = "Latitude";
-            // 
-            // txtLongitude
-            // 
-            this.txtLongitude.Location = new System.Drawing.Point(79, 162);
-            this.txtLongitude.Name = "txtLongitude";
-            this.txtLongitude.ReadOnly = true;
-            this.txtLongitude.Size = new System.Drawing.Size(236, 20);
-            this.txtLongitude.TabIndex = 141;
-            this.txtLongitude.Text = "0";
-            // 
-            // txtAddr1
-            // 
-            this.txtAddr1.Location = new System.Drawing.Point(79, 6);
-            this.txtAddr1.Name = "txtAddr1";
-            this.txtAddr1.ReadOnly = true;
-            this.txtAddr1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtAddr1.Size = new System.Drawing.Size(236, 20);
-            this.txtAddr1.TabIndex = 135;
-            // 
-            // txtLatitude
-            // 
-            this.txtLatitude.Location = new System.Drawing.Point(79, 188);
-            this.txtLatitude.Name = "txtLatitude";
-            this.txtLatitude.ReadOnly = true;
-            this.txtLatitude.Size = new System.Drawing.Size(236, 20);
-            this.txtLatitude.TabIndex = 142;
-            this.txtLatitude.Text = "0";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(5, 246);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(68, 13);
-            this.label19.TabIndex = 151;
-            this.label19.Text = "Geo Address";
-            // 
-            // txtGeoAddr1
-            // 
-            this.txtGeoAddr1.Location = new System.Drawing.Point(79, 243);
-            this.txtGeoAddr1.Name = "txtGeoAddr1";
-            this.txtGeoAddr1.ReadOnly = true;
-            this.txtGeoAddr1.Size = new System.Drawing.Size(236, 20);
-            this.txtGeoAddr1.TabIndex = 152;
-            this.txtGeoAddr1.TabStop = false;
-            // 
-            // txtGeoAddr2
-            // 
-            this.txtGeoAddr2.Location = new System.Drawing.Point(79, 269);
-            this.txtGeoAddr2.Name = "txtGeoAddr2";
-            this.txtGeoAddr2.ReadOnly = true;
-            this.txtGeoAddr2.Size = new System.Drawing.Size(236, 20);
-            this.txtGeoAddr2.TabIndex = 153;
-            this.txtGeoAddr2.TabStop = false;
-            // 
-            // btnGeolocation
-            // 
-            this.btnGeolocation.Enabled = false;
-            this.btnGeolocation.Location = new System.Drawing.Point(79, 214);
-            this.btnGeolocation.Name = "btnGeolocation";
-            this.btnGeolocation.Size = new System.Drawing.Size(112, 23);
-            this.btnGeolocation.TabIndex = 143;
-            this.btnGeolocation.Text = "Search Geolocation";
-            this.btnGeolocation.UseVisualStyleBackColor = true;
-            this.btnGeolocation.Click += new System.EventHandler(this.ButtonItem_Click);
             // 
             // panel5
             // 
@@ -706,6 +534,177 @@
             this.gmpMap.Size = new System.Drawing.Size(338, 282);
             this.gmpMap.TabIndex = 17;
             this.gmpMap.Zoom = 0D;
+            // 
+            // btnGeolocation
+            // 
+            this.btnGeolocation.Enabled = false;
+            this.btnGeolocation.Location = new System.Drawing.Point(79, 214);
+            this.btnGeolocation.Name = "btnGeolocation";
+            this.btnGeolocation.Size = new System.Drawing.Size(112, 23);
+            this.btnGeolocation.TabIndex = 143;
+            this.btnGeolocation.Text = "Search Geolocation";
+            this.btnGeolocation.UseVisualStyleBackColor = true;
+            this.btnGeolocation.Click += new System.EventHandler(this.ButtonItem_Click);
+            // 
+            // txtGeoAddr2
+            // 
+            this.txtGeoAddr2.Location = new System.Drawing.Point(79, 269);
+            this.txtGeoAddr2.Name = "txtGeoAddr2";
+            this.txtGeoAddr2.ReadOnly = true;
+            this.txtGeoAddr2.Size = new System.Drawing.Size(236, 20);
+            this.txtGeoAddr2.TabIndex = 153;
+            this.txtGeoAddr2.TabStop = false;
+            // 
+            // txtGeoAddr1
+            // 
+            this.txtGeoAddr1.Location = new System.Drawing.Point(79, 243);
+            this.txtGeoAddr1.Name = "txtGeoAddr1";
+            this.txtGeoAddr1.ReadOnly = true;
+            this.txtGeoAddr1.Size = new System.Drawing.Size(236, 20);
+            this.txtGeoAddr1.TabIndex = 152;
+            this.txtGeoAddr1.TabStop = false;
+            // 
+            // txtLatitude
+            // 
+            this.txtLatitude.Location = new System.Drawing.Point(79, 188);
+            this.txtLatitude.Name = "txtLatitude";
+            this.txtLatitude.ReadOnly = true;
+            this.txtLatitude.Size = new System.Drawing.Size(236, 20);
+            this.txtLatitude.TabIndex = 142;
+            this.txtLatitude.Text = "0";
+            // 
+            // txtAddr1
+            // 
+            this.txtAddr1.Location = new System.Drawing.Point(79, 6);
+            this.txtAddr1.Name = "txtAddr1";
+            this.txtAddr1.ReadOnly = true;
+            this.txtAddr1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtAddr1.Size = new System.Drawing.Size(236, 20);
+            this.txtAddr1.TabIndex = 135;
+            // 
+            // txtLongitude
+            // 
+            this.txtLongitude.Location = new System.Drawing.Point(79, 162);
+            this.txtLongitude.Name = "txtLongitude";
+            this.txtLongitude.ReadOnly = true;
+            this.txtLongitude.Size = new System.Drawing.Size(236, 20);
+            this.txtLongitude.TabIndex = 141;
+            this.txtLongitude.Text = "0";
+            // 
+            // txtZipCode
+            // 
+            this.txtZipCode.Location = new System.Drawing.Point(79, 84);
+            this.txtZipCode.Name = "txtZipCode";
+            this.txtZipCode.ReadOnly = true;
+            this.txtZipCode.Size = new System.Drawing.Size(80, 20);
+            this.txtZipCode.TabIndex = 138;
+            // 
+            // txtAddr2
+            // 
+            this.txtAddr2.Location = new System.Drawing.Point(79, 32);
+            this.txtAddr2.Name = "txtAddr2";
+            this.txtAddr2.ReadOnly = true;
+            this.txtAddr2.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtAddr2.Size = new System.Drawing.Size(236, 20);
+            this.txtAddr2.TabIndex = 136;
+            // 
+            // txtCity
+            // 
+            this.txtCity.Location = new System.Drawing.Point(79, 58);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.ReadOnly = true;
+            this.txtCity.Size = new System.Drawing.Size(236, 20);
+            this.txtCity.TabIndex = 137;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(5, 246);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(68, 13);
+            this.label19.TabIndex = 151;
+            this.label19.Text = "Geo Address";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(5, 191);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 13);
+            this.label12.TabIndex = 150;
+            this.label12.Text = "Latitude";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 144;
+            this.label3.Text = "Address";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(5, 165);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(54, 13);
+            this.label11.TabIndex = 149;
+            this.label11.Text = "Longitude";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 59);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 146;
+            this.label4.Text = "City";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(5, 87);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(50, 13);
+            this.label7.TabIndex = 147;
+            this.label7.Text = "Zip Code";
+            // 
+            // txtFax1
+            // 
+            this.txtFax1.Location = new System.Drawing.Point(79, 136);
+            this.txtFax1.Mask = "###############";
+            this.txtFax1.Name = "txtFax1";
+            this.txtFax1.ReadOnly = true;
+            this.txtFax1.Size = new System.Drawing.Size(236, 20);
+            this.txtFax1.TabIndex = 140;
+            // 
+            // txtPhone1
+            // 
+            this.txtPhone1.Location = new System.Drawing.Point(79, 110);
+            this.txtPhone1.Mask = "###############";
+            this.txtPhone1.Name = "txtPhone1";
+            this.txtPhone1.ReadOnly = true;
+            this.txtPhone1.Size = new System.Drawing.Size(236, 20);
+            this.txtPhone1.TabIndex = 139;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(5, 113);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 145;
+            this.label5.Text = "Telephone";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(5, 139);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(24, 13);
+            this.label9.TabIndex = 148;
+            this.label9.Text = "Fax";
             // 
             // tbcDetail
             // 
@@ -757,9 +756,9 @@
             this.tlsToolbar.ResumeLayout(false);
             this.tlsToolbar.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFoto)).EndInit();
             this.stsStatusbar.ResumeLayout(false);
             this.stsStatusbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFoto)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.panel5.ResumeLayout(false);

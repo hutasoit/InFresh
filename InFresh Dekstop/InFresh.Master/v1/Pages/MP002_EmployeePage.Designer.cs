@@ -110,7 +110,6 @@
             // 
             // tlsToolbar
             // 
-            this.tlsToolbar.Enabled = false;
             this.tlsToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tlsToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbList,
@@ -859,6 +858,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tlsToolbar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(950, 500);
             this.Name = "MP002_EmployeePage";
             this.Text = "MP002_ListEmployeePage";

@@ -176,6 +176,9 @@
     <EmbeddedResource Include="v1\Pages\MP003_SupplierPage.resx">
       <DependentUpon>MP003_SupplierPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="v1\Pages\MP004_OutletPage.resx">
+      <DependentUpon>MP004_OutletPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="v1\Wizards\Imports\MW001_ImportSubdepo.resx">
       <DependentUpon>MW001_ImportSubdepo.cs</DependentUpon>
     </EmbeddedResource>

@@ -30,18 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MP003_SupplierPage));
             this.tlsToolbar = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslRecord = new System.Windows.Forms.ToolStripLabel();
             this.tsbList = new System.Windows.Forms.ToolStripButton();
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.tsbCancel = new System.Windows.Forms.ToolStripSplitButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbTruncate = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbGenerate = new System.Windows.Forms.ToolStripButton();
+            this.tslRecord = new System.Windows.Forms.ToolStripLabel();
             this.tsbLast = new System.Windows.Forms.ToolStripButton();
             this.tsbNext = new System.Windows.Forms.ToolStripButton();
             this.tsbPrevious = new System.Windows.Forms.ToolStripButton();
@@ -75,6 +75,7 @@
             this.tsxStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.stxGap = new System.Windows.Forms.ToolStripStatusLabel();
             this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.bgwWorker = new System.ComponentModel.BackgroundWorker();
             this.leftTabControl1 = new InFresh.Controls.v1.LeftTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tlsToolbar.SuspendLayout();
@@ -84,7 +85,6 @@
             // 
             // tlsToolbar
             // 
-            this.tlsToolbar.Enabled = false;
             this.tlsToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tlsToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbList,
@@ -109,23 +109,6 @@
             this.tlsToolbar.TabIndex = 68;
             this.tlsToolbar.Text = "toolStrip1";
             // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tslRecord
-            // 
-            this.tslRecord.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tslRecord.Name = "tslRecord";
-            this.tslRecord.Size = new System.Drawing.Size(79, 22);
-            this.tslRecord.Text = "Record: 0 of 0";
-            // 
             // tsbList
             // 
             this.tsbList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -135,6 +118,7 @@
             this.tsbList.Name = "tsbList";
             this.tsbList.Size = new System.Drawing.Size(23, 22);
             this.tsbList.Text = "List All";
+            this.tsbList.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // tsbRefresh
             // 
@@ -146,6 +130,12 @@
             this.tsbRefresh.Size = new System.Drawing.Size(23, 22);
             this.tsbRefresh.Text = "Refresh";
             this.tsbRefresh.ToolTipText = "Refresh Data";
+            this.tsbRefresh.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbNew
             // 
@@ -157,6 +147,7 @@
             this.tsbNew.Size = new System.Drawing.Size(23, 22);
             this.tsbNew.Text = "New (Ctrl + N)";
             this.tsbNew.ToolTipText = "New Record";
+            this.tsbNew.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // tsbEdit
             // 
@@ -168,6 +159,7 @@
             this.tsbEdit.Size = new System.Drawing.Size(23, 22);
             this.tsbEdit.Text = "Edit (F2)";
             this.tsbEdit.ToolTipText = "Edit Selected Record";
+            this.tsbEdit.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // tsbSave
             // 
@@ -179,6 +171,7 @@
             this.tsbSave.Size = new System.Drawing.Size(23, 22);
             this.tsbSave.Text = "Save (Ctrl + S)";
             this.tsbSave.ToolTipText = "Commit Changes";
+            this.tsbSave.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // tsbCancel
             // 
@@ -192,6 +185,7 @@
             this.tsbCancel.Name = "tsbCancel";
             this.tsbCancel.Size = new System.Drawing.Size(32, 22);
             this.tsbCancel.Text = "Delete";
+            this.tsbCancel.ButtonClick += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // tsbDelete
             // 
@@ -199,6 +193,7 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(128, 22);
             this.tsbDelete.Text = "Delete";
+            this.tsbDelete.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // tsbTruncate
             // 
@@ -206,6 +201,12 @@
             this.tsbTruncate.Name = "tsbTruncate";
             this.tsbTruncate.Size = new System.Drawing.Size(128, 22);
             this.tsbTruncate.Text = "Clear Data";
+            this.tsbTruncate.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbGenerate
             // 
@@ -217,6 +218,14 @@
             this.tsbGenerate.Size = new System.Drawing.Size(23, 22);
             this.tsbGenerate.Text = "Generate Code";
             this.tsbGenerate.ToolTipText = "Generate Suggest Code";
+            this.tsbGenerate.Click += new System.EventHandler(this.ToolbarItem_Click);
+            // 
+            // tslRecord
+            // 
+            this.tslRecord.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tslRecord.Name = "tslRecord";
+            this.tslRecord.Size = new System.Drawing.Size(79, 22);
+            this.tslRecord.Text = "Record: 0 of 0";
             // 
             // tsbLast
             // 
@@ -229,6 +238,7 @@
             this.tsbLast.Size = new System.Drawing.Size(23, 22);
             this.tsbLast.Text = "Last";
             this.tsbLast.ToolTipText = "Last Record (Ctrl + Arrow Down)";
+            this.tsbLast.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // tsbNext
             // 
@@ -241,6 +251,7 @@
             this.tsbNext.Size = new System.Drawing.Size(23, 22);
             this.tsbNext.Text = "Next";
             this.tsbNext.ToolTipText = "Next Record (Ctrl + Arrow Right)";
+            this.tsbNext.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // tsbPrevious
             // 
@@ -253,6 +264,7 @@
             this.tsbPrevious.Size = new System.Drawing.Size(23, 22);
             this.tsbPrevious.Text = "Previous";
             this.tsbPrevious.ToolTipText = "Previous Record (Ctrl + Arrow Left)";
+            this.tsbPrevious.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // tsbFirst
             // 
@@ -265,6 +277,7 @@
             this.tsbFirst.Size = new System.Drawing.Size(23, 22);
             this.tsbFirst.Text = "First";
             this.tsbFirst.ToolTipText = "First Record (Ctrl + Arrow Up)";
+            this.tsbFirst.Click += new System.EventHandler(this.ToolbarItem_Click);
             // 
             // label5
             // 
@@ -496,7 +509,7 @@
             this.tsxStatus,
             this.stxGap,
             this.tspProgress});
-            this.stsStatusbar.Location = new System.Drawing.Point(0, 483);
+            this.stsStatusbar.Location = new System.Drawing.Point(0, 484);
             this.stsStatusbar.Name = "stsStatusbar";
             this.stsStatusbar.Size = new System.Drawing.Size(834, 22);
             this.stsStatusbar.SizingGrip = false;
@@ -527,6 +540,12 @@
             this.tspProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.tspProgress.Visible = false;
             // 
+            // bgwWorker
+            // 
+            this.bgwWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_DoWork);
+            this.bgwWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker_ProgressChanged);
+            this.bgwWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker_RunWorkerCompleted);
+            // 
             // leftTabControl1
             // 
             this.leftTabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
@@ -555,7 +574,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 505);
+            this.ClientSize = new System.Drawing.Size(834, 506);
             this.Controls.Add(this.leftTabControl1);
             this.Controls.Add(this.stsStatusbar);
             this.Controls.Add(this.label5);
@@ -584,8 +603,17 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtPhone1);
             this.Controls.Add(this.tlsToolbar);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(850, 545);
             this.Name = "MP003_SupplierPage";
             this.Text = "MP003_ListSupplierPage";
+            this.DockStateChanged += new System.EventHandler(this.Form_DockStateChanged);
+            this.Activated += new System.EventHandler(this.Form_Activated);
+            this.Deactivate += new System.EventHandler(this.Form_Deactivate);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.tlsToolbar.ResumeLayout(false);
             this.tlsToolbar.PerformLayout();
             this.stsStatusbar.ResumeLayout(false);
@@ -646,5 +674,6 @@
         private System.Windows.Forms.ToolStripProgressBar tspProgress;
         private InFresh.Controls.v1.LeftTabControl leftTabControl1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.ComponentModel.BackgroundWorker bgwWorker;
     }
 }
